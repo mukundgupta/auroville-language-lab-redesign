@@ -1,0 +1,1605 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Auroville Language Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --color-primary: #2c3e6d;
+        --color-primary-light: #3d5289;
+        --color-primary-dark: #1a2847;
+        --color-accent: #d4793f;
+        --color-accent-light: #e89a66;
+        --color-gold: #e8b84a;
+        --color-warm: #fffbee;
+        --color-blue-tint: #ebf6ff;
+        --color-text: #291b05;
+        --color-text-light: #5a4a35;
+        --color-white: #ffffff;
+        --font-heading: "Noto Serif", Georgia, serif;
+        --font-body: "Noto Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+        --max-width: 1140px;
+        --section-padding: 100px 0;
+        --border-radius: 10px;
+        --transition: 0.3s ease;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--color-text);
+        line-height: 1.65;
+        background: linear-gradient(180deg, #fcf7ed 0%, #eef3f9 100%);
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition);
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* ===== NAV ===== */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(44, 62, 109, 0.08);
+        box-shadow: 0 10px 30px rgba(33, 50, 88, 0.05);
+        padding: 16px 0;
+      }
+
+      .nav__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .nav__logo {
+        display: flex;
+        align-items: center;
+        margin-right: 16px;
+      }
+
+      .nav__logo img {
+        height: 38px;
+        width: auto;
+      }
+
+      .nav__links {
+        display: flex;
+        align-items: center;
+        gap: 34px;
+        list-style: none;
+      }
+
+      .nav__links li {
+        white-space: nowrap;
+      }
+
+      .nav__links a,
+      .nav__link--button {
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--color-text-light);
+        letter-spacing: 0.01em;
+      }
+
+      .nav__links a:hover,
+      .nav__link--button:hover {
+        color: var(--color-primary);
+      }
+
+      .nav__item--dropdown {
+        position: relative;
+      }
+
+      .nav__link--button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font: inherit;
+        color: inherit;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 0;
+      }
+
+      .nav__caret {
+        display: inline-block;
+        font-size: 0.75rem;
+        transition: transform 0.2s ease;
+      }
+
+      .nav__item--dropdown:hover .nav__caret,
+      .nav__item--dropdown:focus-within .nav__caret {
+        transform: rotate(180deg);
+      }
+
+      .nav__dropdown {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        min-width: 240px;
+        padding: 10px 0;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(44, 62, 109, 0.08);
+        border-radius: 14px;
+        box-shadow: 0 14px 34px rgba(33, 50, 88, 0.08);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px);
+        transition:
+          opacity 0.22s ease,
+          transform 0.22s ease,
+          visibility 0.22s ease;
+        z-index: 1100;
+      }
+
+      .nav__item--dropdown:hover .nav__dropdown,
+      .nav__item--dropdown:focus-within .nav__dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .nav__dropdown li {
+        list-style: none;
+      }
+
+      .nav__dropdown a {
+        display: block;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        color: var(--color-text-light);
+        white-space: nowrap;
+        transition:
+          background 0.22s ease,
+          color 0.22s ease;
+      }
+
+      .nav__dropdown a:hover {
+        color: var(--color-primary);
+        background: rgba(44, 62, 109, 0.06);
+      }
+
+      .nav__item--dropdown:hover .nav__link--button,
+      .nav__item--dropdown:focus-within .nav__link--button {
+        color: var(--color-primary);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 11px 22px;
+        border-radius: 7px;
+        font-weight: 600;
+        font-size: 0.88rem;
+        cursor: pointer;
+        border: none;
+        transition: var(--transition);
+        font-family: var(--font-body);
+      }
+
+      .btn--primary {
+        background: var(--color-primary);
+        color: var(--color-white);
+      }
+      .btn--primary:hover {
+        background: var(--color-primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 15px 30px rgba(44, 62, 109, 0.18);
+      }
+
+      .btn--accent {
+        background: var(--color-accent);
+        color: var(--color-white);
+      }
+      .btn--accent:hover {
+        background: #c06a32;
+        transform: translateY(-1px);
+        box-shadow: 0 16px 30px rgba(212, 121, 63, 0.18);
+      }
+
+      .hero__ctas .btn {
+        min-width: 168px;
+      }
+
+      .btn--outline {
+        background: transparent;
+        border: 2px solid currentColor;
+      }
+      .btn--outline:hover {
+        background: var(--color-white);
+        color: var(--color-primary);
+        border-color: var(--color-white);
+        transform: scale(1.03);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+      }
+
+      .btn--glass {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: var(--color-white);
+      }
+      .btn--glass:hover {
+        background: rgba(255, 255, 255, 0.22);
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: scale(1.03);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+      }
+
+      .btn--large {
+        padding: 15px 30px;
+        font-size: 0.95rem;
+        border-radius: 8px;
+      }
+
+      /* ===== LANGUAGE SWITCHER ===== */
+      .lang-switcher--float {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        z-index: 997;
+        display: flex;
+        flex-direction: column-reverse;
+        background: rgba(255, 255, 255, 0.45);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 7px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .lang-switcher--float:hover,
+      .lang-switcher--float.active {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 16px rgba(44, 62, 109, 0.12);
+      }
+
+      .lang-switcher__toggle {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 11px 16px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-family: var(--font-body);
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: var(--color-primary);
+        transition: var(--transition);
+      }
+
+      .lang-switcher__toggle svg {
+        opacity: 0.85;
+      }
+
+      .lang-switcher__options {
+        display: flex;
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+          padding 0.35s ease;
+        padding: 0 8px;
+      }
+
+      .lang-switcher--float.active .lang-switcher__options {
+        max-height: 300px;
+        padding: 8px 8px 4px;
+      }
+
+      .lang-switcher__option {
+        display: block;
+        padding: 9px 12px;
+        font-size: 0.87rem;
+        font-weight: 500;
+        color: var(--color-text-light);
+        border-radius: 5px;
+        white-space: nowrap;
+        transition: var(--transition);
+      }
+
+      .lang-switcher__option:hover {
+        background: rgba(44, 62, 109, 0.08);
+        color: var(--color-primary);
+      }
+
+      .lang-switcher__option.active {
+        color: var(--color-primary);
+        font-weight: 700;
+      }
+
+      /* ===== MOBILE MENU ===== */
+      .nav__hamburger {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        position: relative;
+        z-index: 1001;
+      }
+
+      .nav__hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--color-text);
+        margin: 5px auto;
+        border-radius: 2px;
+        transition: var(--transition);
+      }
+
+      .nav__hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .nav__hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav__hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      .mobile-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(26, 40, 71, 0.4);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        z-index: 998;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .mobile-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        z-index: 999;
+        padding: 76px 24px 32px;
+        transform: translateY(-100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .mobile-menu.active {
+        transform: translateY(0);
+      }
+
+      .mobile-menu ul {
+        list-style: none;
+      }
+
+      .mobile-menu ul li {
+        margin-bottom: 4px;
+      }
+
+      .mobile-menu ul li a {
+        display: block;
+        padding: 12px 0;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--color-text);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .mobile-menu ul li a:hover {
+        color: var(--color-primary);
+      }
+
+      .mobile-menu ul li > a::after {
+        content: "";
+        display: none;
+        float: right;
+        width: 0.6em;
+        height: 0.6em;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: rotate(-45deg);
+        transition: transform 0.22s ease;
+      }
+
+      .mobile-menu ul li:has(> ul) > a::after {
+        display: inline-block;
+      }
+
+      .mobile-menu ul li.active > a::after {
+        transform: rotate(135deg);
+      }
+
+      .mobile-menu ul li ul {
+        list-style: none;
+        padding-left: 16px;
+        margin-top: 6px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .mobile-menu ul li.active > ul {
+        max-height: 500px;
+      }
+
+      .mobile-menu ul li ul li {
+        margin-bottom: 0;
+      }
+
+      .mobile-menu ul li ul li a {
+        padding: 10px 0 10px 14px;
+        font-size: 0.9rem;
+        color: var(--color-text-light);
+        border-bottom: none;
+      }
+
+      .mobile-menu ul li ul li a:hover {
+        color: var(--color-primary);
+      }
+
+      .mobile-menu ul li:last-child a {
+        border-bottom: none;
+        margin-top: 12px;
+      }
+
+      /* ===== HERO ===== */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        background:
+          linear-gradient(
+            180deg,
+            rgba(20, 35, 67, 0.38),
+            rgba(20, 35, 67, 0.18)
+          ),
+          url("../Home - Auroville Language Lab_files/auroville-language-lab-slider-1.webp")
+            center/cover no-repeat;
+        padding: 140px 0 90px;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(26, 40, 71, 0.82) 0%,
+          rgba(44, 62, 109, 0.65) 50%,
+          rgba(44, 62, 109, 0.35) 100%
+        );
+      }
+
+      .hero__inner {
+        position: relative;
+        z-index: 1;
+        max-width: 620px;
+      }
+
+      .hero__title {
+        font-family: var(--font-heading);
+        font-size: clamp(2.6rem, 5vw, 3.4rem);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: 0.01em;
+        color: var(--color-white);
+        margin-bottom: 24px;
+      }
+
+      .hero__title em {
+        font-family: var(--font-heading);
+        font-style: italic;
+        color: var(--color-gold);
+      }
+
+      .hero__subtitle {
+        font-size: 1.08rem;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.85;
+        margin-bottom: 38px;
+        max-width: 570px;
+      }
+
+      .hero__ctas {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        opacity: 0;
+        transform: translateY(18px) scale(0.96);
+        filter: blur(14px);
+        animation: popIn 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards 0.85s;
+      }
+
+      .hero__title,
+      .hero__subtitle {
+        opacity: 0;
+        transform: translateY(16px);
+        filter: blur(16px);
+        animation: fadeUp 0.65s ease forwards;
+      }
+
+      .hero__title {
+        animation-delay: 0.25s;
+      }
+
+      .hero__subtitle {
+        animation-delay: 0.45s;
+      }
+
+      .hero__inner {
+        position: relative;
+        z-index: 1;
+        max-width: 620px;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 20% 40%;
+        width: 360px;
+        height: 360px;
+        margin: 0 auto;
+        left: 50%;
+        transform: translateX(-50%);
+        background: radial-gradient(
+          circle,
+          rgba(232, 184, 74, 0.18) 0%,
+          transparent 62%
+        );
+        pointer-events: none;
+        animation: float 12s ease-in-out infinite;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        filter: blur(12px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s ease,
+          filter 0.65s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+          filter: blur(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+          filter: blur(0);
+        }
+      }
+
+      @keyframes popIn {
+        from {
+          opacity: 0;
+          transform: scale(0.96) translateY(18px);
+          filter: blur(14px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+          filter: blur(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(-18px);
+        }
+      }
+
+      .pillar-card.reveal,
+      .book__inner.reveal,
+      .donate.reveal,
+      .section-header.reveal,
+      .quotes.reveal {
+        will-change: opacity, transform, filter;
+      }
+
+      .reveal-slide-left {
+        transform: translateX(-22px);
+      }
+
+      .reveal-slide-right {
+        transform: translateX(22px);
+      }
+
+      .reveal-zoom {
+        transform: scale(0.96) translateY(18px);
+      }
+
+      .reveal.visible.reveal-slide-left,
+      .reveal.visible.reveal-slide-right,
+      .reveal.visible.reveal-zoom {
+        transform: none;
+      }
+
+      .pillar-card {
+        background: var(--color-white);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        transition: var(--transition);
+        border: 2px solid rgba(0, 0, 0, 0.06);
+        transform-style: preserve-3d;
+      }
+
+      .pillar-card:hover {
+        transform: translateY(-4px) scale(1.02);
+        border-color: var(--color-primary);
+        box-shadow: 0 24px 40px rgba(44, 62, 109, 0.16);
+      }
+
+      .book__image {
+        animation: floatY 10s ease-in-out infinite;
+      }
+
+      .donate {
+        position: relative;
+        overflow: hidden;
+        animation: pulse 18s ease-in-out infinite;
+      }
+
+      @keyframes floatY {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-18px);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.007);
+        }
+      }
+
+      /* ===== QUOTES ===== */
+      .quotes {
+        padding: 130px 0 70px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 251, 238, 0.98),
+          rgba(252, 244, 217, 0.96)
+        );
+        text-align: center;
+        border-top: 1px solid rgba(44, 62, 109, 0.06);
+      }
+
+      .quotes__inner {
+        max-width: 750px;
+        margin: 0 auto;
+      }
+
+      .quotes blockquote {
+        position: relative;
+        font-family: var(--font-heading);
+        font-size: clamp(1.1rem, 2.1vw, 1.35rem);
+        font-style: italic;
+        font-weight: 400;
+        color: var(--color-text);
+        line-height: 1.9;
+        margin: 0 auto 22px;
+        max-width: 720px;
+        padding-left: 1.8rem;
+      }
+
+      .quotes blockquote::before {
+        content: "“";
+        position: absolute;
+        left: 0;
+        top: -12px;
+        font-size: 3rem;
+        color: rgba(232, 184, 74, 0.65);
+        line-height: 1;
+      }
+
+      .quotes cite {
+        font-family: var(--font-body);
+        font-style: normal;
+        font-size: 0.9rem;
+        color: var(--color-accent);
+        font-weight: 600;
+      }
+
+      /* ===== PILLARS ===== */
+      .pillars {
+        padding: var(--section-padding);
+        background: var(--color-white);
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 620px;
+        margin: 0 auto 56px;
+        position: relative;
+      }
+
+      .section-header::after {
+        content: "";
+        display: block;
+        width: 64px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--color-accent);
+        margin: 22px auto 0;
+        opacity: 0.9;
+      }
+
+      .section-header__label {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--color-accent);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 12px;
+      }
+
+      .section-header__title {
+        font-family: var(--font-heading);
+        font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+        font-weight: 600;
+        line-height: 1.2;
+        color: var(--color-primary-dark);
+      }
+
+      .pillars__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+
+      .pillar-card {
+        background: var(--color-white);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        transition: var(--transition);
+        border: 2px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .pillar-card:hover {
+        transform: scale(1.02);
+        border-color: var(--color-primary);
+        box-shadow: 0 0 20px rgba(44, 62, 109, 0.15);
+      }
+
+      .pillar-card__image {
+        width: 100%;
+        height: 190px;
+        object-fit: cover;
+      }
+
+      .pillar-card__body {
+        padding: 26px 22px;
+      }
+
+      .pillar-card__title {
+        font-family: var(--font-heading);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: var(--color-primary-dark);
+      }
+
+      .pillar-card__desc {
+        font-size: 0.9rem;
+        color: var(--color-text-light);
+        line-height: 1.7;
+        margin-bottom: 18px;
+      }
+
+      .pillar-card__link {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--color-primary);
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .pillar-card__link:hover {
+        gap: 9px;
+        color: var(--color-accent);
+      }
+
+      /* ===== BOOK ===== */
+      .book {
+        padding: var(--section-padding);
+        background: var(--color-blue-tint);
+      }
+
+      .book__inner {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 56px;
+        align-items: center;
+      }
+
+      .book__image {
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+        border: 2px solid transparent;
+        transition: var(--transition);
+      }
+
+      .book__image:hover {
+        border-color: var(--color-primary);
+        box-shadow: 0 0 24px rgba(44, 62, 109, 0.15);
+        transform: scale(1.01);
+      }
+
+      .book__image img {
+        width: 100%;
+        height: auto;
+      }
+
+      .book__content h2 {
+        font-family: var(--font-heading);
+        font-size: clamp(1.6rem, 3vw, 2rem);
+        font-weight: 600;
+        color: var(--color-primary-dark);
+        margin-bottom: 20px;
+        line-height: 1.3;
+      }
+
+      .book__content p {
+        font-size: 0.95rem;
+        color: var(--color-text-light);
+        line-height: 1.8;
+        margin-bottom: 14px;
+      }
+
+      /* ===== DONATE ===== */
+      .donate {
+        padding: 80px 0;
+        background: var(--color-primary-dark);
+        text-align: center;
+        color: var(--color-white);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .donate::before {
+        content: "";
+        position: absolute;
+        top: -40%;
+        right: -15%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(232, 184, 74, 0.08) 0%,
+          transparent 60%
+        );
+        border-radius: 50%;
+      }
+
+      .donate__inner {
+        position: relative;
+        z-index: 1;
+        max-width: 580px;
+        margin: 0 auto;
+      }
+
+      .donate h2 {
+        font-family: var(--font-heading);
+        font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+        font-weight: 600;
+        margin-bottom: 14px;
+      }
+
+      .donate p {
+        font-size: 0.98rem;
+        opacity: 0.75;
+        line-height: 1.75;
+        margin-bottom: 30px;
+      }
+
+      .donate .btn--accent {
+        font-size: 1rem;
+        padding: 16px 36px;
+      }
+
+      /* ===== FOOTER ===== */
+      .footer {
+        background: #1c1208;
+        color: rgba(255, 255, 255, 0.65);
+        padding: 56px 0 28px;
+      }
+
+      .footer__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 36px;
+        margin-bottom: 36px;
+      }
+
+      .footer__col h4 {
+        color: var(--color-white);
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .footer__col p,
+      .footer__col a {
+        font-size: 0.87rem;
+        line-height: 1.8;
+      }
+
+      .footer__col a:hover {
+        color: var(--color-gold);
+      }
+
+      .footer__col ul {
+        list-style: none;
+      }
+      .footer__col ul li {
+        margin-bottom: 7px;
+      }
+
+      .footer__social {
+        display: flex;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .footer__social a {
+        width: 36px;
+        height: 36px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+      }
+
+      .footer__social a:hover {
+        background: var(--color-primary);
+        color: var(--color-white);
+      }
+
+      .footer__bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 20px;
+        text-align: center;
+        font-size: 0.8rem;
+        opacity: 0.45;
+      }
+
+      .footer__bottom p {
+        margin-bottom: 3px;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 1024px) {
+        .book__inner {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .pillars__grid {
+          grid-template-columns: 1fr;
+          max-width: 440px;
+          margin: 0 auto;
+        }
+        .footer__grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        :root {
+          --section-padding: 70px 0;
+        }
+        .nav__links {
+          display: none;
+        }
+        .nav__hamburger {
+          display: block;
+        }
+        .hero {
+          min-height: auto;
+          padding: 140px 0 70px;
+        }
+        .footer__grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero__ctas {
+          flex-direction: column;
+        }
+        .hero__ctas .btn {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="container nav__inner">
+        <a href="https://aurovillelanguagelab.org/" class="nav__logo">
+          <img
+            src="../Home - Auroville Language Lab_files/auroville-language-lab-logo.svg"
+            alt="Auroville Language Lab"
+          />
+        </a>
+        <ul class="nav__links">
+          <li>
+            <a href="https://www.aurovillelanguagelab.org/about/">About Us</a>
+          </li>
+          <li><a href="https://aurovillelanguagelab.org/news/">News</a></li>
+          <li>
+            <a href="https://www.aurovillelanguagelab.org/languages/"
+              >Learn Languages</a
+            >
+          </li>
+          <li class="nav__item--dropdown">
+            <button class="nav__link--button" type="button">
+              Tomatis <span class="nav__caret">▾</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li>
+                <a
+                  href="https://aurovillelanguagelab.org/alfred-tomatis-method/"
+                  >Tomatis Presentation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://aurovillelanguagelab.org/alfred-tomatis-method/#children"
+                  >Tomatis Kids</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav__item--dropdown">
+            <button class="nav__link--button" type="button">
+              Resources <span class="nav__caret">▾</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li>
+                <a href="https://aurovillelanguagelab.org/languages/"
+                  >Learn Site</a
+                >
+              </li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/mediatheque/"
+                  >Mediatheque</a
+                >
+              </li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/research/"
+                  >Research</a
+                >
+              </li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/talks/">Talks</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="https://www.aurovillelanguagelab.org/building/"
+              >Architecture</a
+            >
+          </li>
+          <li>
+            <a href="https://www.aurovillelanguagelab.org/contact/">Contact</a>
+          </li>
+          <li>
+            <a
+              href="https://aurovillelanguagelab.org/donation/"
+              class="btn btn--accent"
+              >♥ DONATE</a
+            >
+          </li>
+        </ul>
+        <button class="nav__hamburger" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-overlay"></div>
+    <div class="mobile-menu">
+      <ul>
+        <li>
+          <a href="https://www.aurovillelanguagelab.org/about/">About Us</a>
+        </li>
+        <li><a href="https://aurovillelanguagelab.org/news/">News</a></li>
+        <li>
+          <a href="https://www.aurovillelanguagelab.org/languages/"
+            >Learn Languages</a
+          >
+        </li>
+        <li>
+          <a href="#">Tomatis</a>
+          <ul>
+            <li>
+              <a href="https://aurovillelanguagelab.org/alfred-tomatis-method/"
+                >Tomatis Presentation</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://aurovillelanguagelab.org/alfred-tomatis-method/#children"
+                >Tomatis Kids</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Resources</a>
+          <ul>
+            <li>
+              <a href="https://aurovillelanguagelab.org/languages/"
+                >Learn Site</a
+              >
+            </li>
+            <li>
+              <a href="https://aurovillelanguagelab.org/mediatheque/"
+                >Mediatheque</a
+              >
+            </li>
+            <li>
+              <a href="https://aurovillelanguagelab.org/research/">Research</a>
+            </li>
+            <li><a href="https://aurovillelanguagelab.org/talks/">Talks</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.aurovillelanguagelab.org/building/"
+            >Architecture</a
+          >
+        </li>
+        <li>
+          <a href="https://www.aurovillelanguagelab.org/contact/">Contact</a>
+        </li>
+        <li>
+          <a
+            href="https://aurovillelanguagelab.org/donation/"
+            class="btn btn--accent"
+            style="text-align: center; margin-top: 8px"
+            >♥ DONATE</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <h1 class="hero__title">
+          Language, Listening<br />
+          & <em>Sustainable Living</em>
+        </h1>
+        <p class="hero__subtitle">
+          We, at the Auroville Language Lab are constantly striving towards an
+          integrated and holistic way of learning as well as living. ALL offers
+          courses in English, French, Tamil, Sanskrit, Hindi, German, Italian,
+          Spanish and other languages — all taught by native speakers.
+        </p>
+        <div class="hero__ctas">
+          <a
+            href="https://www.aurovillelanguagelab.org/current-schedule/"
+            class="btn btn--accent btn--large"
+            >Current Schedule</a
+          >
+          <a
+            href="https://aurovillelanguagelab.org/donation/"
+            class="btn btn--glass btn--large"
+            >♥ Support Us</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTES -->
+    <section class="quotes reveal reveal-zoom">
+      <div class="container quotes__inner">
+        <blockquote>
+          "Each language is the sign and power of the soul of the people which
+          naturally speaks it. Each develops therefore its own peculiar spirit,
+          thought-temperament, way of dealing with life and knowledge and
+          experience."
+        </blockquote>
+        <cite>~ Sri Aurobindo</cite>
+      </div>
+    </section>
+
+    <!-- THREE PILLARS -->
+    <section class="pillars reveal reveal-fade" id="pillars">
+      <div class="container">
+        <div class="section-header reveal reveal-slide-right">
+          <p class="section-header__label">What We Do</p>
+          <h2 class="section-header__title">Our Three Pillars</h2>
+        </div>
+        <div class="pillars__grid">
+          <div class="pillar-card reveal reveal-slide-left">
+            <img
+              class="pillar-card__image"
+              src="../Home - Auroville Language Lab_files/auroville-language-lab-language-courses-pic-1.webp"
+              alt="Language Courses"
+            />
+            <div class="pillar-card__body">
+              <h3 class="pillar-card__title">Language Courses</h3>
+              <p class="pillar-card__desc">
+                ALL offers courses in English, French, Tamil, Sanskrit, Hindi,
+                German, Italian, Spanish and other languages — all taught by
+                native speakers.
+              </p>
+              <a
+                href="https://www.aurovillelanguagelab.org/current-schedule/"
+                class="pillar-card__link"
+                >Current Schedule →</a
+              >
+            </div>
+          </div>
+          <div class="pillar-card reveal reveal-zoom">
+            <img
+              class="pillar-card__image"
+              src="../Home - Auroville Language Lab_files/auroville-language-lab-language-courses-pic-3-2.png"
+              alt="Alfred Tomatis Method"
+            />
+            <div class="pillar-card__body">
+              <h3 class="pillar-card__title">Alfred Tomatis Method</h3>
+              <p class="pillar-card__desc">
+                The Alfred Tomatis Method is the outcome of Dr. Alfred Tomatis's
+                lifetime of research & discovery in the field of human hearing &
+                sound perception.
+              </p>
+              <a
+                href="https://aurovillelanguagelab.org/alfred-tomatis-method/"
+                class="pillar-card__link"
+                >Know more →</a
+              >
+            </div>
+          </div>
+          <div class="pillar-card reveal reveal-slide-right">
+            <img
+              class="pillar-card__image"
+              src="../Home - Auroville Language Lab_files/auroville-language-lab-language-courses-pic-3-1.png"
+              alt="Our Building"
+            />
+            <div class="pillar-card__body">
+              <h3 class="pillar-card__title">Our Building</h3>
+              <p class="pillar-card__desc">
+                We, at the Auroville Language Lab are constantly striving
+                towards an integrated and holistic way of learning as well as
+                living. Our ethos is reflected in our unique building.
+              </p>
+              <a
+                href="https://aurovillelanguagelab.org/building/"
+                class="pillar-card__link"
+                >Know more →</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOOK -->
+    <section class="book reveal reveal-fade">
+      <div class="container book__inner reveal reveal-slide-left">
+        <div class="book__image">
+          <img
+            src="../Home - Auroville Language Lab_files/book-cover-mockup-design-2.jpg"
+            alt="From Resonance to Bonding - Book Cover"
+          />
+        </div>
+        <div class="book__content">
+          <h2>Our Book Is Out!<br />From Resonance to Bonding</h2>
+          <p>
+            Does sound have the power to unlock our capacity for emotional
+            resilience and human connection?
+          </p>
+          <p>
+            How does the auditory world we experience in our mother's womb shape
+            our physical, cognitive, and emotional development?
+          </p>
+          <p>
+            Is there a way to transform prenatal trauma, experience profound
+            healing, and unleash creative potential?
+          </p>
+          <a
+            href="https://books.aurovillelanguagelab.org/"
+            class="btn btn--primary"
+            style="margin-top: 12px"
+            >Know more</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- DONATE -->
+    <section class="donate reveal reveal-slide-right" id="donate">
+      <div class="container donate__inner">
+        <h2>Support the Auroville Language Lab</h2>
+        <p>
+          The Auroville Language Laboratory is a non-profit, service unit under
+          the Swagatam Trust of the Auroville Foundation. Your contribution
+          helps us continue our work in language education, Tomatis research,
+          and sustainable living.
+        </p>
+        <a
+          href="https://aurovillelanguagelab.org/donation/"
+          class="btn btn--accent btn--large"
+        >
+          ♥ Make a Donation
+        </a>
+      </div>
+    </section>
+
+    <!-- LANGUAGE SWITCHER BLOB -->
+    <div class="lang-switcher lang-switcher--float">
+      <button class="lang-switcher__toggle" aria-label="Change language">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <line x1="2" y1="12" x2="22" y2="12" />
+          <path
+            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+          />
+        </svg>
+        <span>EN</span>
+      </button>
+      <div class="lang-switcher__options">
+        <a href="#" class="lang-switcher__option active">English</a>
+        <a href="#" class="lang-switcher__option">Français</a>
+        <a href="#" class="lang-switcher__option">Deutsch</a>
+        <a href="#" class="lang-switcher__option">Español</a>
+        <a href="#" class="lang-switcher__option">தமிழ்</a>
+        <a href="#" class="lang-switcher__option">हिन्दी</a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__col">
+            <h4>Email</h4>
+            <p>
+              <a href="mailto:info@aurovillelanguagelab.org"
+                >info@aurovillelanguagelab.org</a
+              ><br />
+              <a href="mailto:tomatis@aurovillelanguagelab.org"
+                >tomatis@aurovillelanguagelab.org</a
+              >
+            </p>
+          </div>
+          <div class="footer__col">
+            <h4>Phone</h4>
+            <p>
+              Lab: <a href="tel:+914132623661">+91 (413) 262 3661</a><br />
+              WhatsApp: <a href="tel:+919843030355">+91 98430 30355</a><br />
+              Tomatis: <a href="tel:+914132622467">+91 (413) 262 2467</a>
+            </p>
+          </div>
+          <div class="footer__col">
+            <h4>Address</h4>
+            <p>International Zone, Auroville,<br />Tamil Nadu 605101, INDIA.</p>
+          </div>
+          <div class="footer__col">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="https://aurovillelanguagelab.org/">Home</a></li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/about/">About Us</a>
+              </li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/languages/"
+                  >Learn Languages</a
+                >
+              </li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/contact/"
+                  >Contact Us</a
+                >
+              </li>
+              <li>
+                <a href="http://www.auroville.org/" target="_blank"
+                  >Auroville.org</a
+                >
+              </li>
+            </ul>
+            <div class="footer__social">
+              <a
+                href="https://www.facebook.com/aurovillelanguagelab/"
+                target="_blank"
+                aria-label="Facebook"
+                >fb</a
+              >
+              <a
+                href="https://www.instagram.com/aurovillelanguagelab/"
+                target="_blank"
+                aria-label="Instagram"
+                >ig</a
+              >
+              <a
+                href="https://www.youtube.com/@aurovillelanguagelaborator7542"
+                target="_blank"
+                aria-label="YouTube"
+                >yt</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>© 2026 All Rights Reserved Auroville Language Laboratory</p>
+          <p>
+            The Auroville Language Laboratory is a non-profit, service unit
+            under the Swagatam Trust of the Auroville Foundation.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const hamburger = document.querySelector(".nav__hamburger");
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const overlay = document.querySelector(".mobile-overlay");
+
+      function toggleMenu() {
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+        overlay.classList.toggle("active");
+        document.body.style.overflow = mobileMenu.classList.contains("active")
+          ? "hidden"
+          : "";
+      }
+
+      hamburger.addEventListener("click", toggleMenu);
+      overlay.addEventListener("click", toggleMenu);
+
+      // Close menu when a link is clicked
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        // Check if this link has a submenu
+        const parentLi = link.closest("li");
+        const hasSubmenu = parentLi && parentLi.querySelector(":scope > ul");
+
+        if (hasSubmenu) {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            parentLi.classList.toggle("active");
+            // Don't close the menu when toggling dropdown
+          });
+        } else {
+          link.addEventListener("click", () => {
+            if (mobileMenu.classList.contains("active")) toggleMenu();
+          });
+        }
+      });
+      // Language switcher - expand inline
+      document.querySelectorAll(".lang-switcher__toggle").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          btn.closest(".lang-switcher").classList.toggle("active");
+        });
+      });
+
+      // Close when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".lang-switcher")) {
+          document.querySelectorAll(".lang-switcher").forEach((s) => {
+            s.classList.remove("active");
+          });
+        }
+      });
+
+      const revealElements = document.querySelectorAll(".reveal");
+
+      function revealOnScroll() {
+        revealElements.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 80) {
+            el.classList.add("visible");
+          }
+        });
+      }
+
+      window.addEventListener("load", () => {
+        revealOnScroll();
+      });
+
+      window.addEventListener("scroll", revealOnScroll, { passive: true });
+    </script>
+  </body>
+</html>
