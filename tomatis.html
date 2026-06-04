@@ -517,7 +517,7 @@
         color: var(--color-white);
         display: flex; align-items: flex-start; gap: 28px;
         max-width: 900px; margin: 0 auto;
-        border: 2px solid transparent;
+        border: 2px solid rgba(255,255,255,0.08);
         transition: var(--transition);
       }
 
@@ -525,12 +525,6 @@
         border-color: var(--tomatis-amber);
         box-shadow: 0 24px 50px rgba(28,43,85,0.3);
         transform: translateY(-3px);
-      }
-
-      .benefits__highlight-bar {
-        width: 4px; min-height: 60px; border-radius: 4px;
-        background: var(--tomatis-amber-light); flex-shrink: 0;
-        margin-top: 4px;
       }
 
       .benefits__highlight p {
@@ -561,15 +555,15 @@
 
       .doctor__quote {
         margin-top: 28px; padding: 24px 28px;
-        border-left: 4px solid var(--tomatis-amber);
+        border: 1px solid rgba(200,105,46,0.3);
         background: rgba(200,105,46,0.06);
-        border-radius: 0 10px 10px 0;
+        border-radius: 10px;
         transition: var(--transition);
       }
 
       .doctor__quote:hover {
         background: rgba(200,105,46,0.1);
-        transform: translateX(4px);
+        border-color: var(--tomatis-amber);
       }
 
       .doctor__quote blockquote {
@@ -706,9 +700,8 @@
 
       .programs__info-box {
         background: rgba(44,62,109,0.04);
-        border: 1px solid rgba(44,62,109,0.1);
-        border-left: 4px solid var(--color-primary);
-        border-radius: 0 10px 10px 0;
+        border: 1px solid rgba(44,62,109,0.15);
+        border-radius: 10px;
         padding: 20px 24px;
         font-size: 0.9rem; color: var(--color-text-light);
         line-height: 1.8; max-width: 820px; margin: 0 auto;
@@ -1162,7 +1155,6 @@
           </div>
         </div>
         <div class="benefits__highlight reveal">
-          <div class="benefits__highlight-bar" aria-hidden="true"></div>
           <p>
             A <strong>three-nation study commissioned by the European Union</strong> has shown that
             the Tomatis Method can reduce the time taken to learn a language by half, since it
