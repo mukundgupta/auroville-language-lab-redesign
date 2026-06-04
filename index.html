@@ -244,7 +244,16 @@
         transform: translateY(-1px);
         box-shadow: 0 16px 30px rgba(212, 121, 63, 0.18);
       }
-
+      .btn--tomatis {
+        background: var(--color-gold);
+        color: var(--color-primary-dark);
+        width: 100%;
+      }
+      .btn--tomatis:hover {
+        background: #e0a839;
+        transform: translateY(-1px);
+        box-shadow: 0 16px 30px rgba(232, 184, 74, 0.18);
+      }
       .hero__ctas .btn {
         min-width: 168px;
       }
@@ -566,13 +575,20 @@
       }
 
       .hero__ctas {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2, max-content);
         gap: 14px;
-        flex-wrap: wrap;
+        align-items: center;
         opacity: 0;
         transform: translateY(18px) scale(0.96);
         filter: blur(14px);
         animation: popIn 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards 0.85s;
+      }
+
+      .hero__ctas .btn--tomatis {
+        grid-column: 1 / -1;
+        width: 100%;
+        justify-self: stretch;
       }
 
       .hero__title,
@@ -1304,6 +1320,9 @@
             href="https://aurovillelanguagelab.org/donation/"
             class="btn btn--glass btn--large"
             >♥ Support Us</a
+          >
+          <a href="tomatis.html" class="btn btn--accent btn--large btn--tomatis"
+            >Alfred Tomatis Method</a
           >
         </div>
       </div>
