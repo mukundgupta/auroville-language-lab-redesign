@@ -1131,6 +1131,144 @@
           padding-right: 1rem;
           text-align: center;
         }
+
+        .modal-overlay {
+          align-items: stretch;
+          padding: 0;
+        }
+
+        .modal-container {
+          width: 100%;
+          max-width: 100%;
+          height: 100%;
+          max-height: 100%;
+          border-radius: 0;
+          box-shadow: none;
+          margin: 0;
+        }
+
+        .modal-image {
+          max-height: none;
+        }
+
+        .modal-body {
+          padding: 18px;
+        }
+
+        .close-btn {
+          top: 14px;
+          right: 14px;
+        }
+      }
+
+      /* Modal Overlay (Background Dimmer) */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+
+        /* Hidden state by default */
+        opacity: 0;
+        visibility: hidden;
+        backdrop-filter: blur(0px);
+        transition:
+          opacity 0.4s ease,
+          visibility 0.4s ease,
+          backdrop-filter 0.4s ease;
+      }
+
+      /* Translucent Modal Box */
+      .modal-container {
+        width: 98%;
+        max-width: 960px;
+        max-height: 92vh;
+        background: rgba(255, 255, 255, 0.08); /* Translucent base */
+        border: 1px solid rgba(255, 255, 255, 0.15); /* Soft highlight edge */
+        border-radius: 18px;
+        overflow: auto;
+        box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+        color: #fff;
+        position: relative;
+
+        /* Hidden state: slightly scaled down */
+        transform: scale(0.92);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); /* Custom elastic pop */
+      }
+
+      /* Active States */
+      .modal-overlay.is-active {
+        opacity: 1;
+        visibility: visible;
+        backdrop-filter: blur(12px); /* Blur behind the modal */
+      }
+
+      .modal-overlay.is-active .modal-container {
+        transform: scale(1);
+      }
+
+      /* Modal Content */
+      .modal-image {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        display: block;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        max-height: calc(82vh - 140px);
+      }
+
+      .modal-body {
+        padding: 24px;
+        position: relative;
+      }
+
+      .modal-title {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+
+      .modal-text {
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      /* Close Button inside Modal */
+      .close-btn {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        font-size: 1.3rem;
+        line-height: 1;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+
+      .close-btn:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.05);
       }
     </style>
   </head>
@@ -1239,7 +1377,48 @@
         </button>
       </div>
     </nav>
-
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-container">
+        <button
+          class="close-btn"
+          id="closeModalBtn"
+          aria-label="Close schedule modal"
+        >
+          ×
+        </button>
+        <div class="modal-body">
+          <h2 class="modal-title">Current Schedule</h2>
+        </div>
+        <img
+          src="files/schedule.png"
+          alt="Course schedule"
+          class="modal-image"
+        />
+        <div class="modal-body">
+          <h3 class="modal-title">Reminder about our free Evening Programs</h3>
+          <p class="modal-text">
+            The evening conversation sessions are a chance for everyone to
+            practice speaking with native speakers and offer their time. Barring
+            indicated exceptions, these sessions usually happen weekdays from
+            5–6 pm as follows:
+          </p>
+          <ul
+            class="modal-text"
+            style="padding-left: 1.1rem; margin-bottom: 18px"
+          >
+            <li>
+              Mondays: French with Isabelle (1st, 3rd and 5th week of the
+              month)… with Coco and Gaspard (2nd and 4th week of the month) 5–6
+              pm
+            </li>
+            <li>
+              Wednesdays &amp; Thursdays: Sanskrit chanting with Remesh
+              5:30–6:30 pm
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <!-- MOBILE MENU -->
     <div class="mobile-overlay" id="mobileOverlay"></div>
     <div class="mobile-menu" id="mobileMenu">
@@ -1320,8 +1499,10 @@
         </p>
         <div class="hero__ctas">
           <a
-            href="https://www.aurovillelanguagelab.org/current-schedule/"
+            href="#"
             class="btn btn--glass btn--large"
+            id="openModalBtn"
+            aria-controls="modalOverlay"
             >Current Schedule</a
           >
           <a
@@ -1633,18 +1814,18 @@
       // Mobile nav
       const hamburger = document.getElementById("hamburger");
       const mobileMenu = document.getElementById("mobileMenu");
-      const overlay = document.getElementById("mobileOverlay");
+      const mobileOverlay = document.getElementById("mobileOverlay");
 
       function toggleMenu() {
         const open = mobileMenu.classList.toggle("active");
-        overlay.classList.toggle("active", open);
+        mobileOverlay.classList.toggle("active", open);
         hamburger.classList.toggle("active", open);
         hamburger.setAttribute("aria-expanded", open);
         document.body.style.overflow = open ? "hidden" : "";
       }
 
       hamburger.addEventListener("click", toggleMenu);
-      overlay.addEventListener("click", toggleMenu);
+      mobileOverlay.addEventListener("click", toggleMenu);
 
       // Accordion submenus in mobile menu
       mobileMenu.querySelectorAll("a").forEach((link) => {
@@ -1691,6 +1872,42 @@
         { threshold: 0.1 },
       );
       revealElements.forEach((el) => revealObserver.observe(el));
+
+      const openBtn = document.getElementById("openModalBtn");
+      const closeBtn = document.getElementById("closeModalBtn");
+      const modalOverlay = document.getElementById("modalOverlay");
+
+      // Function to open the modal
+      function openModal(event) {
+        event.preventDefault();
+        modalOverlay.classList.add("is-active");
+      }
+
+      // Function to close the modal
+      function closeModal() {
+        modalOverlay.classList.remove("is-active");
+      }
+
+      // Event Listeners
+      openBtn.addEventListener("click", openModal);
+      closeBtn.addEventListener("click", closeModal);
+
+      // Close modal if user clicks on the backdrop overlay itself
+      modalOverlay.addEventListener("click", (e) => {
+        if (e.target === modalOverlay) {
+          closeModal();
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Escape" &&
+          modalOverlay.classList.contains("is-active")
+        ) {
+          closeModal();
+        }
+      });
     </script>
   </body>
 </html>
