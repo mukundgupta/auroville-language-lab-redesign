@@ -238,6 +238,7 @@
       .btn--accent {
         background: var(--color-accent);
         color: var(--color-white);
+        text-align: center;
       }
       .btn--accent:hover {
         background: #c06a32;
@@ -245,12 +246,14 @@
         box-shadow: 0 16px 30px rgba(212, 121, 63, 0.18);
       }
       .btn--tomatis {
-        background: var(--color-gold);
         color: var(--color-primary-dark);
         width: 100%;
+        color: white;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
       }
       .btn--tomatis:hover {
-        background: #e0a839;
         transform: translateY(-1px);
         box-shadow: 0 16px 30px rgba(232, 184, 74, 0.18);
       }
@@ -576,13 +579,17 @@
 
       .hero__ctas {
         display: grid;
-        grid-template-columns: repeat(2, max-content);
+        grid-template-columns: repeat(2, 1fr);
         gap: 14px;
         align-items: center;
         opacity: 0;
         transform: translateY(18px) scale(0.96);
         filter: blur(14px);
         animation: popIn 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards 0.85s;
+      }
+
+      .hero__ctas .btn {
+        width: 100%;
       }
 
       .hero__ctas .btn--tomatis {
@@ -1113,10 +1120,11 @@
 
       @media (max-width: 480px) {
         .hero__ctas {
-          flex-direction: column;
+          grid-template-columns: 1fr;
         }
         .hero__ctas .btn {
           justify-content: center;
+          white-space: nowrap;
         }
         .quotes blockquote {
           padding-left: 0;
@@ -1313,7 +1321,7 @@
         <div class="hero__ctas">
           <a
             href="https://www.aurovillelanguagelab.org/current-schedule/"
-            class="btn btn--accent btn--large"
+            class="btn btn--glass btn--large"
             >Current Schedule</a
           >
           <a
@@ -1610,7 +1618,7 @@
         </div>
         <div class="footer__bottom">
           <p>
-            &copy; 2024 All Rights Reserved &mdash; Auroville Language
+            &copy; 2026 All Rights Reserved &mdash; Auroville Language
             Laboratory
           </p>
           <p>
