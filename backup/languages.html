@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -186,7 +186,6 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero" aria-label="Learn Languages">
-      <div class="hero__bg" aria-hidden="true"></div>
       <!-- Text content -->
       <div class="hero__body">
         <div class="container">
@@ -564,7 +563,10 @@
           <div class="testimonial-slider">
             <article class="testimonial-card reveal">
               <div class="testimonial-card__avatar">
-                <img src="files/image25.jpg" alt="Rajavelu" />
+                <img
+                  src="files/image25.jpg"
+                  alt="Rajavelu"
+                />
               </div>
               <p class="testimonial-card__text">
                 I have been studying English at the Language Lab for the past
@@ -577,7 +579,10 @@
             </article>
             <article class="testimonial-card reveal">
               <div class="testimonial-card__avatar">
-                <img src="files/image4.jpg" alt="Sudha" />
+                <img
+                  src="files/image4.jpg"
+                  alt="Sudha"
+                />
               </div>
               <p class="testimonial-card__text">
                 When I first saw French In Action, I was skeptical because I had
@@ -592,7 +597,10 @@
             </article>
             <article class="testimonial-card reveal">
               <div class="testimonial-card__avatar">
-                <img src="files/image14.jpg" alt="Philippe" />
+                <img
+                  src="files/image14.jpg"
+                  alt="Philippe"
+                />
               </div>
               <p class="testimonial-card__text">
                 Right in the middle of our beautiful city, a marvelous place of
@@ -606,7 +614,10 @@
             </article>
             <article class="testimonial-card reveal">
               <div class="testimonial-card__avatar">
-                <img src="files/image16.jpg" alt="Ramesh" />
+                <img
+                  src="files/image16.jpg"
+                  alt="Ramesh"
+                />
               </div>
               <p class="testimonial-card__text">
                 I took the introductory French course at the lab. The program
@@ -1151,25 +1162,7 @@
 
         startAuto();
       }
-
-      // Hero parallax
-      const heroEl = document.querySelector(".hero");
-      if (heroEl && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        let ticking = false;
-        window.addEventListener("scroll", () => {
-          if (!ticking) {
-            requestAnimationFrame(() => {
-              const scrolled = window.scrollY;
-              const heroH = heroEl.offsetHeight;
-              if (scrolled < heroH) {
-                heroEl.style.setProperty("--hero-parallax", `${scrolled * 0.35}px`);
-              }
-              ticking = false;
-            });
-            ticking = true;
-          }
-        }, { passive: true });
-      }
     </script>
   </body>
 </html>
+
