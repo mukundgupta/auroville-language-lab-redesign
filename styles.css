@@ -663,7 +663,8 @@ section {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scale(var(--hero-scale, 1.08)) translateY(var(--hero-parallax, 0px));
+  transform: scale(var(--hero-scale, 1.08))
+    translateY(var(--hero-parallax, 0px));
   will-change: transform;
   transition: transform 0.05s linear;
   z-index: 0;
@@ -709,7 +710,7 @@ section {
 .hero__body {
   position: relative;
   z-index: 1;
-  padding: 110px 0 44px;
+  padding: 40px 0 44px;
   flex: 1;
 }
 
@@ -1330,11 +1331,7 @@ section {
 /* ===== DOCUMENTARY ===== */
 .documentary {
   padding: 80px 0;
-  background: linear-gradient(
-    135deg,
-    var(--tomatis-deep) 0%,
-    #2e4070 100%
-  );
+  background: linear-gradient(135deg, var(--tomatis-deep) 0%, #2e4070 100%);
   text-align: center;
   overflow: hidden;
   position: relative;
@@ -1517,11 +1514,7 @@ section {
 /* ===== RESOURCES ===== */
 .resources {
   padding: 70px 0 80px;
-  background: linear-gradient(
-    180deg,
-    #f5f0e8 0%,
-    var(--tomatis-cream) 100%
-  );
+  background: linear-gradient(180deg, #f5f0e8 0%, var(--tomatis-cream) 100%);
 }
 
 .resources__grid {

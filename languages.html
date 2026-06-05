@@ -498,6 +498,7 @@
             </p>
           </article>
         </div>
+        <br />
         <div class="programs__info-box reveal">
           All course formats are supported by our resources and teacher
           guidance, so you can keep progressing between lessons.
@@ -1154,21 +1155,31 @@
 
       // Hero parallax
       const heroEl = document.querySelector(".hero");
-      if (heroEl && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (
+        heroEl &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
         let ticking = false;
-        window.addEventListener("scroll", () => {
-          if (!ticking) {
-            requestAnimationFrame(() => {
-              const scrolled = window.scrollY;
-              const heroH = heroEl.offsetHeight;
-              if (scrolled < heroH) {
-                heroEl.style.setProperty("--hero-parallax", `${scrolled * 0.35}px`);
-              }
-              ticking = false;
-            });
-            ticking = true;
-          }
-        }, { passive: true });
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (!ticking) {
+              requestAnimationFrame(() => {
+                const scrolled = window.scrollY;
+                const heroH = heroEl.offsetHeight;
+                if (scrolled < heroH) {
+                  heroEl.style.setProperty(
+                    "--hero-parallax",
+                    `${scrolled * 0.35}px`,
+                  );
+                }
+                ticking = false;
+              });
+              ticking = true;
+            }
+          },
+          { passive: true },
+        );
       }
     </script>
   </body>
