@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Auroville Language Lab</title>
+    <meta
+      name="description"
+      content="Founded on the principles of harmony, innovation, and scientific learning, the Auroville Language Lab is a unique language and research laboratory in the International Zone of Auroville."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="page-about">
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li>
+          <a href="about-us.html" class="nav__link--active">About Us</a>
+        </li>
+        <li><a href="https://aurovillelanguagelab.org/news/">News</a></li>
+        <li><a href="languages.html">Learn Languages</a></li>
+        <li>
+          <a href="#">Alfred Tomatis</a>
+          <ul>
+            <li><a href="tomatis.html">The Method</a></li>
+            <li>
+              <a href="https://aurovillelanguagelab.org/tomatis-presentation/"
+                >Tomatis Presentation</a
+              >
+            </li>
+            <li>
+              <a href="https://aurovillelanguagelab.org/tomatis-kids/"
+                >Tomatis Kids</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Resources</a>
+          <ul>
+            <li>
+              <a href="https://aurovillelanguagelab.org/languages/">Learn Site</a>
+            </li>
+            <li>
+              <a href="https://aurovillelanguagelab.org/mediatheque/">Mediatheque</a>
+            </li>
+            <li>
+              <a href="https://aurovillelanguagelab.org/research/">Research</a>
+            </li>
+            <li>
+              <a href="https://aurovillelanguagelab.org/talks/">Talks</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="https://www.aurovillelanguagelab.org/building/">Building</a>
+        </li>
+        <li>
+          <a href="https://www.aurovillelanguagelab.org/contact/">Contact</a>
+        </li>
+        <li>
+          <a
+            href="https://aurovillelanguagelab.org/donation/"
+            class="btn btn--accent"
+            style="text-align: center; margin-top: 8px"
+            >&#9829; Donate</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <a href="index.html" class="nav__logo" aria-label="Auroville Language Lab home">
+          <img
+            src="files/auroville-language-lab-logo.svg"
+            alt="Auroville Language Lab"
+          />
+        </a>
+        <ul class="nav__links">
+          <li>
+            <a href="about-us.html" class="nav__link--active">About Us</a>
+          </li>
+          <li><a href="https://aurovillelanguagelab.org/news/">News</a></li>
+          <li><a href="languages.html">Learn Languages</a></li>
+          <li class="nav__item--dropdown">
+            <button class="nav__link--button" type="button" aria-expanded="false">
+              Alfred Tomatis
+              <span class="nav__caret" aria-hidden="true">▾</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li><a href="tomatis.html">The Method</a></li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/tomatis-presentation/"
+                  >Tomatis Presentation</a
+                >
+              </li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/tomatis-kids/"
+                  >Tomatis Kids</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav__item--dropdown">
+            <button class="nav__link--button" type="button" aria-expanded="false">
+              Resources <span class="nav__caret" aria-hidden="true">▾</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li>
+                <a href="https://aurovillelanguagelab.org/languages/">Learn Site</a>
+              </li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/mediatheque/">Mediatheque</a>
+              </li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/research/">Research</a>
+              </li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/talks/">Talks</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="https://www.aurovillelanguagelab.org/building/">Building</a>
+          </li>
+          <li>
+            <a href="https://www.aurovillelanguagelab.org/contact/">Contact</a>
+          </li>
+          <li>
+            <a
+              href="https://aurovillelanguagelab.org/donation/"
+              class="btn btn--accent"
+              >&#9829; Donate</a
+            >
+          </li>
+        </ul>
+        <button
+          class="nav__hamburger"
+          id="hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-label="About Auroville Language Lab">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__body">
+        <div class="container">
+          <ol class="hero__breadcrumb" aria-label="Breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="hero__breadcrumb-sep" aria-hidden="true">›</li>
+            <li class="hero__breadcrumb-current" aria-current="page">About Us</li>
+          </ol>
+          <div class="hero__inner">
+            <p class="hero__label">Auroville Language Lab</p>
+            <h1 class="hero__title">
+              Language, Listening<br />& <em>Human Unity</em>
+            </h1>
+            <p class="hero__subtitle">
+              Founded on the principles of harmony, innovation, & scientific learning, the Auroville Language Lab is a unique language & research laboratory that draws upon the diverse linguistic culture of Auroville.
+            </p>
+            <div class="hero__ctas">
+              <a href="#who-we-are" class="btn btn--accent btn--large"
+                >Who We Are</a
+              >
+              <a href="#contact" class="btn btn--glass btn--large"
+                >Get in Touch</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero__statbar" aria-label="Key facts">
+        <div class="container hero__statbar-inner">
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+              </svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>International Zone, Auroville</strong>
+              <span>Tamil Nadu, India</span>
+            </div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>Open to Everyone</strong>
+              <span>Aurovilians, Newcomers & Guests</span>
+            </div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>Est. 2004</strong>
+              <span>Over 20 years of practice</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHO WE ARE ===== -->
+    <section class="intro" id="who-we-are" aria-labelledby="who-title">
+      <div class="container">
+        <div class="intro__grid">
+          <div class="intro__image-wrap reveal">
+            <img
+              src="files/auroville-language-lab-language-about-whoweare.webp"
+              alt="Auroville Language Lab — who we are"
+              loading="lazy"
+            />
+          </div>
+          <div class="intro__content reveal">
+            <div class="section-header">
+              <p class="section-header__label">About Us</p>
+              <h2 class="section-header__title" id="who-title">Who We Are</h2>
+            </div>
+            <p>
+              Founded on the principles of harmony, innovation, and scientific
+              learning, the Auroville Language Lab is a unique language and
+              research laboratory that draws upon the diverse linguistic culture
+              of Auroville — a township that resonates with languages from all
+              across the world.
+            </p>
+            <p>
+              At the core of our ethos is Auroville's vision of realising a
+              society based on human unity and progressive harmony — an ideal
+              that the Lab strives toward through meaningful engagement with
+              language and human interconnectedness, as also through deepening
+              one's self-awareness and expression.
+            </p>
+            <p>
+              The Lab welcomes everyone: Aurovilians, Newcomers, and Guests to
+              experience language, speech, and listening in a paradigm-shifting
+              way at its beautiful centre located in the International Zone of
+              Auroville.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LANGUAGE LEARNING ===== -->
+    <section class="doctor" id="languages" aria-labelledby="languages-title">
+      <div class="container">
+        <div class="doctor__grid">
+          <div class="doctor__content reveal">
+            <div class="section-header">
+              <p class="section-header__label">Language Learning</p>
+              <h2 class="section-header__title" id="languages-title">
+                Languages at the Lab
+              </h2>
+            </div>
+            <p>
+              ALL offers courses in English, French, Tamil, Sanskrit, Hindi,
+              German, Italian, Spanish and other languages — all taught by
+              native speakers and structured around award-winning audio, video,
+              and interactive materials, with access to a multimedia reference
+              library.
+            </p>
+            <p>
+              Classes at the Lab are innovative, interactive, and a lot of fun,
+              with students joining in from vastly diverse cultural and
+              linguistic backgrounds.
+            </p>
+            <p>
+              Language learners can choose from a range of course options: self-study
+              programs using the Mediatheque, group classes with an instructor,
+              or one-on-one private classes — whichever suits them best.
+            </p>
+            <a href="languages.html" class="btn btn--accent btn--large"
+              >Explore Language Courses</a
+            >
+          </div>
+          <div class="doctor__photo-wrap reveal">
+            <img
+              src="files/auroville-language-lab-language-about-languagelearning.webp"
+              alt="Language learning at Auroville Language Lab"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THE TOMATIS METHOD ===== -->
+    <section class="intro" id="tomatis" aria-labelledby="tomatis-title">
+      <div class="container">
+        <div class="intro__grid">
+          <div class="intro__image-wrap reveal">
+            <img
+              src="files/auroville-language-lab-language-about-tomatismethod.webp"
+              alt="The Alfred Tomatis Method at Auroville Language Lab"
+              loading="lazy"
+            />
+          </div>
+          <div class="intro__content reveal">
+            <div class="section-header">
+              <p class="section-header__label">Listening Science</p>
+              <h2 class="section-header__title" id="tomatis-title">
+                The Alfred Tomatis Method
+              </h2>
+            </div>
+            <p>
+              The Auroville Language Lab is the first centre in India to offer
+              the Alfred Tomatis Method — a sophisticated listening and ear
+              retraining program, also known as "Audio Psycho Phonology", which
+              has both language-learning and therapeutic applications.
+            </p>
+            <p>
+              The method involves acclimatising the ear to sounds, frequencies,
+              and cadences it has previously been unaccustomed to, retraining
+              the brain to listen less selectively and more expansively. This
+              enables learners to produce sounds of a new language like a native
+              speaker and achieve native fluency in a relatively short time.
+            </p>
+            <p>
+              As of June 2019, we are the only place in India — and one of the
+              rare places in the world — to offer group language training
+              programs as well as Tomatis Classrooms using this method.
+            </p>
+            <a href="tomatis.html" class="btn btn--primary btn--large"
+              >Learn About the Method</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MENTAL HEALTH & LEARNING ===== -->
+    <section class="doctor" id="applications" aria-labelledby="applications-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-header__label">Broader Applications</p>
+          <h2 class="section-header__title" id="applications-title">
+            Mental Health &amp; Learning
+          </h2>
+        </div>
+        <div class="doctor__grid">
+          <div class="doctor__content reveal">
+            <p>
+              Over the years, the Alfred Tomatis Method has been applied to a
+              broad spectrum of mental health issues and learning disorders
+              affecting all ages. The method has shown incredible success in
+              addressing issues such as dyslexia, dysgraphia, hyperactivity,
+              attention deficit disorder, autism, developmental delays, language
+              related problems such as stuttering, delayed language development,
+              expression and voice control, as well as in coping with
+              depression, low self-esteem, anger, stress, anxiety, and
+              insomnia.
+            </p>
+            <p>
+              Certain hearing disorders like professional and psychological
+              deafness, tinnitus, and vertigo have also been effectively
+              managed.
+            </p>
+            <div class="doctor__quote">
+              <blockquote>
+                Beyond resolving medical issues, the Alfred Tomatis method has
+                a profound catalytic effect in enhancing a person's growth,
+                creative potential, and self-awareness.
+              </blockquote>
+            </div>
+            <a
+              href="https://aurovillelanguagelab.org/tomatis-kids/"
+              target="_blank"
+              rel="noopener"
+              class="btn btn--accent btn--large"
+              style="margin-top: 24px; display: inline-flex;"
+              >Read Tomatis Kids Stories</a
+            >
+          </div>
+          <div class="doctor__photo-wrap reveal">
+            <img
+              src="files/auroville-language-lab-language-about-tomatisandmental.jpg"
+              alt="Tomatis method and mental health"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SUSTAINABLE BUILDING ===== -->
+    <section class="doctor" id="building" aria-labelledby="building-title">
+      <div class="container">
+        <div class="doctor__grid">
+          <div class="doctor__content reveal">
+            <div class="section-header">
+              <p class="section-header__label">Our Space</p>
+              <h2 class="section-header__title" id="building-title">
+                A Sustainable Building
+              </h2>
+            </div>
+            <p>
+              The Auroville Language Lab is committed to the ethos of
+              sustainable living, ecological balance, and integral well-being
+              — and our building is a testament to these values.
+            </p>
+            <p>
+              Ecofriendly, health-conscious, and electromagnetically compliant,
+              the ALL building mainly uses lime instead of cement in its
+              structure, and has a special system of cooling that eliminates the
+              use of air conditioning. It combines ancient Indian knowledge with
+              modern technology to combat climate change and ensure optimum
+              human comfort.
+            </p>
+            <p>
+              Uniquely beautiful and spacious, our building is one of
+              Auroville's finest structures built on the principles of
+              sustainable architecture.
+            </p>
+            <a
+              href="https://www.aurovillelanguagelab.org/building/"
+              target="_blank"
+              rel="noopener"
+              class="btn btn--primary btn--large"
+              >Explore Our Building</a
+            >
+          </div>
+          <div class="doctor__photo-wrap reveal">
+            <img
+              src="files/auroville-language-lab-language-about-sustainable-architecture.webp"
+              alt="Sustainable architecture of the Auroville Language Lab building"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ORGANIGRAM ===== -->
+    <section class="organigram" aria-labelledby="organigram-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-header__label">Structure</p>
+          <h2 class="section-header__title" id="organigram-title">
+            Our Organigram
+          </h2>
+        </div>
+        <img
+          src="files/ALL-Orgarigram-scaled-r53yl5h7qliiwc2o76bkfvpcrrt4fg4aa4m860t36g.jpg"
+          alt="Auroville Language Lab organisational chart"
+          class="organigram__img reveal"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta" id="contact" aria-labelledby="cta-title">
+      <div class="cta__inner reveal">
+        <p class="cta__label">Get in Touch</p>
+        <h2 id="cta-title">Come Visit or Write to Us</h2>
+        <p>
+          We are located in the International Zone of Auroville, Tamil Nadu,
+          India. Whether you want to join a language course, explore the Tomatis
+          method, or simply learn more — we'd love to hear from you.
+        </p>
+        <p>
+          <a href="mailto:info@aurovillelanguagelab.org" class="cta__email"
+            >info@aurovillelanguagelab.org</a
+          >
+        </p>
+        <div class="cta__buttons">
+          <a
+            href="https://www.aurovillelanguagelab.org/contact/"
+            class="btn btn--accent btn--large"
+            target="_blank"
+            rel="noopener"
+            >Contact Us</a
+          >
+          <a
+            href="https://aurovillelanguagelab.org/donation/"
+            class="btn btn--glass btn--large"
+            >&#9829; Donate</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__col">
+            <img
+              src="files/auroville-language-lab-logo.svg"
+              alt="Auroville Language Lab"
+              style="
+                height: 32px;
+                margin-bottom: 14px;
+                filter: brightness(0) invert(1);
+                opacity: 0.7;
+              "
+            />
+            <p>
+              A non-profit service unit under the Swagatam Trust of the
+              Auroville Foundation.
+            </p>
+            <div class="footer__social" aria-label="Social media links">
+              <a
+                href="https://www.facebook.com/aurovillelanguagelab/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+                >f</a
+              >
+              <a
+                href="https://www.instagram.com/aurovillelanguagelab/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                >in</a
+              >
+              <a
+                href="https://www.youtube.com/@aurovillelanguagelaborator7542"
+                target="_blank"
+                rel="noopener"
+                aria-label="YouTube"
+                >&#9654;</a
+              >
+            </div>
+          </div>
+          <div class="footer__col">
+            <h4>Alfred Tomatis</h4>
+            <ul>
+              <li><a href="tomatis.html">The Method</a></li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/tomatis-presentation/"
+                  >Tomatis Presentation</a
+                >
+              </li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/tomatis-kids/"
+                  >Tomatis Kids</a
+                >
+              </li>
+              <li>
+                <a href="https://aurovillelanguagelab.org/research/">Research</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about-us.html">About Us</a></li>
+              <li><a href="languages.html">Learn Languages</a></li>
+              <li>
+                <a href="https://www.aurovillelanguagelab.org/building/"
+                  >Building</a
+                >
+              </li>
+              <li>
+                <a href="https://www.aurovillelanguagelab.org/contact/"
+                  >Contact Us</a
+                >
+              </li>
+              <li>
+                <a href="http://www.auroville.org/" target="_blank" rel="noopener"
+                  >Auroville.org</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Contact</h4>
+            <p>
+              <a href="mailto:info@aurovillelanguagelab.org"
+                >info@aurovillelanguagelab.org</a
+              ><br />
+              <a href="mailto:tomatis@aurovillelanguagelab.org"
+                >tomatis@aurovillelanguagelab.org</a
+              >
+            </p>
+            <p style="margin-top: 10px">
+              <a href="tel:+914132623661">+91 (413) 262 3661</a><br />
+              WhatsApp: <a href="tel:+919843030355">+91 98430 30355</a><br />
+              Tomatis: <a href="tel:+914132622467">+91 (413) 262 2467</a>
+            </p>
+            <p style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7">
+              International Zone, Auroville,<br />Tamil Nadu 605101, India
+            </p>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>
+            &copy; 2026 All Rights Reserved &mdash; Auroville Language
+            Laboratory
+          </p>
+          <p>
+            A non-profit service unit under the Swagatam Trust of the Auroville
+            Foundation
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Language switcher -->
+    <div class="lang-switcher lang-switcher--float" id="langSwitcher">
+      <button
+        class="lang-switcher__toggle"
+        id="langToggle"
+        aria-label="Change language"
+        aria-expanded="false"
+      >
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <line x1="2" y1="12" x2="22" y2="12" />
+          <path
+            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+          />
+        </svg>
+        <span>EN</span>
+      </button>
+      <div class="lang-switcher__options">
+        <a href="#" class="lang-switcher__option active">English</a>
+        <a href="#" class="lang-switcher__option">Français</a>
+        <a href="#" class="lang-switcher__option">Deutsch</a>
+        <a href="#" class="lang-switcher__option">Español</a>
+        <a href="#" class="lang-switcher__option">தமிழ்</a>
+        <a href="#" class="lang-switcher__option">हिन्दी</a>
+      </div>
+    </div>
+
+    <script>
+      // Reveal on scroll
+      const revealEls = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((el) => {
+            if (el.isIntersecting) {
+              el.target.classList.add("visible");
+              observer.unobserve(el.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      revealEls.forEach((el) => observer.observe(el));
+
+      // Mobile nav
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileOverlay = document.getElementById("mobileOverlay");
+
+      function toggleMenu() {
+        const open = mobileMenu.classList.toggle("active");
+        mobileOverlay.classList.toggle("active", open);
+        hamburger.classList.toggle("active", open);
+        hamburger.setAttribute("aria-expanded", open);
+        document.body.style.overflow = open ? "hidden" : "";
+      }
+
+      hamburger.addEventListener("click", toggleMenu);
+      mobileOverlay.addEventListener("click", toggleMenu);
+
+      // Accordion submenus in mobile menu
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        const parentLi = link.closest("li");
+        const hasSubmenu = parentLi && parentLi.querySelector(":scope > ul");
+        if (hasSubmenu) {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            parentLi.classList.toggle("active");
+          });
+        } else {
+          link.addEventListener("click", () => {
+            if (mobileMenu.classList.contains("active")) toggleMenu();
+          });
+        }
+      });
+
+      // Lang switcher
+      const langSwitcher = document.getElementById("langSwitcher");
+      const langToggle = document.getElementById("langToggle");
+      langToggle.addEventListener("click", () => {
+        const open = langSwitcher.classList.toggle("active");
+        langToggle.setAttribute("aria-expanded", open);
+      });
+      document.addEventListener("click", (e) => {
+        if (!langSwitcher.contains(e.target)) {
+          langSwitcher.classList.remove("active");
+          langToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Hero parallax + zoom
+      const heroEl = document.querySelector(".hero");
+      const heroBg = document.querySelector(".hero__bg");
+      if (heroBg && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        let ticking = false;
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              const scrolled = window.scrollY;
+              const heroH = heroEl.offsetHeight;
+              if (scrolled < heroH) {
+                const progress = scrolled / heroH;
+                const translateY = scrolled * 0.3;
+                const scale = 1.08 + progress * 0.07;
+                heroBg.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+    </script>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-/* ===== RESET & BASE ===== */
+﻿/* ===== RESET & BASE ===== */
 *,
 *::before,
 *::after {
@@ -656,7 +656,7 @@ section {
   overflow: hidden;
 }
 
-/* Background layer — scaled & shifted independently for parallax+zoom */
+/* Background layer ΓÇö scaled & shifted independently for parallax+zoom */
 .hero__bg {
   position: absolute;
   inset: -10%; /* oversized so scale/translate don't show edges */
@@ -700,9 +700,10 @@ section {
   z-index: 1;
 }
 
-/* Sub-page hero layout (tomatis & languages) */
+/* Sub-page hero layout (tomatis, languages & about) */
 .page-tomatis .hero,
-.page-languages .hero {
+.page-languages .hero,
+.page-about .hero {
   flex-direction: column;
   justify-content: flex-end;
 }
@@ -710,7 +711,7 @@ section {
 .hero__body {
   position: relative;
   z-index: 1;
-  padding: 40px 0 44px;
+  padding: 110px 0 44px;
   flex: 1;
 }
 
@@ -2188,7 +2189,7 @@ section {
   background-image: url("files/tomaits-page.jpg");
 }
 
-/* Tomatis uses 4-column resources grid — collapses responsively */
+/* Tomatis uses 4-column resources grid ΓÇö collapses responsively */
 .page-tomatis .resources__grid {
   grid-template-columns: repeat(4, 1fr);
 }
@@ -2211,12 +2212,12 @@ section {
   background-image: url("files/auroville-language-lab-language-picture-1.jpg");
 }
 
-/* Languages resources grid — auto-fit fluid columns */
+/* Languages resources grid ΓÇö auto-fit fluid columns */
 .page-languages .resources__grid {
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
-/* Languages course formats (programs section) — 3 columns */
+/* Languages course formats (programs section) ΓÇö 3 columns */
 .page-languages .programs .resources__grid {
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
@@ -2240,4 +2241,25 @@ section {
   .page-languages .resources__grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ===== PAGE-SPECIFIC: ABOUT ===== */
+
+.page-about .hero__bg {
+  background-image: url("files/about-slider.png");
+}
+
+/* Organigram — full-width image with subtle shadow */
+.organigram {
+  padding: var(--section-padding);
+  background: var(--color-white);
+}
+
+.organigram__img {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: var(--border-radius);
+  box-shadow: 0 16px 48px rgba(44, 62, 109, 0.1);
+  display: block;
 }

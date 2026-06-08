@@ -22,11 +22,11 @@
     <div class="mobile-menu" id="mobileMenu">
       <ul>
         <li>
-          <a href="https://www.aurovillelanguagelab.org/about/">About Us</a>
+          <a href="about.html">About Us</a>
         </li>
-        <li><a href="https://aurovillelanguagelab.org/news/">News</a></li>
+        <li><a href="news.html">News</a></li>
         <li>
-          <a href="https://www.aurovillelanguagelab.org/languages/"
+          <a href="languages.html"
             >Learn Languages</a
           >
         </li>
@@ -97,11 +97,11 @@
         </a>
         <ul class="nav__links">
           <li>
-            <a href="https://www.aurovillelanguagelab.org/about/">About Us</a>
+            <a href="about.html">About Us</a>
           </li>
-          <li><a href="https://aurovillelanguagelab.org/news/">News</a></li>
+          <li><a href="news.html">News</a></li>
           <li>
-            <a href="https://www.aurovillelanguagelab.org/languages/"
+            <a href="languages.html"
               >Learn Languages</a
             >
           </li>
@@ -1153,33 +1153,27 @@
         startAuto();
       }
 
-      // Hero parallax
+      // Hero parallax + zoom
       const heroEl = document.querySelector(".hero");
-      if (
-        heroEl &&
-        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ) {
+      const heroBg = document.querySelector(".hero__bg");
+      if (heroBg && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         let ticking = false;
-        window.addEventListener(
-          "scroll",
-          () => {
-            if (!ticking) {
-              requestAnimationFrame(() => {
-                const scrolled = window.scrollY;
-                const heroH = heroEl.offsetHeight;
-                if (scrolled < heroH) {
-                  heroEl.style.setProperty(
-                    "--hero-parallax",
-                    `${scrolled * 0.35}px`,
-                  );
-                }
-                ticking = false;
-              });
-              ticking = true;
-            }
-          },
-          { passive: true },
-        );
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              const scrolled = window.scrollY;
+              const heroH = heroEl.offsetHeight;
+              if (scrolled < heroH) {
+                const progress = scrolled / heroH;
+                const translateY = scrolled * 0.3;
+                const scale = 1.08 + progress * 0.07;
+                heroBg.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
       }
     </script>
   </body>
