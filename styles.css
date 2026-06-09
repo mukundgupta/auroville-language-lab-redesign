@@ -1166,7 +1166,7 @@ section {
 
 .benefits__grid {
   display: grid;
-  grid-template-columns: repeat(2,2fr);
+  grid-template-columns: repeat(2, 2fr);
   gap: 24px;
   margin-bottom: 48px;
 }
@@ -1248,6 +1248,10 @@ section {
 }
 .benefits__highlight p strong {
   color: var(--tomatis-amber-light);
+}
+
+#applications {
+  background: #e8f2f9;
 }
 
 /* ===== DR. TOMATIS / DOCTOR SECTION ===== */
