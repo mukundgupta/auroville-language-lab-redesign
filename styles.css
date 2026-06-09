@@ -1257,7 +1257,11 @@ section {
 /* ===== DR. TOMATIS / DOCTOR SECTION ===== */
 .doctor {
   padding: var(--section-padding);
-  background: var(--tomatis-cream);
+  background: #e8f2f9;
+}
+
+#story {
+  background: #fdf6ec;
 }
 
 .doctor__grid {
