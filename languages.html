@@ -26,9 +26,7 @@
         </li>
         <li><a href="news.html">News</a></li>
         <li>
-          <a href="languages.html"
-            >Learn Languages</a
-          >
+          <a href="languages.html">Learn Languages</a>
         </li>
         <li>
           <a href="#">Alfred Tomatis</a>
@@ -69,7 +67,7 @@
           <a href="https://www.aurovillelanguagelab.org/building/">Building</a>
         </li>
         <li>
-          <a href="https://www.aurovillelanguagelab.org/contact/">Contact</a>
+          <a href="contact.html">Contact</a>
         </li>
         <li>
           <a
@@ -101,9 +99,7 @@
           </li>
           <li><a href="news.html">News</a></li>
           <li>
-            <a href="languages.html"
-              >Learn Languages</a
-            >
+            <a href="languages.html">Learn Languages</a>
           </li>
           <li class="nav__item--dropdown">
             <button
@@ -112,7 +108,7 @@
               aria-expanded="false"
             >
               Alfred Tomatis
-              <span class="nav__caret" aria-hidden="true">▾</span>
+              <span class="nav__caret" aria-hidden="true">?</span>
             </button>
             <ul class="nav__dropdown">
               <li><a href="tomatis.html">The Method</a></li>
@@ -134,7 +130,7 @@
               type="button"
               aria-expanded="false"
             >
-              Resources <span class="nav__caret" aria-hidden="true">▾</span>
+              Resources <span class="nav__caret" aria-hidden="true">?</span>
             </button>
             <ul class="nav__dropdown">
               <li>
@@ -163,7 +159,7 @@
             >
           </li>
           <li>
-            <a href="https://www.aurovillelanguagelab.org/contact/">Contact</a>
+            <a href="contact.html">Contact</a>
           </li>
           <li>
             <a
@@ -183,7 +179,49 @@
         </button>
       </div>
     </nav>
-
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-container">
+        <button
+          class="close-btn"
+          id="closeModalBtn"
+          aria-label="Close schedule modal"
+        >
+          �
+        </button>
+        <div class="modal-body">
+          <h2 class="modal-title">Current Schedule</h2>
+        </div>
+        <img
+          src="files/schedule.png"
+          alt="Course schedule"
+          class="modal-image"
+        />
+        <div class="modal-body">
+          <h3 class="modal-title">Reminder about our free Evening Programs</h3>
+          <p class="modal-text">
+            The evening conversation sessions are a chance for everyone to
+            practice speaking with native speakers and offer their time. Barring
+            indicated exceptions, these sessions usually happen weekdays from
+            5�6 pm as follows:
+          </p>
+          <ul
+            class="modal-text"
+            style="padding-left: 1.1rem; margin-bottom: 18px"
+          >
+            <li>
+              Mondays: French with Isabelle (1st, 3rd and 5th week of the
+              month)� with Coco and Gaspard (2nd and 4th week of the month) 5�6
+              pm
+            </li>
+            <li>
+              Wednesdays &amp; Thursdays: Sanskrit chanting with Remesh
+              5:30�6:30 pm
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <!-- ===== HERO ===== -->
     <section class="hero" aria-label="Learn Languages">
       <div class="hero__bg" aria-hidden="true"></div>
@@ -192,7 +230,7 @@
         <div class="container">
           <ol class="hero__breadcrumb" aria-label="Breadcrumb">
             <li><a href="index.html">Home</a></li>
-            <li class="hero__breadcrumb-sep" aria-hidden="true">›</li>
+            <li class="hero__breadcrumb-sep" aria-hidden="true">�</li>
             <li class="hero__breadcrumb-current" aria-current="page">
               Learn Languages
             </li>
@@ -214,19 +252,18 @@
                 Course Options
               </a>
               <a
-                href="https://aurovillelanguagelab.org/current-schedule/"
-                target="_blank"
-                rel="noopener"
+                href="#"
                 class="btn btn--glass btn--large"
+                id="openModalBtn"
+                aria-controls="modalOverlay"
+                >Current Schedule</a
               >
-                Current Schedule
-              </a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Stat bar — pinned to bottom edge of hero -->
+      <!-- Stat bar � pinned to bottom edge of hero -->
       <div class="hero__statbar" aria-label="Key facts">
         <div class="container hero__statbar-inner">
           <div class="hero__stat">
@@ -408,7 +445,7 @@
           </div>
           <div class="doctor__photo-wrap reveal">
             <img
-              src="files/auroville-language-lab-language-picture-1.jpg"
+              src="files/medatheque.png"
               alt="Language study resources at Auroville Language Lab"
               loading="lazy"
             />
@@ -512,7 +549,7 @@
         <div class="section-header reveal">
           <p class="section-header__label">Evening Programs</p>
           <h2 class="section-header__title" id="evening-title">
-            Special evening sessions for every learner
+            Open evening sessions for every learner
           </h2>
         </div>
         <div class="doctor__grid">
@@ -563,63 +600,67 @@
         </div>
         <div class="testimonial-slider-wrap reveal">
           <div class="testimonial-slider">
-            <article class="testimonial-card reveal">
-              <div class="testimonial-card__avatar">
-                <img src="files/image25.jpg" alt="Rajavelu" />
-              </div>
-              <p class="testimonial-card__text">
-                I have been studying English at the Language Lab for the past
-                two years. I enjoy these classes a lot. Our instructor includes
-                general knowledge topics and different aspects of Auroville in
-                each class, so we gain a lot. I like that there is humour and
-                positive interaction in the classes.
-              </p>
-              <p class="testimonial-card__name">~ Rajavelu</p>
-            </article>
-            <article class="testimonial-card reveal">
-              <div class="testimonial-card__avatar">
-                <img src="files/image4.jpg" alt="Sudha" />
-              </div>
-              <p class="testimonial-card__text">
-                When I first saw French In Action, I was skeptical because I had
-                never seen anything like it for language learning in the past.
-                But over time, I started raving about it to everyone when I saw
-                how effective it was in helping me grasp the language quickly.
-                It is fun and challenging, and if used alongside the
-                supplementary workbook, it is one of the richest language
-                programs out there.
-              </p>
-              <p class="testimonial-card__name">~ Sudha</p>
-            </article>
-            <article class="testimonial-card reveal">
-              <div class="testimonial-card__avatar">
-                <img src="files/image14.jpg" alt="Philippe" />
-              </div>
-              <p class="testimonial-card__text">
-                Right in the middle of our beautiful city, a marvelous place of
-                teaching, creativity and therapy emerges thanks to the courage
-                and will of a few pioneers who followed Mother’s directives. For
-                me, I see in this institution an example of transcendence in
-                matter. I arrived here by chance, did Tomatis and took English
-                lessons.
-              </p>
-              <p class="testimonial-card__name">~ Philippe</p>
-            </article>
-            <article class="testimonial-card reveal">
-              <div class="testimonial-card__avatar">
-                <img src="files/image16.jpg" alt="Ramesh" />
-              </div>
-              <p class="testimonial-card__text">
-                I took the introductory French course at the lab. The program
-                was taught using the Tomatis equipment. It was a wonderful way
-                to learn the basics of the language in a short time. The
-                teaching methodology was especially appealing as it was
-                conducted through freewheeling conversations while sticking to a
-                basic syllabus. The student-teacher ratio was ideal and a lot of
-                personal attention was paid to the needs of each student.
-              </p>
-              <p class="testimonial-card__name">~ Ramesh</p>
-            </article>
+            <div class="testimonial-track">
+              <article class="testimonial-card">
+                <div class="testimonial-card__avatar">
+                  <img src="files/image25.jpg" alt="Rajavelu" />
+                </div>
+                <p class="testimonial-card__text">
+                  I have been studying English at the Language Lab for the past
+                  two years. I enjoy these classes a lot. Our instructor
+                  includes general knowledge topics and different aspects of
+                  Auroville in each class, so we gain a lot. I like that there
+                  is humour and positive interaction in the classes.
+                </p>
+                <p class="testimonial-card__name">~ Rajavelu</p>
+              </article>
+              <article class="testimonial-card">
+                <div class="testimonial-card__avatar">
+                  <img src="files/image4.jpg" alt="Sudha" />
+                </div>
+                <p class="testimonial-card__text">
+                  When I first saw French In Action, I was skeptical because I
+                  had never seen anything like it for language learning in the
+                  past. But over time, I started raving about it to everyone
+                  when I saw how effective it was in helping me grasp the
+                  language quickly. It is fun and challenging, and if used
+                  alongside the supplementary workbook, it is one of the richest
+                  language programs out there.
+                </p>
+                <p class="testimonial-card__name">~ Sudha</p>
+              </article>
+              <article class="testimonial-card">
+                <div class="testimonial-card__avatar">
+                  <img src="files/image14.jpg" alt="Philippe" />
+                </div>
+                <p class="testimonial-card__text">
+                  Right in the middle of our beautiful city, a marvelous place
+                  of teaching, creativity and therapy emerges thanks to the
+                  courage and will of a few pioneers who followed Mother’s
+                  directives. For me, I see in this institution an example of
+                  transcendence in matter. I arrived here by chance, did Tomatis
+                  and took English lessons.
+                </p>
+                <p class="testimonial-card__name">~ Philippe</p>
+              </article>
+              <article class="testimonial-card">
+                <div class="testimonial-card__avatar">
+                  <img src="files/image16.jpg" alt="Ramesh" />
+                </div>
+                <p class="testimonial-card__text">
+                  I took the introductory French course at the lab. The program
+                  was taught using the Tomatis equipment. It was a wonderful way
+                  to learn the basics of the language in a short time. The
+                  teaching methodology was especially appealing as it was
+                  conducted through freewheeling conversations while sticking to
+                  a basic syllabus. The student-teacher ratio was ideal and a
+                  lot of personal attention was paid to the needs of each
+                  student.
+                </p>
+                <p class="testimonial-card__name">~ Ramesh</p>
+              </article>
+            </div>
+            <!-- /testimonial-track -->
           </div>
           <div class="testimonial-nav">
             <button
@@ -790,7 +831,7 @@
           details or register online.
         </p>
         <p>
-          <a href="mailto:info@aurovillelanguagelab.org" class="cta__email">
+          <a href="contact.html" class="cta__email">
             info@aurovillelanguagelab.org
           </a>
         </p>
@@ -892,9 +933,7 @@
                 >
               </li>
               <li>
-                <a href="https://aurovillelanguagelab.org/contact/"
-                  >Contact Us</a
-                >
+                <a href="contact.html">Contact Us</a>
               </li>
               <li>
                 <a
@@ -981,11 +1020,11 @@
       </button>
       <div class="lang-switcher__options">
         <a href="#" class="lang-switcher__option active">English</a>
-        <a href="#" class="lang-switcher__option">Français</a>
+        <a href="#" class="lang-switcher__option">Fran�ais</a>
         <a href="#" class="lang-switcher__option">Deutsch</a>
-        <a href="#" class="lang-switcher__option">Español</a>
-        <a href="#" class="lang-switcher__option">தமிழ்</a>
-        <a href="#" class="lang-switcher__option">हिन्दी</a>
+        <a href="#" class="lang-switcher__option">Espa�ol</a>
+        <a href="#" class="lang-switcher__option">?????</a>
+        <a href="#" class="lang-switcher__option">??????</a>
       </div>
     </div>
 
@@ -1036,6 +1075,7 @@
       });
 
       const testimonialSlider = document.querySelector(".testimonial-slider");
+      const testimonialTrack = document.querySelector(".testimonial-track");
       const testimonialPrev = document.querySelector(
         ".testimonial-button--prev",
       );
@@ -1043,34 +1083,43 @@
         ".testimonial-button--next",
       );
       const testimonialDots = document.querySelector(".testimonial-dots");
+
       if (
         testimonialSlider &&
+        testimonialTrack &&
         testimonialPrev &&
         testimonialNext &&
         testimonialDots
       ) {
         const slides = Array.from(
-          testimonialSlider.querySelectorAll(".testimonial-card"),
+          testimonialTrack.querySelectorAll(".testimonial-card"),
         );
         let currentSlide = 0;
         let autoScroll = null;
-        let scrollTimeout = null;
+
+        const getCardWidth = () => slides[0].offsetWidth + 24; // card + gap
 
         const setActiveDot = (index) => {
-          Array.from(testimonialDots.children).forEach((dot, dotIndex) => {
-            dot.classList.toggle("testimonial-dot--active", dotIndex === index);
+          Array.from(testimonialDots.children).forEach((dot, i) => {
+            dot.classList.toggle("testimonial-dot--active", i === index);
+          });
+        };
+
+        const setActiveCard = (index) => {
+          slides.forEach((card, i) => {
+            card.classList.toggle("testimonial-card--active", i === index);
           });
         };
 
         const slideTo = (index) => {
-          const slide = slides[index];
-          if (!slide) return;
           currentSlide = index;
-          testimonialSlider.scrollTo({
-            left: slide.offsetLeft,
-            behavior: "smooth",
-          });
-          setActiveDot(currentSlide);
+          // Center the active card inside the slider viewport
+          const sliderWidth = testimonialSlider.offsetWidth;
+          const cardWidth = getCardWidth();
+          const offset = sliderWidth / 2 - cardWidth / 2 - index * cardWidth;
+          testimonialTrack.style.transform = `translateX(${offset}px)`;
+          setActiveDot(index);
+          setActiveCard(index);
         };
 
         const createDots = () => {
@@ -1088,39 +1137,15 @@
           });
         };
 
-        const calculateCurrentSlide = () => {
-          const positions = slides.map((slide) => slide.offsetLeft);
-          const scrollLeft = testimonialSlider.scrollLeft;
-          let nearest = 0;
-          let minDiff = Infinity;
-          positions.forEach((pos, idx) => {
-            const diff = Math.abs(scrollLeft - pos);
-            if (diff < minDiff) {
-              minDiff = diff;
-              nearest = idx;
-            }
-          });
-          currentSlide = nearest;
-          setActiveDot(currentSlide);
-        };
-
-        const slideNext = () => {
-          const nextIndex =
-            currentSlide + 1 >= slides.length ? 0 : currentSlide + 1;
-          slideTo(nextIndex);
-        };
-
-        const slidePrev = () => {
-          const prevIndex =
-            currentSlide <= 0 ? slides.length - 1 : currentSlide - 1;
-          slideTo(prevIndex);
-        };
+        const slideNext = () =>
+          slideTo(currentSlide + 1 >= slides.length ? 0 : currentSlide + 1);
+        const slidePrev = () =>
+          slideTo(currentSlide <= 0 ? slides.length - 1 : currentSlide - 1);
 
         const startAuto = () => {
           stopAuto();
           autoScroll = setInterval(slideNext, 4600);
         };
-
         const stopAuto = () => {
           if (autoScroll) {
             clearInterval(autoScroll);
@@ -1129,51 +1154,91 @@
         };
 
         createDots();
-        setActiveDot(0);
-        testimonialSlider.addEventListener("scroll", () => {
-          if (scrollTimeout) {
-            clearTimeout(scrollTimeout);
-          }
-          scrollTimeout = setTimeout(calculateCurrentSlide, 120);
-        });
+        slideTo(0);
 
         testimonialNext.addEventListener("click", () => {
           slideNext();
           startAuto();
         });
-
         testimonialPrev.addEventListener("click", () => {
           slidePrev();
           startAuto();
         });
-
         testimonialSlider.addEventListener("mouseenter", stopAuto);
         testimonialSlider.addEventListener("mouseleave", startAuto);
+
+        // Re-center on resize
+        window.addEventListener("resize", () => slideTo(currentSlide));
 
         startAuto();
       }
 
+      const openBtn = document.getElementById("openModalBtn");
+      const closeBtn = document.getElementById("closeModalBtn");
+      const modalOverlay = document.getElementById("modalOverlay");
+
+      // Function to open the modal
+      function openModal(event) {
+        event.preventDefault();
+        modalOverlay.classList.add("is-active");
+        document.body.style.overflow = "hidden";
+      }
+
+      // Function to close the modal
+      function closeModal() {
+        modalOverlay.classList.remove("is-active");
+        document.body.style.overflow = "";
+      }
+
+      // Event Listeners
+      openBtn.addEventListener("click", openModal);
+      closeBtn.addEventListener("click", closeModal);
+
+      // Close modal if user clicks on the backdrop overlay itself
+      modalOverlay.addEventListener("click", (e) => {
+        if (e.target === modalOverlay) {
+          closeModal();
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Escape" &&
+          modalOverlay.classList.contains("is-active")
+        ) {
+          closeModal();
+        }
+      });
+
       // Hero parallax + zoom
       const heroEl = document.querySelector(".hero");
       const heroBg = document.querySelector(".hero__bg");
-      if (heroBg && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (
+        heroBg &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
         let ticking = false;
-        window.addEventListener("scroll", () => {
-          if (!ticking) {
-            requestAnimationFrame(() => {
-              const scrolled = window.scrollY;
-              const heroH = heroEl.offsetHeight;
-              if (scrolled < heroH) {
-                const progress = scrolled / heroH;
-                const translateY = scrolled * 0.3;
-                const scale = 1.08 + progress * 0.07;
-                heroBg.style.transform = `scale(${scale}) translateY(${translateY}px)`;
-              }
-              ticking = false;
-            });
-            ticking = true;
-          }
-        }, { passive: true });
+        window.addEventListener(
+          "scroll",
+          () => {
+            if (!ticking) {
+              requestAnimationFrame(() => {
+                const scrolled = window.scrollY;
+                const heroH = heroEl.offsetHeight;
+                if (scrolled < heroH) {
+                  const progress = scrolled / heroH;
+                  const translateY = scrolled * 0.3;
+                  const scale = 1.08 + progress * 0.07;
+                  heroBg.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+                }
+                ticking = false;
+              });
+              ticking = true;
+            }
+          },
+          { passive: true },
+        );
       }
     </script>
   </body>

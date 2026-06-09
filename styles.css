@@ -1166,7 +1166,7 @@ section {
 
 .benefits__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2,2fr);
   gap: 24px;
   margin-bottom: 48px;
 }
@@ -1612,85 +1612,39 @@ section {
 .testimonial-slider {
   display: flex;
   gap: 24px;
-  overflow-x: auto;
-  padding-bottom: 12px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scroll-padding: 24px;
+  overflow: hidden;
+  padding: 24px 0 32px;
+  position: relative;
+  transition: none;
+  /* Edge fade mask — only on the track viewport, not the nav */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
 }
 
-.testimonial-slider::-webkit-scrollbar {
-  display: none;
-}
-
-.testimonial-nav {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
+/* Track that actually moves */
+.testimonial-track {
   display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-}
-
-.testimonial-button {
-  pointer-events: auto;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid rgba(44, 62, 109, 0.15);
-  background: rgba(255, 255, 255, 0.96);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 12px 28px rgba(44, 62, 109, 0.08);
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease;
-}
-
-.testimonial-button:hover {
-  transform: translateY(-1px);
-  background: #fff;
-}
-
-.testimonial-button svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--color-primary);
-  stroke-width: 2;
-}
-
-.testimonial-dots {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 24px;
-}
-
-.testimonial-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(44, 62, 109, 0.18);
-  border: none;
-  cursor: pointer;
-  transition:
-    background 0.25s ease,
-    transform 0.25s ease;
-}
-
-.testimonial-dot:hover,
-.testimonial-dot--active {
-  background: var(--color-primary);
-  transform: scale(1.16);
+  gap: 24px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
 .testimonial-card {
-  min-width: 320px;
+  min-width: 420px;
   max-width: 420px;
   flex: 0 0 auto;
-  scroll-snap-align: start;
   background: var(--color-white);
   border-radius: 18px;
   padding: 28px;
@@ -1699,6 +1653,20 @@ section {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  /* Off-focus state */
+  opacity: 0.38;
+  transform: scale(0.93);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+.testimonial-card--active {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 24px 50px rgba(44, 62, 109, 0.14);
+  border-color: rgba(44, 62, 109, 0.14);
 }
 
 .testimonial-card__avatar {
@@ -1725,6 +1693,100 @@ section {
   color: var(--color-text-light);
   line-height: 1.9;
   margin: 0;
+}
+
+.testimonial-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 2;
+  padding: 0 4px;
+}
+
+.testimonial-button {
+  pointer-events: auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(44, 62, 109, 0.15);
+  background: rgba(255, 255, 255, 0.96);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 28px rgba(44, 62, 109, 0.08);
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.testimonial-button:hover {
+  transform: translateY(-1px);
+  background: #fff;
+  box-shadow: 0 16px 32px rgba(44, 62, 109, 0.14);
+}
+
+.testimonial-button svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-primary);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.testimonial-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(44, 62, 109, 0.18);
+  border: none;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.testimonial-dot:hover,
+.testimonial-dot--active {
+  background: var(--color-primary);
+  transform: scale(1.16);
+}
+
+@media (max-width: 540px) {
+  .testimonial-card {
+    min-width: calc(100vw - 80px);
+    max-width: calc(100vw - 80px);
+  }
+  .testimonial-slider {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+  }
 }
 
 /* ===== CTA ===== */

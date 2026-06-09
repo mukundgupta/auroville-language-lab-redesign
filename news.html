@@ -171,7 +171,22 @@
         transform: translateX(3px);
       }
 
-      /* Wide card — spans 2 columns */
+      /* Make whole card clickable — stretched anchor inside relative card */
+      .news-card {
+        position: relative;
+      }
+      .news-card__cover-link {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        border-radius: inherit;
+      }
+      /* Keep category badge and read-more link above the cover */
+      .news-card__category,
+      .news-card__link {
+        position: relative;
+        z-index: 1;
+      }
       .news-card--wide {
         grid-column: span 2;
         flex-direction: row;
@@ -327,7 +342,7 @@
           </ul>
         </li>
         <li><a href="https://www.aurovillelanguagelab.org/building/">Building</a></li>
-        <li><a href="https://www.aurovillelanguagelab.org/contact/">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li>
           <a href="https://aurovillelanguagelab.org/donation/" class="btn btn--accent" style="text-align:center;margin-top:8px">&#9829; Donate</a>
         </li>
@@ -366,7 +381,7 @@
             </ul>
           </li>
           <li><a href="https://www.aurovillelanguagelab.org/building/">Building</a></li>
-          <li><a href="https://www.aurovillelanguagelab.org/contact/">Contact</a></li>
+          <li><a href="contact.html">Contact</a></li>
           <li>
             <a href="https://aurovillelanguagelab.org/donation/" class="btn btn--accent">&#9829; Donate</a>
           </li>
@@ -447,257 +462,145 @@
 
           <!-- Latest: May 14, 2026 — wide card, most prominent -->
           <article class="news-card news-card--wide reveal">
+            <a href="https://www.aurovillelanguagelab.org/all-news-may-14th-2026/" class="news-card__cover-link" target="_blank" rel="noopener" aria-label="ALL News — May 14th, 2026"></a>
             <div class="news-card__image">
-              <img
-                src="files/AI-and-Language-Learning-800x533.png"
-                alt="ALL News — May 14th, 2026"
-                loading="eager"
-              />
+              <img src="files/AI-and-Language-Learning-800x533.png" alt="ALL News — May 14th, 2026" loading="eager" />
               <span class="news-card__category">Latest</span>
             </div>
             <div class="news-card__body">
               <div class="news-card__meta">
-                <span>
-                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  14 May 2026
-                </span>
-                <span>
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  5 min read
-                </span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>14 May 2026</span>
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min read</span>
               </div>
               <h3 class="news-card__title">ALL News — May 14th, 2026</h3>
-              <p class="news-card__excerpt">
-                The latest weekly update from the Auroville Language Lab. Read about what's happening in our classrooms, community events, language programmes, and life at the Lab this week.
-              </p>
-              <a href="https://www.aurovillelanguagelab.org/all-news-may-14th-2026/" class="news-card__link" target="_blank" rel="noopener">
-                Read more
-                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+              <p class="news-card__excerpt">The latest weekly update from the Auroville Language Lab. Read about what's happening in our classrooms, community events, language programmes, and life at the Lab this week.</p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-may-14th-2026/" class="news-card__link" target="_blank" rel="noopener">Read more <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
           </article>
 
           <!-- May 7, 2026 -->
           <article class="news-card reveal">
+            <a href="https://www.aurovillelanguagelab.org/all-news-may-7th-2026/" class="news-card__cover-link" target="_blank" rel="noopener" aria-label="ALL News — May 7th, 2026"></a>
             <div class="news-card__image">
-              <img
-                src="files/Hot-summer-days-are-here-800x533.png"
-                alt="ALL News — May 7th, 2026"
-                loading="lazy"
-              />
+              <img src="files/Hot-summer-days-are-here-800x533.png" alt="ALL News — May 7th, 2026" loading="lazy" />
               <span class="news-card__category">Weekly News</span>
             </div>
             <div class="news-card__body">
               <div class="news-card__meta">
-                <span>
-                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  7 May 2026
-                </span>
-                <span>
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  4 min read
-                </span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>7 May 2026</span>
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min read</span>
               </div>
               <h3 class="news-card__title">ALL News — May 7th, 2026</h3>
-              <p class="news-card__excerpt">
-                This week's update from the Lab — covering language sessions, community life, and what's coming up in the weeks ahead.
-              </p>
-              <a href="https://www.aurovillelanguagelab.org/all-news-may-7th-2026/" class="news-card__link" target="_blank" rel="noopener">
-                Read more
-                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+              <p class="news-card__excerpt">This week's update from the Lab — covering language sessions, community life, and what's coming up in the weeks ahead.</p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-may-7th-2026/" class="news-card__link" target="_blank" rel="noopener">Read more <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
           </article>
 
           <!-- April 30, 2026 -->
           <article class="news-card reveal">
+            <a href="https://www.aurovillelanguagelab.org/all-news-april-30th-2026/" class="news-card__cover-link" target="_blank" rel="noopener" aria-label="ALL News — April 30th, 2026"></a>
             <div class="news-card__image">
-              <img
-                src="files/Happy-Puthandu-celebrations-at-sunset-800x533.png"
-                alt="ALL News — April 30th, 2026"
-                loading="lazy"
-              />
+              <img src="files/Happy-Puthandu-celebrations-at-sunset-800x533.png" alt="ALL News — April 30th, 2026" loading="lazy" />
               <span class="news-card__category">Weekly News</span>
             </div>
             <div class="news-card__body">
               <div class="news-card__meta">
-                <span>
-                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  30 April 2026
-                </span>
-                <span>
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  4 min read
-                </span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>30 April 2026</span>
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min read</span>
               </div>
               <h3 class="news-card__title">ALL News — April 30th, 2026</h3>
-              <p class="news-card__excerpt">
-                Wrapping up April with news from our language classes, the Tomatis programme, and community happenings around Auroville.
-              </p>
-              <a href="https://www.aurovillelanguagelab.org/all-news-april-30th-2026/" class="news-card__link" target="_blank" rel="noopener">
-                Read more
-                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+              <p class="news-card__excerpt">Wrapping up April with news from our language classes, the Tomatis programme, and community happenings around Auroville.</p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-april-30th-2026/" class="news-card__link" target="_blank" rel="noopener">Read more <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
           </article>
 
           <!-- April 23, 2026 -->
           <article class="news-card reveal">
+            <a href="https://www.aurovillelanguagelab.org/all-news-april-23rd-2026/" class="news-card__cover-link" target="_blank" rel="noopener" aria-label="ALL News — April 23rd, 2026"></a>
             <div class="news-card__image">
-              <img
-                src="files/AV-SpringTime-800x533.png"
-                alt="ALL News — April 23rd, 2026"
-                loading="lazy"
-              />
+              <img src="files/AV-SpringTime-800x533.png" alt="ALL News — April 23rd, 2026" loading="lazy" />
               <span class="news-card__category">Weekly News</span>
             </div>
             <div class="news-card__body">
               <div class="news-card__meta">
-                <span>
-                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  23 April 2026
-                </span>
-                <span>
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  4 min read
-                </span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>23 April 2026</span>
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min read</span>
               </div>
               <h3 class="news-card__title">ALL News — April 23rd, 2026</h3>
-              <p class="news-card__excerpt">
-                A week of language, listening, and life in Auroville — updates from our programmes and a look at what's on the horizon.
-              </p>
-              <a href="https://www.aurovillelanguagelab.org/all-news-april-23rd-2026/" class="news-card__link" target="_blank" rel="noopener">
-                Read more
-                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+              <p class="news-card__excerpt">A week of language, listening, and life in Auroville — updates from our programmes and a look at what's on the horizon.</p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-april-23rd-2026/" class="news-card__link" target="_blank" rel="noopener">Read more <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
           </article>
 
           <!-- April 16, 2026 -->
           <article class="news-card reveal">
+            <a href="https://www.aurovillelanguagelab.org/all-news-april-16th-2026/" class="news-card__cover-link" target="_blank" rel="noopener" aria-label="ALL News — April 16th, 2026"></a>
             <div class="news-card__image">
-              <img
-                src="files/Building-Tour_28-03-2026-800x438.jpg"
-                alt="ALL News — April 16th, 2026"
-                loading="lazy"
-              />
+              <img src="files/Building-Tour_28-03-2026-800x438.jpg" alt="ALL News — April 16th, 2026" loading="lazy" />
               <span class="news-card__category">Weekly News</span>
             </div>
             <div class="news-card__body">
               <div class="news-card__meta">
-                <span>
-                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  16 April 2026
-                </span>
-                <span>
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  5 min read
-                </span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>16 April 2026</span>
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min read</span>
               </div>
               <h3 class="news-card__title">ALL News — April 16th, 2026</h3>
-              <p class="news-card__excerpt">
-                Mid-April news from the Lab — including updates from our building, our language courses, and notes from the Tomatis programme. A full week at the Auroville Language Lab.
-              </p>
-              <a href="https://www.aurovillelanguagelab.org/all-news-april-16th-2026/" class="news-card__link" target="_blank" rel="noopener">
-                Read more
-                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+              <p class="news-card__excerpt">Mid-April news from the Lab — including updates from our building, our language courses, and notes from the Tomatis programme. A full week at the Auroville Language Lab.</p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-april-16th-2026/" class="news-card__link" target="_blank" rel="noopener">Read more <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
           </article>
 
           <!-- April 9, 2026 -->
           <article class="news-card reveal">
+            <a href="https://www.aurovillelanguagelab.org/all-news-april-9th-2026/" class="news-card__cover-link" target="_blank" rel="noopener" aria-label="ALL News — April 9th, 2026"></a>
             <div class="news-card__image">
-              <img
-                src="files/PeaceBeUponUs-800x533.png"
-                alt="ALL News — April 9th, 2026"
-                loading="lazy"
-              />
+              <img src="files/PeaceBeUponUs-800x533.png" alt="ALL News — April 9th, 2026" loading="lazy" />
               <span class="news-card__category">Weekly News</span>
             </div>
             <div class="news-card__body">
               <div class="news-card__meta">
-                <span>
-                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  9 April 2026
-                </span>
-                <span>
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  4 min read
-                </span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>9 April 2026</span>
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min read</span>
               </div>
               <h3 class="news-card__title">ALL News — April 9th, 2026</h3>
-              <p class="news-card__excerpt">
-                The weekly roundup — news from our classes, community reflections, and updates from the broader Auroville world.
-              </p>
-              <a href="https://www.aurovillelanguagelab.org/all-news-april-9th-2026/" class="news-card__link" target="_blank" rel="noopener">
-                Read more
-                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+              <p class="news-card__excerpt">The weekly roundup — news from our classes, community reflections, and updates from the broader Auroville world.</p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-april-9th-2026/" class="news-card__link" target="_blank" rel="noopener">Read more <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
           </article>
 
           <!-- April 2, 2026 -->
           <article class="news-card reveal">
+            <a href="https://www.aurovillelanguagelab.org/all-news-april-2nd-2026/" class="news-card__cover-link" target="_blank" rel="noopener" aria-label="ALL News — April 2nd, 2026"></a>
             <div class="news-card__image">
-              <img
-                src="files/Saraswathi-1-800x534.jpg"
-                alt="ALL News — April 2nd, 2026"
-                loading="lazy"
-              />
+              <img src="files/Saraswathi-1-800x534.jpg" alt="ALL News — April 2nd, 2026" loading="lazy" />
               <span class="news-card__category">Weekly News</span>
             </div>
             <div class="news-card__body">
               <div class="news-card__meta">
-                <span>
-                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  2 April 2026
-                </span>
-                <span>
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  4 min read
-                </span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2 April 2026</span>
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min read</span>
               </div>
               <h3 class="news-card__title">ALL News — April 2nd, 2026</h3>
-              <p class="news-card__excerpt">
-                Kicking off April with news from the Lab — language programme updates, Tomatis intake notes, and community life in Auroville.
-              </p>
-              <a href="https://www.aurovillelanguagelab.org/all-news-april-2nd-2026/" class="news-card__link" target="_blank" rel="noopener">
-                Read more
-                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+              <p class="news-card__excerpt">Kicking off April with news from the Lab — language programme updates, Tomatis intake notes, and community life in Auroville.</p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-april-2nd-2026/" class="news-card__link" target="_blank" rel="noopener">Read more <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
           </article>
 
           <!-- March 26, 2026 -->
           <article class="news-card reveal">
+            <a href="https://www.aurovillelanguagelab.org/all-news-march-26th-2026/" class="news-card__cover-link" target="_blank" rel="noopener" aria-label="ALL News — March 26th, 2026"></a>
             <div class="news-card__image">
-              <img
-                src="files/AV-Library-e1776337362560.jpg"
-                alt="ALL News — March 26th, 2026"
-                loading="lazy"
-              />
+              <img src="files/AV-Library-e1776337362560.jpg" alt="ALL News — March 26th, 2026" loading="lazy" />
               <span class="news-card__category">Weekly News</span>
             </div>
             <div class="news-card__body">
               <div class="news-card__meta">
-                <span>
-                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  26 March 2026
-                </span>
-                <span>
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  4 min read
-                </span>
+                <span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>26 March 2026</span>
+                <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>4 min read</span>
               </div>
               <h3 class="news-card__title">ALL News — March 26th, 2026</h3>
-              <p class="news-card__excerpt">
-                The last week of March at the Lab — catching up on language events, the mediatheque, and notes from our Tomatis team.
-              </p>
-              <a href="https://www.aurovillelanguagelab.org/all-news-march-26th-2026/" class="news-card__link" target="_blank" rel="noopener">
-                Read more
-                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </a>
+              <p class="news-card__excerpt">The last week of March at the Lab — catching up on language events, the mediatheque, and notes from our Tomatis team.</p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-march-26th-2026/" class="news-card__link" target="_blank" rel="noopener">Read more <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
           </article>
 
@@ -758,7 +661,7 @@
               <li><a href="about.html">About Us</a></li>
               <li><a href="languages.html">Learn Languages</a></li>
               <li><a href="https://www.aurovillelanguagelab.org/building/">Building</a></li>
-              <li><a href="https://www.aurovillelanguagelab.org/contact/">Contact Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
               <li><a href="http://www.auroville.org/" target="_blank" rel="noopener">Auroville.org</a></li>
             </ul>
           </div>
