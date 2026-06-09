@@ -1426,7 +1426,7 @@ section {
 /* ===== PROGRAMS ===== */
 .programs {
   padding: var(--section-padding);
-  background: var(--color-white);
+  background: #e8f2f9;
 }
 
 .programs__note {
@@ -1468,13 +1468,15 @@ section {
   vertical-align: top;
   line-height: 1.6;
   color: var(--color-text-light);
+  background: #ffffffbc;
 }
 
 .programs__table tr:last-child td {
   border-bottom: none;
 }
+
 .programs__table tr:nth-child(even) td {
-  background: rgba(235, 246, 255, 0.5);
+  background: rgba(255, 248, 235, 0.768);
 }
 .programs__table tbody tr {
   transition: background 0.2s ease;
