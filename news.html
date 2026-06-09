@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weekly News - Auroville Language Lab</title>
+    <meta
+      name="description"
+      content="Stay updated with the latest news, events, and stories from the Auroville Language Lab — celebrating language, listening, and community life."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* ===== NEWS PAGE STYLES ===== */
+
+      .page-news .hero__bg {
+        background-image: url("files/news-hero.png");
+      }
+
+      /* ── News grid ─────────────────────────────────── */
+      .news-grid-section {
+        padding: 64px 0 100px;
+        background: var(--tomatis-cream);
+      }
+
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+
+      /* ── News card ─────────────────────────────────── */
+      .news-card {
+        background: var(--color-white);
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1.5px solid rgba(44, 62, 109, 0.07);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 20px rgba(44, 62, 109, 0.05);
+      }
+
+      .news-card:hover {
+        transform: translateY(-5px) scale(1.01);
+        border-color: var(--color-primary);
+        box-shadow: 0 22px 44px rgba(44, 62, 109, 0.14);
+      }
+
+      .news-card__image {
+        width: 100%;
+        height: 210px;
+        overflow: hidden;
+        flex-shrink: 0;
+        position: relative;
+      }
+
+      .news-card__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.45s ease;
+      }
+
+      .news-card:hover .news-card__image img {
+        transform: scale(1.06);
+      }
+
+      .news-card__category {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: rgba(26, 40, 71, 0.82);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        color: var(--color-white);
+        font-size: 0.67rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding: 4px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .news-card__body {
+        padding: 22px 22px 20px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .news-card__meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.75rem;
+        color: rgba(90, 74, 53, 0.6);
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+      }
+
+      .news-card__meta span {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .news-card__meta svg {
+        width: 11px;
+        height: 11px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+
+      .news-card__title {
+        font-family: var(--font-heading);
+        font-size: 1.04rem;
+        font-weight: 600;
+        color: var(--tomatis-deep);
+        line-height: 1.35;
+        margin-bottom: 10px;
+      }
+
+      .news-card__excerpt {
+        font-size: 0.865rem;
+        color: var(--color-text-light);
+        line-height: 1.75;
+        flex: 1;
+        margin-bottom: 18px;
+      }
+
+      .news-card__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--color-accent);
+        transition: var(--transition);
+        margin-top: auto;
+      }
+
+      .news-card__link:hover {
+        gap: 9px;
+        color: var(--tomatis-deep);
+      }
+
+      .news-card__link svg {
+        width: 13px;
+        height: 13px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: transform 0.2s ease;
+      }
+
+      .news-card:hover .news-card__link svg {
+        transform: translateX(3px);
+      }
+
+      /* Wide card — spans 2 columns */
+      .news-card--wide {
+        grid-column: span 2;
+        flex-direction: row;
+      }
+
+      .news-card--wide .news-card__image {
+        width: 44%;
+        height: auto;
+        min-height: 240px;
+        flex-shrink: 0;
+      }
+
+      .news-card--wide .news-card__body {
+        padding: 30px 28px;
+      }
+
+      .news-card--wide .news-card__title {
+        font-size: 1.18rem;
+      }
+
+      /* ── Newsletter ────────────────────────────────── */
+      .news-newsletter {
+        padding: 64px 0;
+        background: linear-gradient(135deg, var(--tomatis-deep) 0%, #2e4a7a 100%);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .news-newsletter::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 60% at 50% 0%,
+          rgba(200, 105, 46, 0.14) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      .news-newsletter__inner {
+        position: relative;
+        z-index: 1;
+        max-width: 560px;
+        margin: 0 auto;
+      }
+
+      .news-newsletter__label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--tomatis-amber-light);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 14px;
+      }
+
+      .news-newsletter h2 {
+        font-family: var(--font-heading);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 600;
+        color: var(--color-white);
+        margin-bottom: 12px;
+      }
+
+      .news-newsletter p {
+        font-size: 0.96rem;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.75;
+        margin-bottom: 28px;
+      }
+
+      .news-newsletter__form {
+        display: flex;
+        gap: 10px;
+        max-width: 440px;
+        margin: 0 auto;
+      }
+
+      .news-newsletter__input {
+        flex: 1;
+        padding: 12px 18px;
+        border-radius: 8px;
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--color-white);
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        outline: none;
+        transition: border-color 0.25s ease;
+      }
+
+      .news-newsletter__input::placeholder {
+        color: rgba(255, 255, 255, 0.45);
+      }
+
+      .news-newsletter__input:focus {
+        border-color: var(--tomatis-amber-light);
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      /* ── Responsive ────────────────────────────────── */
+      @media (max-width: 1024px) {
+        .news-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .news-card--wide {
+          grid-column: span 2;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .news-grid {
+          grid-template-columns: 1fr;
+        }
+        .news-card--wide {
+          grid-column: span 1;
+          flex-direction: column;
+        }
+        .news-card--wide .news-card__image {
+          width: 100%;
+          height: 220px;
+        }
+        .news-newsletter__form {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body class="page-news">
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="news.html" class="nav__link--active">News</a></li>
+        <li><a href="languages.html">Learn Languages</a></li>
+        <li>
+          <a href="#">Alfred Tomatis</a>
+          <ul>
+            <li><a href="tomatis.html">The Method</a></li>
+            <li><a href="https://aurovillelanguagelab.org/tomatis-presentation/">Tomatis Presentation</a></li>
+            <li><a href="https://aurovillelanguagelab.org/tomatis-kids/">Tomatis Kids</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Resources</a>
+          <ul>
+            <li><a href="https://aurovillelanguagelab.org/languages/">Learn Site</a></li>
+            <li><a href="https://aurovillelanguagelab.org/mediatheque/">Mediatheque</a></li>
+            <li><a href="https://aurovillelanguagelab.org/research/">Research</a></li>
+            <li><a href="https://aurovillelanguagelab.org/talks/">Talks</a></li>
+          </ul>
+        </li>
+        <li><a href="https://www.aurovillelanguagelab.org/building/">Building</a></li>
+        <li><a href="https://www.aurovillelanguagelab.org/contact/">Contact</a></li>
+        <li>
+          <a href="https://aurovillelanguagelab.org/donation/" class="btn btn--accent" style="text-align:center;margin-top:8px">&#9829; Donate</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <a href="index.html" class="nav__logo" aria-label="Auroville Language Lab home">
+          <img src="files/auroville-language-lab-logo.svg" alt="Auroville Language Lab" />
+        </a>
+        <ul class="nav__links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="news.html" class="nav__link--active">News</a></li>
+          <li><a href="languages.html">Learn Languages</a></li>
+          <li class="nav__item--dropdown">
+            <button class="nav__link--button" type="button" aria-expanded="false">
+              Alfred Tomatis <span class="nav__caret" aria-hidden="true">▾</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li><a href="tomatis.html">The Method</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-presentation/">Tomatis Presentation</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-kids/">Tomatis Kids</a></li>
+            </ul>
+          </li>
+          <li class="nav__item--dropdown">
+            <button class="nav__link--button" type="button" aria-expanded="false">
+              Resources <span class="nav__caret" aria-hidden="true">▾</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li><a href="https://aurovillelanguagelab.org/languages/">Learn Site</a></li>
+              <li><a href="https://aurovillelanguagelab.org/mediatheque/">Mediatheque</a></li>
+              <li><a href="https://aurovillelanguagelab.org/research/">Research</a></li>
+              <li><a href="https://aurovillelanguagelab.org/talks/">Talks</a></li>
+            </ul>
+          </li>
+          <li><a href="https://www.aurovillelanguagelab.org/building/">Building</a></li>
+          <li><a href="https://www.aurovillelanguagelab.org/contact/">Contact</a></li>
+          <li>
+            <a href="https://aurovillelanguagelab.org/donation/" class="btn btn--accent">&#9829; Donate</a>
+          </li>
+        </ul>
+        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-label="Weekly News">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__body">
+        <div class="container">
+          <ol class="hero__breadcrumb" aria-label="Breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="hero__breadcrumb-sep" aria-hidden="true">›</li>
+            <li class="hero__breadcrumb-current" aria-current="page">Weekly News</li>
+          </ol>
+          <div class="hero__inner">
+            <p class="hero__label">Latest from the Lab</p>
+            <h1 class="hero__title">
+              Weekly News &amp;<br /><em>Community Stories</em>
+            </h1>
+            <p class="hero__subtitle">
+              Updates, events, reflections, and stories from life at the Auroville Language Lab — where language meets community, season, and spirit.
+            </p>
+            <div class="hero__ctas">
+              <a href="#news-articles" class="btn btn--accent btn--large">Browse All News</a>
+              <a href="https://aurovillelanguagelab.org/donation/" class="btn btn--glass btn--large">&#9829; Support Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero__statbar" aria-label="Key facts">
+        <div class="container hero__statbar-inner">
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>Published Weekly</strong>
+              <span>Regular community updates</span>
+            </div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>Community Voices</strong>
+              <span>Aurovilians, teachers &amp; guests</span>
+            </div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>Life in Auroville</strong>
+              <span>Seasons, culture &amp; learning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEWS GRID ===== -->
+    <section class="news-grid-section" id="news-articles" aria-labelledby="news-grid-title">
+      <div class="container">
+        <div class="section-header reveal" style="margin-bottom:28px">
+          <p class="section-header__label">Weekly News</p>
+          <h2 class="section-header__title" id="news-grid-title">All Stories</h2>
+        </div>
+
+        <div class="news-grid" id="newsGrid">
+
+          <!-- Latest: May 14, 2026 — wide card, most prominent -->
+          <article class="news-card news-card--wide reveal">
+            <div class="news-card__image">
+              <img
+                src="files/AI-and-Language-Learning-800x533.png"
+                alt="ALL News — May 14th, 2026"
+                loading="eager"
+              />
+              <span class="news-card__category">Latest</span>
+            </div>
+            <div class="news-card__body">
+              <div class="news-card__meta">
+                <span>
+                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  14 May 2026
+                </span>
+                <span>
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  5 min read
+                </span>
+              </div>
+              <h3 class="news-card__title">ALL News — May 14th, 2026</h3>
+              <p class="news-card__excerpt">
+                The latest weekly update from the Auroville Language Lab. Read about what's happening in our classrooms, community events, language programmes, and life at the Lab this week.
+              </p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-may-14th-2026/" class="news-card__link" target="_blank" rel="noopener">
+                Read more
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- May 7, 2026 -->
+          <article class="news-card reveal">
+            <div class="news-card__image">
+              <img
+                src="files/Hot-summer-days-are-here-800x533.png"
+                alt="ALL News — May 7th, 2026"
+                loading="lazy"
+              />
+              <span class="news-card__category">Weekly News</span>
+            </div>
+            <div class="news-card__body">
+              <div class="news-card__meta">
+                <span>
+                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  7 May 2026
+                </span>
+                <span>
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  4 min read
+                </span>
+              </div>
+              <h3 class="news-card__title">ALL News — May 7th, 2026</h3>
+              <p class="news-card__excerpt">
+                This week's update from the Lab — covering language sessions, community life, and what's coming up in the weeks ahead.
+              </p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-may-7th-2026/" class="news-card__link" target="_blank" rel="noopener">
+                Read more
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- April 30, 2026 -->
+          <article class="news-card reveal">
+            <div class="news-card__image">
+              <img
+                src="files/Happy-Puthandu-celebrations-at-sunset-800x533.png"
+                alt="ALL News — April 30th, 2026"
+                loading="lazy"
+              />
+              <span class="news-card__category">Weekly News</span>
+            </div>
+            <div class="news-card__body">
+              <div class="news-card__meta">
+                <span>
+                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  30 April 2026
+                </span>
+                <span>
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  4 min read
+                </span>
+              </div>
+              <h3 class="news-card__title">ALL News — April 30th, 2026</h3>
+              <p class="news-card__excerpt">
+                Wrapping up April with news from our language classes, the Tomatis programme, and community happenings around Auroville.
+              </p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-april-30th-2026/" class="news-card__link" target="_blank" rel="noopener">
+                Read more
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- April 23, 2026 -->
+          <article class="news-card reveal">
+            <div class="news-card__image">
+              <img
+                src="files/AV-SpringTime-800x533.png"
+                alt="ALL News — April 23rd, 2026"
+                loading="lazy"
+              />
+              <span class="news-card__category">Weekly News</span>
+            </div>
+            <div class="news-card__body">
+              <div class="news-card__meta">
+                <span>
+                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  23 April 2026
+                </span>
+                <span>
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  4 min read
+                </span>
+              </div>
+              <h3 class="news-card__title">ALL News — April 23rd, 2026</h3>
+              <p class="news-card__excerpt">
+                A week of language, listening, and life in Auroville — updates from our programmes and a look at what's on the horizon.
+              </p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-april-23rd-2026/" class="news-card__link" target="_blank" rel="noopener">
+                Read more
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- April 16, 2026 -->
+          <article class="news-card reveal">
+            <div class="news-card__image">
+              <img
+                src="files/Building-Tour_28-03-2026-800x438.jpg"
+                alt="ALL News — April 16th, 2026"
+                loading="lazy"
+              />
+              <span class="news-card__category">Weekly News</span>
+            </div>
+            <div class="news-card__body">
+              <div class="news-card__meta">
+                <span>
+                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  16 April 2026
+                </span>
+                <span>
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  5 min read
+                </span>
+              </div>
+              <h3 class="news-card__title">ALL News — April 16th, 2026</h3>
+              <p class="news-card__excerpt">
+                Mid-April news from the Lab — including updates from our building, our language courses, and notes from the Tomatis programme. A full week at the Auroville Language Lab.
+              </p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-april-16th-2026/" class="news-card__link" target="_blank" rel="noopener">
+                Read more
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- April 9, 2026 -->
+          <article class="news-card reveal">
+            <div class="news-card__image">
+              <img
+                src="files/PeaceBeUponUs-800x533.png"
+                alt="ALL News — April 9th, 2026"
+                loading="lazy"
+              />
+              <span class="news-card__category">Weekly News</span>
+            </div>
+            <div class="news-card__body">
+              <div class="news-card__meta">
+                <span>
+                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  9 April 2026
+                </span>
+                <span>
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  4 min read
+                </span>
+              </div>
+              <h3 class="news-card__title">ALL News — April 9th, 2026</h3>
+              <p class="news-card__excerpt">
+                The weekly roundup — news from our classes, community reflections, and updates from the broader Auroville world.
+              </p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-april-9th-2026/" class="news-card__link" target="_blank" rel="noopener">
+                Read more
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- April 2, 2026 -->
+          <article class="news-card reveal">
+            <div class="news-card__image">
+              <img
+                src="files/Saraswathi-1-800x534.jpg"
+                alt="ALL News — April 2nd, 2026"
+                loading="lazy"
+              />
+              <span class="news-card__category">Weekly News</span>
+            </div>
+            <div class="news-card__body">
+              <div class="news-card__meta">
+                <span>
+                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  2 April 2026
+                </span>
+                <span>
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  4 min read
+                </span>
+              </div>
+              <h3 class="news-card__title">ALL News — April 2nd, 2026</h3>
+              <p class="news-card__excerpt">
+                Kicking off April with news from the Lab — language programme updates, Tomatis intake notes, and community life in Auroville.
+              </p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-april-2nd-2026/" class="news-card__link" target="_blank" rel="noopener">
+                Read more
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- March 26, 2026 -->
+          <article class="news-card reveal">
+            <div class="news-card__image">
+              <img
+                src="files/AV-Library-e1776337362560.jpg"
+                alt="ALL News — March 26th, 2026"
+                loading="lazy"
+              />
+              <span class="news-card__category">Weekly News</span>
+            </div>
+            <div class="news-card__body">
+              <div class="news-card__meta">
+                <span>
+                  <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  26 March 2026
+                </span>
+                <span>
+                  <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  4 min read
+                </span>
+              </div>
+              <h3 class="news-card__title">ALL News — March 26th, 2026</h3>
+              <p class="news-card__excerpt">
+                The last week of March at the Lab — catching up on language events, the mediatheque, and notes from our Tomatis team.
+              </p>
+              <a href="https://www.aurovillelanguagelab.org/all-news-march-26th-2026/" class="news-card__link" target="_blank" rel="noopener">
+                Read more
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+        </div><!-- /news-grid -->
+
+      </div>
+    </section>
+
+    <!-- ===== NEWSLETTER ===== -->
+    <section class="news-newsletter" aria-labelledby="newsletter-title">
+      <div class="news-newsletter__inner reveal">
+        <p class="news-newsletter__label">Stay Connected</p>
+        <h2 id="newsletter-title">Get the Weekly Newsletter</h2>
+        <p>Community news, upcoming events, and stories from Auroville — delivered to your inbox each week.</p>
+        <form class="news-newsletter__form" onsubmit="return false;" aria-label="Newsletter sign-up">
+          <input
+            type="email"
+            class="news-newsletter__input"
+            placeholder="Your email address"
+            aria-label="Email address"
+            autocomplete="email"
+          />
+          <button type="submit" class="btn btn--accent">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__col">
+            <img
+              src="files/auroville-language-lab-logo.svg"
+              alt="Auroville Language Lab"
+              style="height:32px;margin-bottom:14px;filter:brightness(0) invert(1);opacity:0.7;"
+            />
+            <p>A non-profit service unit under the Swagatam Trust of the Auroville Foundation.</p>
+            <div class="footer__social" aria-label="Social media links">
+              <a href="https://www.facebook.com/aurovillelanguagelab/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+              <a href="https://www.instagram.com/aurovillelanguagelab/" target="_blank" rel="noopener" aria-label="Instagram">in</a>
+              <a href="https://www.youtube.com/@aurovillelanguagelaborator7542" target="_blank" rel="noopener" aria-label="YouTube">&#9654;</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <h4>Alfred Tomatis</h4>
+            <ul>
+              <li><a href="tomatis.html">The Method</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-presentation/">Tomatis Presentation</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-kids/">Tomatis Kids</a></li>
+              <li><a href="https://aurovillelanguagelab.org/research/">Research</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="languages.html">Learn Languages</a></li>
+              <li><a href="https://www.aurovillelanguagelab.org/building/">Building</a></li>
+              <li><a href="https://www.aurovillelanguagelab.org/contact/">Contact Us</a></li>
+              <li><a href="http://www.auroville.org/" target="_blank" rel="noopener">Auroville.org</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Contact</h4>
+            <p>
+              <a href="mailto:info@aurovillelanguagelab.org">info@aurovillelanguagelab.org</a><br />
+              <a href="mailto:tomatis@aurovillelanguagelab.org">tomatis@aurovillelanguagelab.org</a>
+            </p>
+            <p style="margin-top:10px">
+              <a href="tel:+914132623661">+91 (413) 262 3661</a><br />
+              WhatsApp: <a href="tel:+919843030355">+91 98430 30355</a><br />
+              Tomatis: <a href="tel:+914132622467">+91 (413) 262 2467</a>
+            </p>
+            <p style="margin-top:10px;font-size:0.85rem;opacity:0.7">
+              International Zone, Auroville,<br />Tamil Nadu 605101, India
+            </p>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2026 All Rights Reserved &mdash; Auroville Language Laboratory</p>
+          <p>A non-profit service unit under the Swagatam Trust of the Auroville Foundation</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Language switcher -->
+    <div class="lang-switcher lang-switcher--float" id="langSwitcher">
+      <button class="lang-switcher__toggle" id="langToggle" aria-label="Change language" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span>EN</span>
+      </button>
+      <div class="lang-switcher__options">
+        <a href="#" class="lang-switcher__option active">English</a>
+        <a href="#" class="lang-switcher__option">Français</a>
+        <a href="#" class="lang-switcher__option">Deutsch</a>
+        <a href="#" class="lang-switcher__option">Español</a>
+        <a href="#" class="lang-switcher__option">தமிழ்</a>
+        <a href="#" class="lang-switcher__option">हिन्दी</a>
+      </div>
+    </div>
+
+    <script>
+      // Mobile nav
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileOverlay = document.getElementById("mobileOverlay");
+
+      function toggleMenu() {
+        const open = mobileMenu.classList.toggle("active");
+        mobileOverlay.classList.toggle("active", open);
+        hamburger.classList.toggle("active", open);
+        hamburger.setAttribute("aria-expanded", open);
+        document.body.style.overflow = open ? "hidden" : "";
+      }
+      hamburger.addEventListener("click", toggleMenu);
+      mobileOverlay.addEventListener("click", toggleMenu);
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        const parentLi = link.closest("li");
+        const hasSubmenu = parentLi && parentLi.querySelector(":scope > ul");
+        if (hasSubmenu) {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            parentLi.classList.toggle("active");
+          });
+        } else {
+          link.addEventListener("click", () => {
+            if (mobileMenu.classList.contains("active")) toggleMenu();
+          });
+        }
+      });
+
+      // Lang switcher
+      const langSwitcher = document.getElementById("langSwitcher");
+      const langToggle = document.getElementById("langToggle");
+      langToggle.addEventListener("click", () => {
+        const open = langSwitcher.classList.toggle("active");
+        langToggle.setAttribute("aria-expanded", open);
+      });
+      document.addEventListener("click", (e) => {
+        if (!langSwitcher.contains(e.target)) {
+          langSwitcher.classList.remove("active");
+          langToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Scroll reveal
+      const revealEls = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((el) => {
+            if (el.isIntersecting) {
+              el.target.classList.add("visible");
+              revealObserver.unobserve(el.target);
+            }
+          });
+        },
+        { threshold: 0.08 }
+      );
+      revealEls.forEach((el) => revealObserver.observe(el));
+
+      // Hero parallax
+      const heroEl = document.querySelector(".hero");
+      const heroBg = document.querySelector(".hero__bg");
+      if (heroBg && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        let ticking = false;
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              const scrolled = window.scrollY;
+              const heroH = heroEl.offsetHeight;
+              if (scrolled < heroH) {
+                const progress = scrolled / heroH;
+                const translateY = scrolled * 0.3;
+                const scale = 1.08 + progress * 0.07;
+                heroBg.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+    </script>
+  </body>
+</html>

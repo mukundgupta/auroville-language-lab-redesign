@@ -700,10 +700,11 @@ section {
   z-index: 1;
 }
 
-/* Sub-page hero layout (tomatis, languages & about) */
+/* Sub-page hero layout (tomatis, languages, about & news) */
 .page-tomatis .hero,
 .page-languages .hero,
-.page-about .hero {
+.page-about .hero,
+.page-news .hero {
   flex-direction: column;
   justify-content: flex-end;
 }
