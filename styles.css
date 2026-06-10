@@ -2110,6 +2110,10 @@ section {
   line-height: 1.6;
 }
 
+#evening {
+  background: #fdf6ec;
+}
+
 @media (max-width: 768px) {
   :root {
     --section-padding: 70px 0;
