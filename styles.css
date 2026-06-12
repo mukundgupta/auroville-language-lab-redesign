@@ -131,6 +131,7 @@ section {
   border: none;
   cursor: pointer;
   font: inherit;
+  letter-spacing: 0.01em;
   color: inherit;
   display: inline-flex;
   align-items: center;
@@ -704,7 +705,8 @@ section {
 .page-tomatis .hero,
 .page-languages .hero,
 .page-about .hero,
-.page-news .hero {
+.page-news .hero,
+.page-building .hero {
   flex-direction: column;
   justify-content: flex-end;
 }
@@ -2345,6 +2347,12 @@ section {
   .page-languages .resources__grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ===== PAGE-SPECIFIC: BUILDING ===== */
+
+.page-building .hero__bg {
+  background-image: url("files/auroville-language-lab-language-about-sustainable-architecture.webp");
 }
 
 /* ===== PAGE-SPECIFIC: ABOUT ===== */

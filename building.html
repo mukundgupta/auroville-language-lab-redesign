@@ -1,0 +1,1269 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Building - Auroville Language Lab</title>
+    <meta
+      name="description"
+      content="Sustainable, Healthy, and Conscious Architecture at the Auroville Language Lab â€” passive cooling, EMC lighting, lime construction, Vaastu Shastra, and more."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* ===== PAGE-SPECIFIC: BUILDING ===== */
+      .page-building .hero__bg {
+        background-image: url("files/auroville-language-lab-language-about-sustainable-architecture.webp");
+      }
+
+      /* Feature modal */
+      .feature-modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(15, 25, 55, 0.55);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.35s ease, visibility 0.35s ease;
+      }
+      .feature-modal-overlay.is-active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .feature-modal {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        max-width: 680px;
+        width: 100%;
+        max-height: 88vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45);
+        position: relative;
+        transform: scale(0.93) translateY(16px);
+        transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+        color: #fff;
+      }
+      .feature-modal-overlay.is-active .feature-modal {
+        transform: scale(1) translateY(0);
+      }
+      .feature-modal__img-wrap {
+        width: 100%;
+        aspect-ratio: 16 / 7;
+        flex-shrink: 0;
+        overflow: hidden;
+        border-radius: 20px 20px 0 0;
+      }
+      .feature-modal__img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .feature-modal__body {
+        padding: 28px 32px 32px;
+        overflow-y: auto;
+        flex: 1;
+      }
+      .feature-modal__label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--tomatis-amber-light);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+      }
+      .feature-modal__title {
+        font-family: var(--font-heading);
+        font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 16px;
+        line-height: 1.25;
+      }
+      .feature-modal__text {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.85;
+      }
+      .feature-modal__close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(15, 25, 55, 0.75);
+        border: 2px solid rgba(255, 255, 255, 0.45);
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
+      .feature-modal__close:hover {
+        background: rgba(200, 105, 46, 0.85);
+        border-color: rgba(255, 255, 255, 0.7);
+        transform: scale(1.1);
+      }
+      .feature-modal__close svg {
+        width: 20px;
+        height: 20px;
+        stroke-width: 2.5;
+      }
+      .feature-card { cursor: pointer; }
+      .feature-card__more {
+        display: inline-block;
+        margin-top: 8px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--tomatis-amber);
+        letter-spacing: 0.02em;
+      }
+      .feature-card:hover .feature-card__more { color: var(--color-primary); }
+      @media (max-width: 540px) {
+        .feature-modal__body { padding: 24px 22px 28px; }
+      }
+
+      /* Virtual tour poster / lazy-load */
+      .tour-poster {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+      .tour-poster__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+      .tour-poster:hover .tour-poster__img {
+        transform: scale(1.02);
+      }
+      .tour-poster__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(15, 25, 55, 0.52);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        transition: background 0.3s ease;
+      }
+      .tour-poster:hover .tour-poster__overlay {
+        background: rgba(15, 25, 55, 0.4);
+      }
+      .tour-poster__btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 32px;
+        background: var(--color-accent);
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        font-family: var(--font-body);
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      }
+      .tour-poster__btn:hover {
+        background: #c06a32;
+        transform: scale(1.05);
+        box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+      }
+      .tour-poster__play svg {
+        width: 42px;
+        height: 42px;
+        color: #fff;
+      }
+      .tour-poster__hint {
+        color: rgba(255,255,255,0.7);
+        font-size: 0.85rem;
+        margin: 0;
+        letter-spacing: 0.02em;
+      }
+
+      /* Virtual tour section */
+      .virtual-tour {
+        padding: var(--section-padding);
+        background: var(--tomatis-cream);
+      }
+      .virtual-tour__embed-wrap {
+        position: relative;
+        width: 100%;
+        height: 520px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 40px rgba(28, 43, 85, 0.18);
+        margin-top: 32px;
+      }
+      .virtual-tour__embed-wrap iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+      @media (max-width: 768px) {
+        .virtual-tour__embed-wrap {
+          height: 320px;
+        }
+      }
+
+      /* Features grid */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-top: 32px;
+      }
+      @media (max-width: 900px) {
+        .features-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 540px) {
+        .features-grid { grid-template-columns: 1fr; }
+      }
+
+      .feature-card {
+        background: var(--color-white);
+        border-radius: 14px;
+        overflow: hidden;
+        border: 2px solid rgba(44, 62, 109, 0.06);
+        box-shadow: 0 2px 14px rgba(28, 43, 85, 0.06);
+        transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      }
+      .feature-card:hover {
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: 0 16px 36px rgba(28, 43, 85, 0.13);
+        border-color: var(--color-primary);
+      }
+      .feature-card img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        display: block;
+      }
+      .feature-card__body {
+        padding: 14px 16px 16px;
+      }
+      .feature-card__desc {
+        font-size: 0.88rem;
+        color: var(--color-text-light);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* Book/CTA highlight banner */
+      .building-cta {
+        background: linear-gradient(135deg, var(--tomatis-deep) 0%, #2e4070 100%);
+        border-radius: 18px;
+        padding: 44px 48px;
+        margin-top: 52px;
+        display: flex;
+        align-items: center;
+        gap: 44px;
+        position: relative;
+        overflow: hidden;
+      }
+      .building-cta::before {
+        content: "";
+        position: absolute;
+        top: -40%;
+        right: -10%;
+        width: 360px;
+        height: 360px;
+        background: radial-gradient(circle, rgba(200, 105, 46, 0.14) 0%, transparent 65%);
+        pointer-events: none;
+      }
+      .building-cta__text {
+        flex: 1;
+        position: relative;
+        z-index: 1;
+      }
+      .building-cta__label {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--tomatis-amber-light);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 12px;
+      }
+      .building-cta__title {
+        font-family: var(--font-heading);
+        font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+        font-weight: 600;
+        color: var(--color-white);
+        margin-bottom: 14px;
+        line-height: 1.35;
+      }
+      .building-cta__text p {
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.96rem;
+        line-height: 1.8;
+        margin-bottom: 22px;
+      }
+      .building-cta__image {
+        flex-shrink: 0;
+        width: 160px;
+        position: relative;
+        z-index: 1;
+      }
+      .building-cta__image img {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      }
+      @media (max-width: 768px) {
+        .building-cta {
+          flex-direction: column;
+          text-align: center;
+          padding: 36px 28px;
+          gap: 28px;
+        }
+        .building-cta__image { width: 130px; }
+      }
+    </style>
+  </head>
+  <body class="page-building">
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="languages.html">Learn Languages</a></li>
+        <li>
+          <a href="#">Alfred Tomatis</a>
+          <ul>
+            <li><a href="tomatis.html">The Method</a></li>
+            <li><a href="https://aurovillelanguagelab.org/tomatis-presentation/">Tomatis Presentation</a></li>
+            <li><a href="https://aurovillelanguagelab.org/tomatis-kids/">Tomatis Kids</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Resources</a>
+          <ul>
+            <li><a href="https://aurovillelanguagelab.org/languages/">Learn Site</a></li>
+            <li><a href="https://aurovillelanguagelab.org/mediatheque/">Mediatheque</a></li>
+            <li><a href="https://aurovillelanguagelab.org/research/">Research</a></li>
+            <li><a href="https://aurovillelanguagelab.org/talks/">Talks</a></li>
+          </ul>
+        </li>
+        <li><a href="building.html" class="nav__link--active">Building</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+          <a href="https://aurovillelanguagelab.org/donation/" class="btn btn--accent"
+            style="text-align: center; margin-top: 8px">â¤ Donate</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ===== FEATURE MODAL ===== -->
+    <div class="feature-modal-overlay" id="featureModalOverlay" role="dialog" aria-modal="true" aria-labelledby="featureModalTitle">
+      <div class="feature-modal">
+        <button class="feature-modal__close" id="featureModalClose" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="feature-modal__img-wrap">
+          <img id="featureModalImg" src="" alt="" />
+        </div>
+        <div class="feature-modal__body">
+          <p class="feature-modal__label">Special Feature</p>
+          <h2 class="feature-modal__title" id="featureModalTitle"></h2>
+          <p class="feature-modal__text" id="featureModalText"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <a href="index.html" class="nav__logo" aria-label="Auroville Language Lab home">
+          <img src="files/auroville-language-lab-logo.svg" alt="Auroville Language Lab" />
+        </a>
+        <ul class="nav__links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="languages.html">Learn Languages</a></li>
+          <li class="nav__item--dropdown">
+            <button class="nav__link--button" type="button" aria-expanded="false">
+              Alfred Tomatis <span class="nav__caret" aria-hidden="true">â–¾</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li><a href="tomatis.html">The Method</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-presentation/">Tomatis Presentation</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-kids/">Tomatis Kids</a></li>
+            </ul>
+          </li>
+          <li class="nav__item--dropdown">
+            <button class="nav__link--button" type="button" aria-expanded="false">
+              Resources <span class="nav__caret" aria-hidden="true">â–¾</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li><a href="https://aurovillelanguagelab.org/languages/">Learn Site</a></li>
+              <li><a href="https://aurovillelanguagelab.org/mediatheque/">Mediatheque</a></li>
+              <li><a href="https://aurovillelanguagelab.org/research/">Research</a></li>
+              <li><a href="https://aurovillelanguagelab.org/talks/">Talks</a></li>
+            </ul>
+          </li>
+          <li><a href="building.html" class="nav__link--active">Building</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="https://aurovillelanguagelab.org/donation/" class="btn btn--accent">â¤ Donate</a>
+          </li>
+        </ul>
+        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-label="The Building">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__body">
+        <div class="container">
+          <ol class="hero__breadcrumb" aria-label="Breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="hero__breadcrumb-sep" aria-hidden="true">â€º</li>
+            <li class="hero__breadcrumb-current" aria-current="page">The Building</li>
+          </ol>
+          <div class="hero__inner">
+            <p class="hero__label">Sustainable, Healthy &amp; Conscious Architecture</p>
+            <h1 class="hero__title">The Auroville Language Lab <em>Building</em></h1>
+            <p class="hero__subtitle">
+              A living example of holistic design â€” combining passive cooling, natural materials,
+              Vaastu Shastra, and cutting-edge sustainability into a space that invites learning
+              and nourishes wellbeing.
+            </p>
+            <div class="hero__ctas">
+              <a href="#tour" class="btn btn--accent btn--large">Take the Virtual Tour</a>
+              <a href="#features" class="btn btn--glass btn--large">Special Features</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero__statbar" aria-label="Key facts">
+        <div class="container hero__statbar-inner">
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>Passive Cooling</strong>
+              <span>Comfortably cool without air conditioning</span>
+            </div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>Solar &amp; Wind Energy</strong>
+              <span>Renewable energy system on-site</span>
+            </div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>EMC Compliant</strong>
+              <span>Electro-magnetic compliance &amp; reduced electro-smog</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== INTRO ===== -->
+    <section class="intro" id="about" aria-labelledby="intro-title">
+      <div class="container">
+        <div class="intro__grid reveal">
+          <div class="intro__image-wrap">
+            <img
+              src="files/auroville-language-lab-language-about-sustainable-architecture.webp"
+              alt="Auroville Language Lab sustainable building exterior"
+              loading="lazy"
+            />
+            <div class="intro__badge" aria-hidden="true">
+              <div class="intro__badge-num">12+</div>
+              <div class="intro__badge-text">sustainable<br />innovations</div>
+            </div>
+          </div>
+          <div class="intro__content">
+            <div class="section-header">
+              <p class="section-header__label">Our Space</p>
+              <h2 class="section-header__title" id="intro-title">
+                Sustainable, Healthy, and Conscious Architecture
+              </h2>
+            </div>
+            <p>
+              We, at the Auroville Language Lab are constantly striving towards an integrated and
+              holistic way of learning as well as living. Our ethos is reflected in our unique
+              building â€” an exemplar of architecture that is sustainable, healthy, and conscious.
+            </p>
+            <p>
+              Our space combines climate-protective design with human comfort &amp; wellbeing. It
+              features passive cooling systems, lime &amp; probiotics-based construction, EMC
+              lighting, and many other innovations in sustainable design. Summer after summer, we
+              stay comfortably cool inside despite soaring temperatures outside.
+            </p>
+            <p>
+              We were very lucky to have architects <strong>Parul Zaveri &amp; Nimish Patel</strong>
+              of Panika and Abhikram â€” leaders of the sustainable architecture movement in India â€”
+              who gave us this beautifully conscious design. Numerous consultants &amp; innovators
+              from Auroville and elsewhere brought their own special wisdom to this structure.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VIRTUAL TOUR ===== -->
+    <section class="virtual-tour" id="tour" aria-labelledby="tour-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-header__label">360Â° Experience</p>
+          <h2 class="section-header__title" id="tour-title">Explore the Building Virtually</h2>
+        </div>
+        <p class="programs__note reveal">
+          Take an interactive 360Â° tour of the Auroville Language Lab â€” walk through the
+          classrooms, the Mediatheque, the Tomatis centre, and the inner courtyard from wherever
+          you are in the world.
+        </p>
+                <div class="virtual-tour__embed-wrap reveal" id="tourWrap">
+          <!-- Poster shown until user starts the tour -->
+          <div class="tour-poster" id="tourPoster">
+            <img
+              src="files/Building-Tour_28-03-2026-800x438.jpg"
+              alt="Auroville Language Lab virtual tour preview"
+              class="tour-poster__img"
+            />
+            <div class="tour-poster__overlay">
+              <button class="tour-poster__btn" id="startTourBtn" aria-label="Start virtual tour">
+                <span class="tour-poster__play" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M10 8.5l6 3.5-6 3.5V8.5z" fill="currentColor"/>
+                  </svg>
+                </span>
+                <span>Start Virtual Tour</span>
+              </button>
+              <p class="tour-poster__hint">Interactive 360&deg; experience &mdash; click to load</p>
+            </div>
+          </div>
+          <!-- iframe injected by JS on click -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SPECIAL FEATURES ===== -->
+    <section class="benefits" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-header__label">What Makes It Special</p>
+          <h2 class="section-header__title" id="features-title">Special Aspects of Our Building</h2>
+        </div>
+        <p class="benefits__lead reveal">
+          Our building embodies the synthesis of a multitude of ideas and innovations â€” from
+          traditional Indian wisdom to cutting-edge sustainable technology.
+        </p>
+
+                <div class="features-grid">
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Passive Cooling System"
+            data-img="files/building-passive-cooling.webp"
+            data-text="The building stays comfortable without conventional air conditioning. Cooling towers, underground air tunnels, inlet shafts, and exhaust shafts use natural airflow to draw fresh air through the building while expelling warm air. This entire system works without electricity, dramatically reducing energy consumption.">
+            <img src="files/building-passive-cooling.webp" alt="Passive cooling system" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Passive cooling and dehumidification system &mdash; no air conditioning needed</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Lime Mortar and Plaster"
+            data-img="files/building-lime-plaster.jpg"
+            data-text="Traditional lime mortar and plaster allow walls to breathe, helping regulate humidity and improve indoor comfort. Unlike cement, lime continues to absorb carbon dioxide throughout its life cycle, reducing the building&apos;s environmental footprint.">
+            <img src="files/building-lime-plaster.jpg" alt="Lime mortar and plaster" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Use of lime for mortar and plaster throughout the structure</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Maximising Daylight"
+            data-img="files/building-natural-daylight.webp"
+            data-text="The building is designed to maximise daylight while minimising unwanted heat. Carefully positioned openings and thick windows diffuse and distribute natural light deep into interior spaces, reducing the need for artificial lighting.">
+            <img src="files/building-natural-daylight.webp" alt="Natural daylight design" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Passive design techniques maximising natural daylight while reducing heat ingress</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Electromagnetic Compliance"
+            data-img="files/building-emc.jpg"
+            data-text="The electrical systems were planned to reduce unnecessary electromagnetic interference, through specialised grounding and careful cable routing. This approach was developed to create a calmer, sensory-friendly learning environment while protecting sensitive equipment.">
+            <img src="files/building-emc.jpg" alt="EMC compliance testing" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Electro-magnetic compliance and reduction of electro-smog</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Probiotics"
+            data-img="files/building-probiotics.jpg"
+            data-text="Beneficial microorganisms were incorporated into the building materials and curing process from the foundation upwards. These probiotics help create a healthier indoor environment by discouraging fungal growth, improving air quality while removing free radicals from the air and releasing anti-oxidants.">
+            <img src="files/building-probiotics.jpg" alt="Probiotics in walls" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Probiotics embedded in the walls for the purest anti-oxidant energy</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Cyclone Wood"
+            data-img="files/building-cyclone-wood.jpg"
+            data-text="Most of the wood used throughout the building was recovered from trees uprooted during Cyclone Thane. Reusing existing materials reduces waste and preserves valuable natural resources.">
+            <img src="files/building-cyclone-wood.jpg" alt="Cyclone wood reuse" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Use of wood from trees uprooted during the cyclone of 2011</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Reclaimed Wood"
+            data-img="files/building-secondhand-wood.jpg"
+            data-text="Doors, frames and carpentry elements were crafted from reclaimed timber salvaged from older structures like colonial houses in Puducherry. Extending the life of existing materials significantly lowers the environmental impact of construction.">
+            <img src="files/building-secondhand-wood.jpg" alt="Second-hand wood carpentry" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Use of second-hand wood for all carpentry work</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Wheelchair-Friendly Design"
+            data-img="files/building-wheelchair.jpg"
+            data-text="The ground floor was designed for accessibility, enabling barrier-free movement through learning and community spaces. The design supports inclusion and ease of use for people with diverse mobility needs. The staircase from ground floor to first floor was built to make the upper floor accessible through use of a Personal Stair Climber.">
+            <img src="files/building-wheelchair.jpg" alt="Wheelchair accessible ground floor" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Ground floor fully wheelchair-accessible</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Upcycled Furniture"
+            data-img="files/building-upcycle.jpg"
+            data-text="Existing furniture and materials were creatively repurposed into new functional elements, extending their useful life and reducing material waste, while also contributing to the aesthetics and sound reduction of the space.">
+            <img src="files/building-upcycle.jpg" alt="Upcycled shelves" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Upcycling old computer tables into shelves</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Ecofriendly Paints"
+            data-img="files/building-eco-paint.webp"
+            data-text="The building uses breathable lime finishes and carefully selected low-VOC paints that support indoor air quality while maintaining compatibility with the lime-based construction system.">
+            <img src="files/building-eco-paint.webp" alt="Eco-friendly paints" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Use of eco-friendly paints throughout</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Water Harvesting and Re-use"
+            data-img="files/building-rainwater.jpg"
+            data-text="Rainwater is collected into a water channel surrounding the building with excess rainwater being fed into the nearby canyon to fill the aquifer. There is a 100% greywater re-use system, based on a series of probiotic-based baffle reactors combined with plants and a vortex system, helping reduce dependence on external water sources and supporting responsible water management.">
+            <img src="files/building-rainwater.jpg" alt="Rainwater harvesting" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Rain water harvesting and re-use of grey water through a vortex system</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Vaastu Shastra"
+            data-img="files/building-vastu.jpg"
+            data-text="The building layout integrates traditional Vaastu principles - the traditional Indian science of building which seeks to integrate the human being with the cosmos.">
+            <img src="files/building-vastu.jpg" alt="Vaastu Shastra" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Vaastu Shastra &mdash; rooted in ancient Indian architectural wisdom</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Telluric Energy"
+            data-img="files/building-telluric.jpg"
+            data-text="The building planning considered naturally occurring earth energies and underground water flows through traditional site-mapping geomancy-based techniques. By studying telluric energy lines and the energetic characteristics of the site, the design sought to create a harmonious relationship between the building, its occupants and the surrounding landscape.">
+            <img src="files/building-telluric.jpg" alt="Telluric energy lines" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">Integration of telluric energy lines</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+          <div class="feature-card reveal" role="button" tabindex="0"
+            data-title="Renewable Energy"
+            data-img="files/building-solar.png"
+            data-text="The building incorporates solar energy as part of its long-term goal of energy self-sufficiency. The system is designed to reduce reliance on conventional power sources while supporting low-carbon operation.">
+            <img src="files/building-solar.png" alt="Solar and wind energy system" loading="lazy" />
+            <div class="feature-card__body">
+              <p class="feature-card__desc">A solar and wind energy-based renewable energy system</p>
+              <span class="feature-card__more">Read more &rsaquo;</span>
+            </div>
+          </div>
+        </div>
+        <!-- Book CTA banner -->
+        <div class="building-cta reveal">
+          <div class="building-cta__text">
+            <p class="building-cta__label">Coming Soon</p>
+            <h3 class="building-cta__title">Build Holistically: Sustainable, Healthy &amp; Conscious Construction</h3>
+            <p>
+              Our upcoming book consolidates all the knowledge, expertise, and innovations that
+              went into the making of this building â€” a guide for anyone seeking to build with
+              consciousness, sustainability, and human wellbeing in mind.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VIDEO â€” HELP US FINISH ===== -->
+    <section class="documentary" aria-labelledby="video-title">
+      <div class="documentary__inner reveal">
+        <div class="section-header">
+          <p class="section-header__label">Help Us Finish the Building</p>
+          <h2 class="section-header__title" id="video-title">
+            Watch: Our Sustainable Building Journey
+          </h2>
+        </div>
+        <p class="documentary__desc">
+          See the vision, the craftsmanship, and the community effort behind this conscious space.
+          Every contribution helps us complete what we have started.
+        </p>
+        <div class="documentary__embed-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/DEXGZ6YM5IQ"
+            title="Auroville Language Laboratory Sustainable Building"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+        <a
+          href="https://aurovillelanguagelab.org/donation/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn--accent"
+        >â¤ Donate to Support the Building &rarr;</a>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials" aria-labelledby="testimonials-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-header__label">What People Say</p>
+          <h2 class="section-header__title" id="testimonials-title">
+            Visitors on the experience of the space
+          </h2>
+        </div>
+        <div class="testimonial-slider-wrap reveal">
+          <div class="testimonial-slider">
+            <div class="testimonial-track">
+
+              <article class="testimonial-card">
+                <p class="testimonial-card__text">
+                  An example of innovative methods ranging from traditional architecture to Vaastu
+                  Shastra helped me relate to the construction better. Climate innovations were
+                  practically seen â€” de-humidification with activated alumina and EMC, which until
+                  now were only limited to theories. Tunnels and wind shafts were also an
+                  exploratory experience. Awaiting the finished product.
+                </p>
+                <p class="testimonial-card__name">~ Pooja Jaiswal</p>
+                <p style="font-size:0.82rem;color:var(--color-text-light);margin-top:2px">Student, Paul Institute of Architecture &amp; Research, Gujarat</p>
+              </article>
+
+              <article class="testimonial-card">
+                <p class="testimonial-card__text">
+                  What a wonderful project! I was visiting Auroville on sabbatical from my
+                  University in the U.S. My visit provided so much more than I expected â€” learning
+                  about this extraordinary building, the Tomatis method, and the mission of the
+                  Language Lab was truly inspiring.
+                </p>
+                <p class="testimonial-card__name">~ Jane Wheeler</p>
+                <p style="font-size:0.82rem;color:var(--color-text-light);margin-top:2px">Mount Holyoke College, USA</p>
+              </article>
+
+              <article class="testimonial-card">
+                <p class="testimonial-card__text">
+                  When I first arrived at the Language Lab, I was struck by the beauty of the
+                  inner courtyard and the general sense of high aesthetics. Several times I have
+                  heard from new students who notice the spirit of the building: it invites
+                  learning, stimulates the brain, and brings forth a feeling of calm and
+                  well-being.
+                </p>
+                <p class="testimonial-card__name">~ Long-term Student</p>
+              </article>
+
+              <article class="testimonial-card">
+                <p class="testimonial-card__text">
+                  This is my very first time visiting. The space is so peaceful that it expanded
+                  a lot of new space inside my mind and my heart, giving me more hope to start my
+                  study journey. I am very much looking forward to French lessons here.
+                </p>
+                <p class="testimonial-card__name">~ First-time Visitor</p>
+              </article>
+
+              <article class="testimonial-card">
+                <p class="testimonial-card__text">
+                  I am a lover of eco-friendly projects and have seen many, but this one is
+                  fantabulous. With natural air-conditioning, the metal support structure, and
+                  the aesthetic use of simple glass bricks â€” every single element has a purpose
+                  and a story.
+                </p>
+                <p class="testimonial-card__name">~ Eco-Architecture Enthusiast</p>
+              </article>
+
+              <article class="testimonial-card">
+                <p class="testimonial-card__text">
+                  Energy in Tranquility â€” that's how I would describe this beautiful building and
+                  its people. As you walk in you can't help but feel the simplicity holds so many
+                  layers of strength and real content. It's at least a few degrees cooler here
+                  and the sweat evaporates. I am taken away by this experience.
+                </p>
+                <p class="testimonial-card__name">~ Auroville Visitor</p>
+              </article>
+
+            </div>
+          </div>
+          <div class="testimonial-nav">
+            <button class="testimonial-button testimonial-button--prev" type="button" aria-label="Previous testimonial">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6L9 12L15 18"/></svg>
+            </button>
+            <button class="testimonial-button testimonial-button--next" type="button" aria-label="Next testimonial">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18"/></svg>
+            </button>
+          </div>
+          <div class="testimonial-dots" aria-label="Testimonials navigation"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="cta__inner reveal">
+        <p class="cta__label">Support Our Work</p>
+        <h2 id="cta-title">Help Us Complete This Conscious Space</h2>
+        <p>
+          The Auroville Language Lab building is still being completed. Your contribution â€”
+          however large or small â€” helps us bring this vision fully to life for the community
+          and all who visit.
+        </p>
+        <div class="cta__buttons">
+          <a
+            href="https://aurovillelanguagelab.org/donation/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn--accent btn--large"
+          >â¤ Donate Now</a>
+          <a href="contact.html" class="btn btn--glass btn--large">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RESOURCES ===== -->
+    <section class="resources" aria-labelledby="resources-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-header__label">Explore More</p>
+          <h2 class="section-header__title" id="resources-title">Discover the Language Lab</h2>
+        </div>
+        <div class="resources__grid">
+          <a href="about.html" class="resource-card reveal">
+            <div class="resource-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <div class="resource-card__title">About Us</div>
+            <p class="resource-card__desc">
+              Learn about the people, the mission, and the history of the Auroville Language Lab.
+            </p>
+            <span class="resource-card__link">Read more &rarr;</span>
+          </a>
+          <a href="tomatis.html" class="resource-card reveal">
+            <div class="resource-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+            </div>
+            <div class="resource-card__title">Alfred Tomatis Method</div>
+            <p class="resource-card__desc">
+              Discover the pioneering listening therapy â€” India's first Tomatis centre, open since 2004.
+            </p>
+            <span class="resource-card__link">Read more &rarr;</span>
+          </a>
+          <a href="languages.html" class="resource-card reveal">
+            <div class="resource-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="resource-card__title">Learn Languages</div>
+            <p class="resource-card__desc">
+              English, French, Tamil, Sanskrit, Hindi, and more â€” taught by native speakers.
+            </p>
+            <span class="resource-card__link">Read more &rarr;</span>
+          </a>
+          <a href="https://aurovillelanguagelab.org/donation/" class="resource-card reveal" target="_blank" rel="noopener">
+            <div class="resource-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div class="resource-card__title">Support the Building</div>
+            <p class="resource-card__desc">
+              Help us complete and maintain this conscious space by making a donation today.
+            </p>
+            <span class="resource-card__link">Donate &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__col">
+            <img
+              src="files/auroville-language-lab-logo.svg"
+              alt="Auroville Language Lab"
+              style="height:32px;margin-bottom:14px;filter:brightness(0) invert(1);opacity:0.7;"
+            />
+            <p>A non-profit service unit under the Swagatam Trust of the Auroville Foundation.</p>
+            <div class="footer__social" aria-label="Social media links">
+              <a href="https://www.facebook.com/aurovillelanguagelab/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+              <a href="https://www.instagram.com/aurovillelanguagelab/" target="_blank" rel="noopener" aria-label="Instagram">in</a>
+              <a href="https://www.youtube.com/@aurovillelanguagelaborator7542" target="_blank" rel="noopener" aria-label="YouTube">&#9654;</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <h4>Alfred Tomatis</h4>
+            <ul>
+              <li><a href="tomatis.html">The Method</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-presentation/">Tomatis Presentation</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-kids/">Tomatis Kids</a></li>
+              <li><a href="https://aurovillelanguagelab.org/research/">Research</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="languages.html">Learn Languages</a></li>
+              <li><a href="building.html">Building</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="http://www.auroville.org/" target="_blank" rel="noopener">Auroville.org</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Contact</h4>
+            <p>
+              <a href="mailto:info@aurovillelanguagelab.org">info@aurovillelanguagelab.org</a><br />
+              <a href="mailto:tomatis@aurovillelanguagelab.org">tomatis@aurovillelanguagelab.org</a>
+            </p>
+            <p style="margin-top:10px">
+              <a href="tel:+914132623661">+91 (413) 262 3661</a><br />
+              WhatsApp: <a href="tel:+919843030355">+91 98430 30355</a><br />
+              Tomatis: <a href="tel:+914132622467">+91 (413) 262 2467</a>
+            </p>
+            <p style="margin-top:10px;font-size:0.85rem;opacity:0.7">
+              International Zone, Auroville,<br />Tamil Nadu 605101, India
+            </p>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2026 All Rights Reserved &mdash; Auroville Language Laboratory</p>
+          <p>A non-profit service unit under the Swagatam Trust of the Auroville Foundation</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Language switcher -->
+    <div class="lang-switcher lang-switcher--float" id="langSwitcher">
+      <button class="lang-switcher__toggle" id="langToggle" aria-label="Change language" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span>EN</span>
+      </button>
+      <div class="lang-switcher__options">
+        <a href="#" class="lang-switcher__option active">English</a>
+        <a href="#" class="lang-switcher__option">FranÃ§ais</a>
+        <a href="#" class="lang-switcher__option">Deutsch</a>
+        <a href="#" class="lang-switcher__option">EspaÃ±ol</a>
+        <a href="#" class="lang-switcher__option">à®¤à®®à®¿à®´à¯</a>
+        <a href="#" class="lang-switcher__option">à¤¹à¤¿à¤¨à¥à¤¦à¥€</a>
+      </div>
+    </div>
+
+    <script>
+      // ===== Start Tour on click =====
+      const startTourBtn = document.getElementById("startTourBtn");
+      if (startTourBtn) {
+        startTourBtn.addEventListener("click", function () {
+          const wrap   = document.getElementById("tourWrap");
+          const poster = document.getElementById("tourPoster");
+
+          // Fade out poster
+          poster.style.transition = "opacity 0.4s ease";
+          poster.style.opacity = "0";
+
+          setTimeout(function () {
+            poster.remove();
+            const iframe = document.createElement("iframe");
+            iframe.id                   = "tour-embeded";
+            iframe.name                 = "Auroville Language Laboratory";
+            iframe.src                  = "https://tour.panoee.net/iframe/auroville-language-lab";
+            iframe.setAttribute("frameborder", "0");
+            iframe.setAttribute("scrolling", "no");
+            iframe.setAttribute("allowvr", "yes");
+            iframe.allow                = "vr; xr; accelerometer; gyroscope; autoplay;";
+            iframe.allowFullscreen      = true;
+            iframe.title               = "360° Virtual Tour of the Auroville Language Lab";
+            iframe.style.display        = "block";
+            iframe.style.width          = "100%";
+            iframe.style.height         = "100%";
+            iframe.style.border         = "none";
+            iframe.style.opacity        = "0";
+            iframe.style.transition     = "opacity 0.5s ease";
+            wrap.appendChild(iframe);
+            // Fade iframe in once it starts loading
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () { iframe.style.opacity = "1"; });
+            });
+          }, 400);
+        });
+      }
+
+      // ===== Scroll reveal =====
+      const revealEls = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((el) => {
+            if (el.isIntersecting) {
+              el.target.classList.add("visible");
+              revealObserver.unobserve(el.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      revealEls.forEach((el) => revealObserver.observe(el));
+
+      // ===== Mobile nav =====
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileOverlay = document.getElementById("mobileOverlay");
+
+      function toggleMenu() {
+        const open = mobileMenu.classList.toggle("active");
+        mobileOverlay.classList.toggle("active", open);
+        hamburger.classList.toggle("active", open);
+        hamburger.setAttribute("aria-expanded", open);
+        document.body.style.overflow = open ? "hidden" : "";
+      }
+      hamburger.addEventListener("click", toggleMenu);
+      mobileOverlay.addEventListener("click", toggleMenu);
+
+      // Accordion submenus in mobile menu
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        const parentLi = link.closest("li");
+        const hasSubmenu = parentLi && parentLi.querySelector(":scope > ul");
+        if (hasSubmenu) {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            parentLi.classList.toggle("active");
+          });
+        } else {
+          link.addEventListener("click", () => {
+            if (mobileMenu.classList.contains("active")) toggleMenu();
+          });
+        }
+      });
+
+      // ===== Lang switcher =====
+      const langSwitcher = document.getElementById("langSwitcher");
+      const langToggle = document.getElementById("langToggle");
+      langToggle.addEventListener("click", () => {
+        const open = langSwitcher.classList.toggle("active");
+        langToggle.setAttribute("aria-expanded", open);
+      });
+      document.addEventListener("click", (e) => {
+        if (!langSwitcher.contains(e.target)) {
+          langSwitcher.classList.remove("active");
+          langToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // ===== Hero parallax =====
+      const heroEl = document.querySelector(".hero");
+      const heroBg = document.querySelector(".hero__bg");
+      if (heroBg && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        let ticking = false;
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              const scrolled = window.scrollY;
+              const heroH = heroEl.offsetHeight;
+              if (scrolled < heroH) {
+                const progress = scrolled / heroH;
+                heroBg.style.transform = `scale(${1.08 + progress * 0.07}) translateY(${scrolled * 0.3}px)`;
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+
+      // ===== Testimonial slider =====
+      const testimonialSlider = document.querySelector(".testimonial-slider");
+      const testimonialTrack  = document.querySelector(".testimonial-track");
+      const testimonialPrev   = document.querySelector(".testimonial-button--prev");
+      const testimonialNext   = document.querySelector(".testimonial-button--next");
+      const testimonialDots   = document.querySelector(".testimonial-dots");
+
+      if (testimonialSlider && testimonialTrack && testimonialPrev && testimonialNext && testimonialDots) {
+        const slides = Array.from(testimonialTrack.querySelectorAll(".testimonial-card"));
+        let currentSlide = 0;
+        let autoScroll = null;
+
+        const getCardWidth = () => slides[0].offsetWidth + 24; // card + gap
+
+        const setActiveDot = (index) => {
+          Array.from(testimonialDots.children).forEach((dot, i) => {
+            dot.classList.toggle("testimonial-dot--active", i === index);
+          });
+        };
+
+        const setActiveCard = (index) => {
+          slides.forEach((card, i) => {
+            card.classList.toggle("testimonial-card--active", i === index);
+          });
+        };
+
+        const slideTo = (index) => {
+          currentSlide = index;
+          const sliderWidth = testimonialSlider.offsetWidth;
+          const cardWidth   = getCardWidth();
+          const offset      = sliderWidth / 2 - cardWidth / 2 - index * cardWidth;
+          testimonialTrack.style.transform = `translateX(${offset}px)`;
+          setActiveDot(index);
+          setActiveCard(index);
+        };
+
+        const createDots = () => {
+          testimonialDots.innerHTML = "";
+          slides.forEach((_, i) => {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "testimonial-dot";
+            dot.setAttribute("aria-label", `Show testimonial ${i + 1}`);
+            dot.addEventListener("click", () => { slideTo(i); startAuto(); });
+            testimonialDots.appendChild(dot);
+          });
+        };
+
+        const slideNext = () => slideTo(currentSlide + 1 >= slides.length ? 0 : currentSlide + 1);
+        const slidePrev = () => slideTo(currentSlide <= 0 ? slides.length - 1 : currentSlide - 1);
+
+        const startAuto = () => { stopAuto(); autoScroll = setInterval(slideNext, 4600); };
+        const stopAuto  = () => { if (autoScroll) { clearInterval(autoScroll); autoScroll = null; } };
+
+        createDots();
+        slideTo(0);
+
+        testimonialNext.addEventListener("click", () => { slideNext(); startAuto(); });
+        testimonialPrev.addEventListener("click", () => { slidePrev(); startAuto(); });
+        testimonialSlider.addEventListener("mouseenter", stopAuto);
+        testimonialSlider.addEventListener("mouseleave", startAuto);
+        window.addEventListener("resize", () => slideTo(currentSlide));
+
+        startAuto();
+      }
+
+      // ===== Feature card modals =====
+      (function () {
+        const overlay    = document.getElementById("featureModalOverlay");
+        const closeBtn   = document.getElementById("featureModalClose");
+        const modalImg   = document.getElementById("featureModalImg");
+        const modalTitle = document.getElementById("featureModalTitle");
+        const modalText  = document.getElementById("featureModalText");
+
+        function openModal(card) {
+          modalImg.src           = card.dataset.img   || "";
+          modalImg.alt           = card.dataset.title || "";
+          modalTitle.textContent = card.dataset.title || "";
+          modalText.textContent  = card.dataset.text  || "";
+          overlay.classList.add("is-active");
+          document.body.style.overflow = "hidden";
+          closeBtn.focus();
+        }
+
+        function closeModal() {
+          overlay.classList.remove("is-active");
+          document.body.style.overflow = "";
+        }
+
+        document.querySelectorAll(".feature-card").forEach((card) => {
+          card.addEventListener("click", () => openModal(card));
+          card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(card); }
+          });
+        });
+
+        closeBtn.addEventListener("click", closeModal);
+        overlay.addEventListener("click", (e) => { if (e.target === overlay) closeModal(); });
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+      })();
+    </script>
+
+    <!-- Virtual tour device-motion passthrough (for VR on mobile) -->
+    <script>
+      var pano_iframe_name = "tour-embeded";
+      window.addEventListener("devicemotion", function (e) {
+        var iframe = document.getElementById(pano_iframe_name);
+        if (iframe) iframe.contentWindow.postMessage({
+          type: "devicemotion",
+          deviceMotionEvent: {
+            acceleration: { x: e.acceleration.x, y: e.acceleration.y, z: e.acceleration.z },
+            accelerationIncludingGravity: { x: e.accelerationIncludingGravity.x, y: e.accelerationIncludingGravity.y, z: e.accelerationIncludingGravity.z },
+            rotationRate: { alpha: e.rotationRate.alpha, beta: e.rotationRate.beta, gamma: e.rotationRate.gamma },
+            interval: e.interval, timeStamp: e.timeStamp
+          }
+        }, "*");
+      });
+    </script>
+  </body>
+</html>
