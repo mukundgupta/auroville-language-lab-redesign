@@ -1044,12 +1044,15 @@
             const iframe = document.createElement("iframe");
             iframe.id                   = "tour-embeded";
             iframe.name                 = "Auroville Language Laboratory";
-            iframe.src                  = "https://tour.panoee.net/iframe/auroville-language-lab";
+            iframe.src                  = "https://tour.panoee.net/iframe/6a285777cb80118d54be6efa";
             iframe.setAttribute("frameborder", "0");
             iframe.setAttribute("scrolling", "no");
             iframe.setAttribute("allowvr", "yes");
-            iframe.allow                = "vr; xr; accelerometer; gyroscope; autoplay;";
-            iframe.allowFullscreen      = true;
+            iframe.setAttribute("webkitallowfullscreen", "false");
+            iframe.setAttribute("mozallowfullscreen", "false");
+            iframe.setAttribute("loading", "eager");
+            iframe.allow                = "accelerometer; gyroscope; autoplay;";
+            iframe.allowFullscreen      = false;
             iframe.title               = "360° Virtual Tour of the Auroville Language Lab";
             iframe.style.display        = "block";
             iframe.style.width          = "100%";
@@ -1061,6 +1064,24 @@
             // Fade iframe in once it starts loading
             requestAnimationFrame(function () {
               requestAnimationFrame(function () { iframe.style.opacity = "1"; });
+            });
+
+            // Panoee devicemotion relay for mobile gyroscope
+            var pano_iframe_name = "tour-embeded";
+            window.addEventListener("devicemotion", function(e) {
+              var panoIframe = document.getElementById(pano_iframe_name);
+              if (panoIframe) {
+                panoIframe.contentWindow.postMessage({
+                  type: "devicemotion",
+                  deviceMotionEvent: {
+                    acceleration: { x: e.acceleration.x, y: e.acceleration.y, z: e.acceleration.z },
+                    accelerationIncludingGravity: { x: e.accelerationIncludingGravity.x, y: e.accelerationIncludingGravity.y, z: e.accelerationIncludingGravity.z },
+                    rotationRate: { alpha: e.rotationRate.alpha, beta: e.rotationRate.beta, gamma: e.rotationRate.gamma },
+                    interval: e.interval,
+                    timeStamp: e.timeStamp
+                  }
+                }, "*");
+              }
             });
           }, 400);
         });
