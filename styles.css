@@ -707,7 +707,8 @@ section {
 .page-about .hero,
 .page-news .hero,
 .page-building .hero,
-.page-donation .hero {
+.page-donation .hero,
+.page-contact .hero {
   flex-direction: column;
   justify-content: flex-end;
 }

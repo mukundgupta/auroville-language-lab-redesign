@@ -1,2 +1,910 @@
-<h1>TODO: CONTACT PAGE</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact &amp; Get Involved - Auroville Language Lab</title>
+    <meta
+      name="description"
+      content="Get in touch with the Auroville Language Lab &mdash; contact us, visit us in Auroville, or find out how to volunteer and get involved with our work."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .page-contact .hero__bg {
+        background-image: url("files/contact-hero.webp");
+      }
 
+      /* ── Contact grid ─────────────────────────────── */
+      .contact-main {
+        padding: var(--section-padding);
+        background: var(--tomatis-cream);
+      }
+      .contact-main__grid {
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 48px;
+        align-items: start;
+      }
+      @media (max-width: 960px) {
+        .contact-main__grid { grid-template-columns: 1fr; }
+      }
+
+      /* ── Contact form ─────────────────────────────── */
+      .contact-form-wrap {
+        background: var(--color-white);
+        border-radius: 18px;
+        padding: 36px 36px 32px;
+        border: 2px solid rgba(44, 62, 109, 0.07);
+        box-shadow: 0 4px 24px rgba(28, 43, 85, 0.06);
+      }
+      .contact-form-wrap h2 {
+        font-family: var(--font-heading);
+        font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+        font-weight: 600;
+        color: var(--tomatis-deep);
+        margin-bottom: 6px;
+      }
+      .contact-form-wrap p {
+        font-size: 0.9rem;
+        color: var(--color-text-light);
+        margin-bottom: 24px;
+        line-height: 1.7;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      @media (max-width: 540px) {
+        .form-row { grid-template-columns: 1fr; }
+        .contact-form-wrap { padding: 24px 20px; }
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 16px;
+      }
+      .form-group label {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--tomatis-deep);
+        letter-spacing: 0.02em;
+      }
+      .form-group label span {
+        color: var(--color-accent);
+        margin-left: 2px;
+      }
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        padding: 11px 14px;
+        border: 1.5px solid rgba(44, 62, 109, 0.18);
+        border-radius: 8px;
+        font-family: var(--font-body);
+        font-size: 0.92rem;
+        color: var(--color-text);
+        background: var(--tomatis-cream);
+        outline: none;
+        transition: border-color 0.2s ease, background 0.2s ease;
+      }
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        border-color: var(--color-primary);
+        background: #fff;
+      }
+      .form-group textarea {
+        min-height: 130px;
+        resize: vertical;
+      }
+
+      /* ── Info sidebar ─────────────────────────────── */
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .info-card {
+        background: var(--color-white);
+        border-radius: 16px;
+        padding: 24px 22px;
+        border: 2px solid rgba(44, 62, 109, 0.07);
+        box-shadow: 0 2px 14px rgba(28, 43, 85, 0.05);
+      }
+      .info-card__icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--tomatis-deep), #2e4a7a);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+      }
+      .info-card__icon svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: #fff;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .info-card__title {
+        font-family: var(--font-heading);
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--tomatis-deep);
+        margin-bottom: 10px;
+      }
+      .info-card p,
+      .info-card a {
+        font-size: 0.875rem;
+        color: var(--color-text-light);
+        line-height: 1.8;
+        text-decoration: none;
+      }
+      .info-card a:hover { color: var(--color-accent); }
+      .info-card__hours {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 4px 14px;
+        font-size: 0.875rem;
+        margin-top: 6px;
+      }
+      .info-card__hours dt {
+        font-weight: 600;
+        color: var(--tomatis-deep);
+        white-space: nowrap;
+      }
+      .info-card__hours dd {
+        color: var(--color-text-light);
+        margin: 0;
+      }
+
+      /* ── Map ──────────────────────────────────────── */
+      .contact-map {
+        padding: 0 0 var(--section-padding);
+        background: var(--tomatis-cream);
+      }
+      .map-wrap {
+        border-radius: 16px;
+        overflow: hidden;
+        height: 380px;
+        box-shadow: 0 8px 32px rgba(28, 43, 85, 0.12);
+      }
+      .map-wrap iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+      }
+      @media (max-width: 600px) { .map-wrap { height: 260px; } }
+
+      /* ── Volunteer section ────────────────────────── */
+      .volunteer {
+        padding: var(--section-padding);
+        background: var(--color-white);
+      }
+      .volunteer__intro {
+        max-width: 720px;
+        margin: 0 auto 48px;
+        text-align: center;
+      }
+      .volunteer__intro p {
+        font-size: 0.96rem;
+        color: var(--color-text-light);
+        line-height: 1.85;
+      }
+      .volunteer__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin-bottom: 48px;
+      }
+      @media (max-width: 900px) { .volunteer__grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 540px) { .volunteer__grid { grid-template-columns: 1fr; } }
+
+      .volunteer-card {
+        background: var(--tomatis-cream);
+        border-radius: 14px;
+        padding: 22px 20px;
+        border: 2px solid rgba(44, 62, 109, 0.07);
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        transition: var(--transition);
+      }
+      .volunteer-card:hover {
+        border-color: var(--color-primary);
+        box-shadow: 0 8px 28px rgba(28, 43, 85, 0.1);
+        transform: translateY(-2px);
+      }
+      .volunteer-card__dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--tomatis-amber);
+        flex-shrink: 0;
+        margin-top: 6px;
+      }
+      .volunteer-card__text {
+        font-size: 0.9rem;
+        color: var(--color-text);
+        line-height: 1.65;
+        font-weight: 500;
+      }
+
+      /* ── Volunteer photos ─────────────────────────── */
+      .volunteer__photos {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 12px;
+        margin-top: 16px;
+      }
+      @media (max-width: 900px) { .volunteer__photos { grid-template-columns: repeat(3, 1fr); } }
+      @media (max-width: 540px) { .volunteer__photos { grid-template-columns: repeat(2, 1fr); } }
+      .volunteer__photos img {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 12px;
+        display: block;
+        filter: grayscale(15%);
+        transition: filter 0.3s ease, transform 0.3s ease;
+      }
+      .volunteer__photos img:hover {
+        filter: grayscale(0%);
+        transform: scale(1.04);
+      }
+
+      /* ── Newsletter strip ─────────────────────────── */
+      .contact-newsletter {
+        padding: 56px 0;
+        background: linear-gradient(135deg, var(--tomatis-deep) 0%, #2a4278 100%);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .contact-newsletter::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(200, 105, 46, 0.14) 0%, transparent 65%);
+        pointer-events: none;
+      }
+      .contact-newsletter__inner {
+        position: relative;
+        z-index: 1;
+        max-width: 520px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .contact-newsletter__label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--tomatis-amber-light);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 12px;
+      }
+      .contact-newsletter h2 {
+        font-family: var(--font-heading);
+        font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+      .contact-newsletter p {
+        font-size: 0.92rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 26px;
+        line-height: 1.75;
+      }
+      .newsletter-form {
+        display: flex;
+        gap: 10px;
+        max-width: 420px;
+        margin: 0 auto;
+      }
+      .newsletter-form input {
+        flex: 1;
+        padding: 12px 16px;
+        border-radius: 8px;
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
+      .newsletter-form input:focus { border-color: var(--tomatis-amber-light); }
+      @media (max-width: 480px) { .newsletter-form { flex-direction: column; } }
+
+      /* Form success state */
+      .form-success {
+        display: none;
+        text-align: center;
+        padding: 24px;
+        color: var(--tomatis-deep);
+      }
+      .form-success svg {
+        width: 48px;
+        height: 48px;
+        stroke: #3a9e6f;
+        fill: none;
+        stroke-width: 2;
+        margin-bottom: 12px;
+      }
+    </style>
+  </head>
+  <body class="page-contact">
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="languages.html">Learn Languages</a></li>
+        <li>
+          <a href="#">Alfred Tomatis</a>
+          <ul>
+            <li><a href="tomatis.html">The Method</a></li>
+            <li><a href="https://aurovillelanguagelab.org/tomatis-presentation/">Tomatis Presentation</a></li>
+            <li><a href="https://aurovillelanguagelab.org/tomatis-kids/">Tomatis Kids</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Resources</a>
+          <ul>
+            <li><a href="https://aurovillelanguagelab.org/languages/">Learn Site</a></li>
+            <li><a href="https://aurovillelanguagelab.org/mediatheque/">Mediatheque</a></li>
+            <li><a href="https://aurovillelanguagelab.org/research/">Research</a></li>
+            <li><a href="https://aurovillelanguagelab.org/talks/">Talks</a></li>
+          </ul>
+        </li>
+        <li><a href="building.html">Building</a></li>
+        <li><a href="contact.html" class="nav__link--active">Contact</a></li>
+        <li>
+          <a href="donation.html" class="btn btn--accent"
+            style="text-align:center; margin-top:8px">&#9829; Donate</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <a href="index.html" class="nav__logo" aria-label="Auroville Language Lab home">
+          <img src="files/auroville-language-lab-logo.svg" alt="Auroville Language Lab" />
+        </a>
+        <ul class="nav__links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="languages.html">Learn Languages</a></li>
+          <li class="nav__item--dropdown">
+            <button class="nav__link--button" type="button" aria-expanded="false">
+              Alfred Tomatis <span class="nav__caret" aria-hidden="true">&#9662;</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li><a href="tomatis.html">The Method</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-presentation/">Tomatis Presentation</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-kids/">Tomatis Kids</a></li>
+            </ul>
+          </li>
+          <li class="nav__item--dropdown">
+            <button class="nav__link--button" type="button" aria-expanded="false">
+              Resources <span class="nav__caret" aria-hidden="true">&#9662;</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li><a href="https://aurovillelanguagelab.org/languages/">Learn Site</a></li>
+              <li><a href="https://aurovillelanguagelab.org/mediatheque/">Mediatheque</a></li>
+              <li><a href="https://aurovillelanguagelab.org/research/">Research</a></li>
+              <li><a href="https://aurovillelanguagelab.org/talks/">Talks</a></li>
+            </ul>
+          </li>
+          <li><a href="building.html">Building</a></li>
+          <li><a href="contact.html" class="nav__link--active">Contact</a></li>
+          <li>
+            <a href="donation.html" class="btn btn--accent">&#9829; Donate</a>
+          </li>
+        </ul>
+        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-label="Contact Us">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__body">
+        <div class="container">
+          <ol class="hero__breadcrumb" aria-label="Breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="hero__breadcrumb-sep" aria-hidden="true">&rsaquo;</li>
+            <li class="hero__breadcrumb-current" aria-current="page">Contact &amp; Get Involved</li>
+          </ol>
+          <div class="hero__inner">
+            <p class="hero__label">We&rsquo;d Love to Hear From You</p>
+            <h1 class="hero__title">Contact &amp; <em>Get Involved</em></h1>
+            <p class="hero__subtitle">
+              Whether you want to join a language course, explore the Tomatis method, volunteer
+              your time, or simply learn more &mdash; reach out and we&rsquo;ll be happy to help.
+            </p>
+            <div class="hero__ctas">
+              <a href="#contact-form" class="btn btn--accent btn--large">Send a Message</a>
+              <a href="#volunteer" class="btn btn--glass btn--large">Volunteer with Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero__statbar" aria-label="Key facts">
+        <div class="container hero__statbar-inner">
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>International Zone, Auroville</strong>
+              <span>Tamil Nadu 605101, India</span>
+            </div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>Mon &ndash; Fri 9am &ndash; 5pm</strong>
+              <span>Saturday 9am &ndash; 12:30pm</span>
+            </div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>+91 (413) 262 3661</strong>
+              <span>WhatsApp: +91 98430 30355</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT FORM + INFO ===== -->
+    <section class="contact-main" id="contact-form" aria-labelledby="contact-form-title">
+      <div class="container">
+        <div class="contact-main__grid">
+
+          <!-- Form -->
+          <div class="contact-form-wrap reveal">
+            <h2 id="contact-form-title">Send Us a Message</h2>
+            <p>Fill in the form and we&rsquo;ll get back to you as soon as we can.</p>
+            <form id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name <span>*</span></label>
+                  <input type="text" id="firstName" name="firstName" placeholder="Your first name" required />
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name <span>*</span></label>
+                  <input type="text" id="lastName" name="lastName" placeholder="Your last name" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address <span>*</span></label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91 ..." />
+              </div>
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject">
+                  <option value="">Select a topic&hellip;</option>
+                  <option>Language Courses</option>
+                  <option>Alfred Tomatis Method</option>
+                  <option>Volunteering</option>
+                  <option>The Building</option>
+                  <option>Donation / Support</option>
+                  <option>General Enquiry</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Message <span>*</span></label>
+                <textarea id="message" name="message" placeholder="Write your message here&hellip;" required></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary btn--large" style="width:100%">
+                Send Message &rsaquo;
+              </button>
+            </form>
+            <div class="form-success" id="formSuccess">
+              <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <p style="font-size:1.05rem; font-weight:600; color:var(--tomatis-deep)">Message sent!</p>
+              <p style="font-size:0.9rem; color:var(--color-text-light)">We&rsquo;ll get back to you shortly.</p>
+            </div>
+          </div>
+
+          <!-- Info sidebar -->
+          <div class="contact-info">
+
+            <div class="info-card reveal">
+              <div class="info-card__icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              </div>
+              <h3 class="info-card__title">Address</h3>
+              <p>
+                Auroville Language Lab<br />
+                International Zone, Auroville<br />
+                Tamil Nadu 605101, India
+              </p>
+            </div>
+
+            <div class="info-card reveal">
+              <div class="info-card__icon">
+                <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <h3 class="info-card__title">Email</h3>
+              <p>
+                <a href="mailto:info@aurovillelanguagelab.org">info@aurovillelanguagelab.org</a><br />
+                <a href="mailto:tomatis@aurovillelanguagelab.org">tomatis@aurovillelanguagelab.org</a>
+              </p>
+            </div>
+
+            <div class="info-card reveal">
+              <div class="info-card__icon">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.87-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <h3 class="info-card__title">Phone</h3>
+              <p>
+                Lab: <a href="tel:+914132623661">+91 (413) 262 3661</a><br />
+                WhatsApp: <a href="tel:+919843030355">+91 98430 30355</a><br />
+                Tomatis: <a href="tel:+914132622467">+91 (413) 262 2467</a><br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="tel:+914133509932">+91 (413) 350 9932</a>
+              </p>
+            </div>
+
+            <div class="info-card reveal">
+              <div class="info-card__icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <h3 class="info-card__title">Opening Hours</h3>
+              <dl class="info-card__hours">
+                <dt>Mon &ndash; Fri</dt><dd>9:00 am &ndash; 5:00 pm</dd>
+                <dt>Saturday</dt><dd>9:00 am &ndash; 12:30 pm</dd>
+                <dt>Sunday</dt><dd>Closed</dd>
+              </dl>
+            </div>
+
+            <div class="info-card reveal">
+              <div class="info-card__icon">
+                <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </div>
+              <h3 class="info-card__title">Follow Us</h3>
+              <p style="display:flex; gap:10px; flex-wrap:wrap; margin-top:4px">
+                <a href="https://www.facebook.com/aurovillelanguagelab/" target="_blank" rel="noopener" class="btn btn--primary" style="padding:8px 16px; font-size:0.8rem">Facebook</a>
+                <a href="https://www.instagram.com/aurovillelanguagelab/" target="_blank" rel="noopener" class="btn btn--primary" style="padding:8px 16px; font-size:0.8rem">Instagram</a>
+                <a href="https://www.youtube.com/@aurovillelanguagelaborator7542" target="_blank" rel="noopener" class="btn btn--primary" style="padding:8px 16px; font-size:0.8rem">YouTube</a>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MAP ===== -->
+    <section class="contact-map" aria-label="Map">
+      <div class="container">
+        <div class="map-wrap reveal">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.8!2d79.8117!3d12.0035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5362e9e2b4e1e7%3A0x1234567890abcdef!2sAuroville%20Language%20Lab!5e0!3m2!1sen!2sin!4v1234567890"
+            title="Auroville Language Lab location on Google Maps"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VOLUNTEER / GET INVOLVED ===== -->
+    <section class="volunteer" id="volunteer" aria-labelledby="volunteer-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-header__label">Get Involved</p>
+          <h2 class="section-header__title" id="volunteer-title">Volunteer at the Language Lab</h2>
+        </div>
+        <div class="volunteer__intro reveal">
+          <p>
+            One way to experience the spirit of Auroville and its sense of community &amp;
+            collaborative work is to volunteer at the Language Lab. Volunteering here can be a
+            profoundly enriching experience &mdash; over the years, volunteers from across the globe
+            have generously given their time and talents, contributing to the Lab&rsquo;s growth in
+            immeasurable ways.
+          </p>
+          <p style="margin-top:12px">
+            Our volunteers come from diverse backgrounds with varied perspectives, which adds
+            freshness and fosters a spirit of healthy knowledge-exchange. We are a space for
+            growth, inclusivity, and shared learning.
+          </p>
+        </div>
+
+        <div class="section-header reveal" style="margin-bottom:24px">
+          <p class="section-header__label">Opportunities</p>
+          <h3 class="section-header__title" style="font-size:clamp(1.1rem,2vw,1.4rem)">Ways You Can Contribute</h3>
+        </div>
+        <div class="volunteer__grid">
+          <div class="volunteer-card reveal">
+            <div class="volunteer-card__dot"></div>
+            <p class="volunteer-card__text">Teaching a language (long-term)</p>
+          </div>
+          <div class="volunteer-card reveal">
+            <div class="volunteer-card__dot"></div>
+            <p class="volunteer-card__text">Managing our social media accounts</p>
+          </div>
+          <div class="volunteer-card reveal">
+            <div class="volunteer-card__dot"></div>
+            <p class="volunteer-card__text">Organising our reference library</p>
+          </div>
+          <div class="volunteer-card reveal">
+            <div class="volunteer-card__dot"></div>
+            <p class="volunteer-card__text">Assisting in research projects</p>
+          </div>
+          <div class="volunteer-card reveal">
+            <div class="volunteer-card__dot"></div>
+            <p class="volunteer-card__text">Supporting publication projects</p>
+          </div>
+          <div class="volunteer-card reveal">
+            <div class="volunteer-card__dot"></div>
+            <p class="volunteer-card__text">Documenting the trees planted at ALL</p>
+          </div>
+        </div>
+
+        <div class="volunteer__photos reveal">
+          <img src="files/volunteer-image-290x300.webp" alt="Volunteer at Auroville Language Lab" loading="lazy" />
+          <img src="files/volunteer-image5-300x275.webp" alt="Volunteer at Auroville Language Lab" loading="lazy" />
+          <img src="files/volunteer-image8-300x289.webp" alt="Volunteer at Auroville Language Lab" loading="lazy" />
+          <img src="files/volunteer-image11-300x294.webp" alt="Volunteer at Auroville Language Lab" loading="lazy" />
+          <img src="files/volunteer-image13-300x294.webp" alt="Volunteer at Auroville Language Lab" loading="lazy" />
+          <img src="files/volunteer-image14-300x293.webp" alt="Volunteer at Auroville Language Lab" loading="lazy" />
+        </div>
+
+        <div style="text-align:center; margin-top:40px" class="reveal">
+          <p style="font-size:0.95rem; color:var(--color-text-light); max-width:560px; margin:0 auto 20px; line-height:1.8">
+            An enthusiasm for our work and a willingness to contribute effectively as part of our
+            team are our only prerequisites. Write to us to find out more.
+          </p>
+          <a href="mailto:info@aurovillelanguagelab.org?subject=Volunteering%20at%20Auroville%20Language%20Lab"
+             class="btn btn--accent btn--large">
+            &#9829; Write to Us About Volunteering
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEWSLETTER ===== -->
+    <section class="contact-newsletter" aria-label="Stay in touch">
+      <div class="contact-newsletter__inner">
+        <p class="contact-newsletter__label">Stay Connected</p>
+        <h2>Sign Up for Our Newsletter</h2>
+        <p>
+          Receive the latest news, events, and stories from the Auroville Language Lab
+          directly in your inbox.
+        </p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="your@email.com" aria-label="Email address" required />
+          <button type="submit" class="btn btn--accent">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__col">
+            <img src="files/auroville-language-lab-logo.svg" alt="Auroville Language Lab"
+              style="height:32px; margin-bottom:14px; filter:brightness(0) invert(1); opacity:0.7;" />
+            <p>A non-profit service unit under the Swagatam Trust of the Auroville Foundation.</p>
+            <div class="footer__social" aria-label="Social media links">
+              <a href="https://www.facebook.com/aurovillelanguagelab/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+              <a href="https://www.instagram.com/aurovillelanguagelab/" target="_blank" rel="noopener" aria-label="Instagram">in</a>
+              <a href="https://www.youtube.com/@aurovillelanguagelaborator7542" target="_blank" rel="noopener" aria-label="YouTube">&#9654;</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <h4>Alfred Tomatis</h4>
+            <ul>
+              <li><a href="tomatis.html">The Method</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-presentation/">Tomatis Presentation</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-kids/">Tomatis Kids</a></li>
+              <li><a href="https://aurovillelanguagelab.org/research/">Research</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="languages.html">Learn Languages</a></li>
+              <li><a href="building.html">Building</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="http://www.auroville.org/" target="_blank" rel="noopener">Auroville.org</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Contact</h4>
+            <p>
+              <a href="mailto:info@aurovillelanguagelab.org">info@aurovillelanguagelab.org</a><br />
+              <a href="mailto:tomatis@aurovillelanguagelab.org">tomatis@aurovillelanguagelab.org</a>
+            </p>
+            <p style="margin-top:10px">
+              <a href="tel:+914132623661">+91 (413) 262 3661</a><br />
+              WhatsApp: <a href="tel:+919843030355">+91 98430 30355</a><br />
+              Tomatis: <a href="tel:+914132622467">+91 (413) 262 2467</a>
+            </p>
+            <p style="margin-top:10px; font-size:0.85rem; opacity:0.7">
+              International Zone, Auroville,<br />Tamil Nadu 605101, India
+            </p>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2026 All Rights Reserved &mdash; Auroville Language Laboratory</p>
+          <p>A non-profit service unit under the Swagatam Trust of the Auroville Foundation</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Language switcher -->
+    <div class="lang-switcher lang-switcher--float" id="langSwitcher">
+      <button class="lang-switcher__toggle" id="langToggle" aria-label="Change language" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span>EN</span>
+      </button>
+      <div class="lang-switcher__options">
+        <a href="#" class="lang-switcher__option active">English</a>
+        <a href="#" class="lang-switcher__option">Fran&ccedil;ais</a>
+        <a href="#" class="lang-switcher__option">Deutsch</a>
+        <a href="#" class="lang-switcher__option">Espa&ntilde;ol</a>
+        <a href="#" class="lang-switcher__option">&#2980;&#2990;&#3007;&#2996;&#3021;</a>
+        <a href="#" class="lang-switcher__option">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</a>
+      </div>
+    </div>
+
+    <script>
+      // ===== Mobile nav =====
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileOverlay = document.getElementById("mobileOverlay");
+      function toggleMenu() {
+        const open = mobileMenu.classList.toggle("active");
+        mobileOverlay.classList.toggle("active", open);
+        hamburger.classList.toggle("active", open);
+        hamburger.setAttribute("aria-expanded", open);
+        document.body.style.overflow = open ? "hidden" : "";
+      }
+      hamburger.addEventListener("click", toggleMenu);
+      mobileOverlay.addEventListener("click", toggleMenu);
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        const parentLi = link.closest("li");
+        const hasSubmenu = parentLi && parentLi.querySelector(":scope > ul");
+        if (hasSubmenu) {
+          link.addEventListener("click", (e) => { e.preventDefault(); parentLi.classList.toggle("active"); });
+        } else {
+          link.addEventListener("click", () => { if (mobileMenu.classList.contains("active")) toggleMenu(); });
+        }
+      });
+
+      // ===== Desktop dropdowns =====
+      document.querySelectorAll(".nav__item--dropdown").forEach((item) => {
+        const btn = item.querySelector(".nav__link--button");
+        btn.addEventListener("click", () => {
+          const open = item.classList.toggle("active");
+          btn.setAttribute("aria-expanded", open);
+        });
+      });
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".nav__item--dropdown")) {
+          document.querySelectorAll(".nav__item--dropdown").forEach((item) => {
+            item.classList.remove("active");
+            item.querySelector(".nav__link--button").setAttribute("aria-expanded", "false");
+          });
+        }
+      });
+
+      // ===== Contact form (mailto fallback) =====
+      document.getElementById("contactForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const firstName = this.firstName.value.trim();
+        const lastName  = this.lastName.value.trim();
+        const email     = this.email.value.trim();
+        const subject   = this.subject.value || "General Enquiry";
+        const message   = this.message.value.trim();
+        if (!firstName || !email || !message) {
+          alert("Please fill in the required fields.");
+          return;
+        }
+        const body = encodeURIComponent(
+          "Name: " + firstName + " " + lastName + "\nEmail: " + email + "\n\n" + message
+        );
+        window.location.href = "mailto:info@aurovillelanguagelab.org?subject=" +
+          encodeURIComponent(subject) + "&body=" + body;
+        this.style.display = "none";
+        document.getElementById("formSuccess").style.display = "block";
+      });
+
+      // ===== Newsletter form =====
+      document.getElementById("newsletterForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const email = this.querySelector("input[type=email]").value.trim();
+        if (email) {
+          window.location.href = "mailto:info@aurovillelanguagelab.org?subject=Newsletter%20Subscription&body=" +
+            encodeURIComponent("Please add me to your newsletter: " + email);
+        }
+      });
+
+      // ===== Lang switcher =====
+      const langSwitcher = document.getElementById("langSwitcher");
+      const langToggle   = document.getElementById("langToggle");
+      langToggle.addEventListener("click", () => {
+        const open = langSwitcher.classList.toggle("active");
+        langToggle.setAttribute("aria-expanded", open);
+      });
+      document.addEventListener("click", (e) => {
+        if (!langSwitcher.contains(e.target)) {
+          langSwitcher.classList.remove("active");
+          langToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // ===== Scroll reveal =====
+      const revealEls = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((el) => {
+            if (el.isIntersecting) { el.target.classList.add("visible"); revealObserver.unobserve(el.target); }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      revealEls.forEach((el) => revealObserver.observe(el));
+
+      // ===== Hero parallax =====
+      const heroEl = document.querySelector(".hero");
+      const heroBg = document.querySelector(".hero__bg");
+      if (heroBg && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        let ticking = false;
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              const scrolled = window.scrollY;
+              const heroH = heroEl.offsetHeight;
+              if (scrolled < heroH) {
+                heroBg.style.transform = `scale(${1.08 + (scrolled / heroH) * 0.07}) translateY(${scrolled * 0.3}px)`;
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+    </script>
+  </body>
+</html>
