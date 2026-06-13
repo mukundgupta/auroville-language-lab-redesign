@@ -1,0 +1,1064 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donate - Auroville Language Lab</title>
+    <meta
+      name="description"
+      content="Support the Auroville Language Lab &mdash; 27 years of language teaching, 21 years of Alfred Tomatis listening work. Donate to our building fund, equipment, or general operations."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* ===== PAGE-SPECIFIC: DONATION ===== */
+      .page-donation .hero__bg {
+        background-image: url("files/auroville-language-lab-language-about-sustainable-architecture.webp");
+      }
+
+      /* ── Donation path cards ───────────────────────── */
+      .donate-paths {
+        padding: var(--section-padding);
+        background: var(--tomatis-cream);
+      }
+      .donate-paths__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 36px;
+      }
+      @media (max-width: 900px) {
+        .donate-paths__grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 560px) {
+        .donate-paths__grid { grid-template-columns: 1fr; }
+      }
+
+      .donate-card {
+        background: var(--color-white);
+        border-radius: 16px;
+        padding: 32px 28px 28px;
+        border: 2px solid rgba(44, 62, 109, 0.07);
+        box-shadow: 0 4px 20px rgba(28, 43, 85, 0.06);
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        transition: var(--transition);
+      }
+      .donate-card:hover {
+        border-color: var(--color-primary);
+        box-shadow: 0 12px 36px rgba(28, 43, 85, 0.12);
+        transform: translateY(-3px);
+      }
+      .donate-card__icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--tomatis-deep), #2e4a7a);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .donate-card__icon svg {
+        width: 24px;
+        height: 24px;
+        fill: none;
+        stroke: #fff;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .donate-card__label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2.5px;
+        color: var(--tomatis-amber);
+      }
+      .donate-card__title {
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--tomatis-deep);
+        line-height: 1.3;
+        margin: 0;
+      }
+      .donate-card__desc {
+        font-size: 0.9rem;
+        color: var(--color-text-light);
+        line-height: 1.75;
+        flex: 1;
+        margin: 0;
+      }
+      .donate-card .btn {
+        margin-top: 6px;
+        align-self: flex-start;
+      }
+
+      /* ── Indian donor modal ───────────────────────── */
+      .india-modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(15, 25, 55, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+      .india-modal-overlay.is-active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .india-modal {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 20px;
+        max-width: 560px;
+        width: 100%;
+        padding: 36px 36px 32px;
+        position: relative;
+        color: #fff;
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45);
+        transform: scale(0.94) translateY(12px);
+        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .india-modal-overlay.is-active .india-modal {
+        transform: scale(1) translateY(0);
+      }
+      .india-modal__close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(15, 25, 55, 0.7);
+        border: 1.5px solid rgba(255, 255, 255, 0.35);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+        backdrop-filter: blur(6px);
+      }
+      .india-modal__close:hover {
+        background: rgba(200, 105, 46, 0.85);
+        transform: scale(1.08);
+      }
+      .india-modal__close svg {
+        width: 18px;
+        height: 18px;
+        stroke-width: 2.5;
+      }
+      .india-modal__label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--tomatis-amber-light);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 8px;
+      }
+      .india-modal__step {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .india-modal__step-num {
+        font-family: var(--font-heading);
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        font-weight: 700;
+        color: #fff;
+        line-height: 1;
+      }
+      .india-modal__step-of {
+        font-size: 1rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.45);
+        line-height: 1;
+      }
+      .india-modal__title {
+        font-family: var(--font-heading);
+        font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+        font-weight: 600;
+        margin-bottom: 10px;
+        line-height: 1.3;
+      }
+      .india-modal__desc {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.75);
+        margin-bottom: 24px;
+        line-height: 1.7;
+      }
+      .india-modal__options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .india-option {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+        text-decoration: none;
+        color: #fff;
+        transition: background 0.25s, border-color 0.25s, transform 0.2s;
+      }
+      .india-option:hover {
+        background: rgba(200, 105, 46, 0.22);
+        border-color: var(--tomatis-amber);
+        transform: translateX(4px);
+      }
+      .india-option__icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .india-option__icon svg {
+        width: 20px;
+        height: 20px;
+        fill: none;
+        stroke: var(--tomatis-amber-light);
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .india-option__text strong {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+      .india-option__text span {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .india-option__arrow {
+        margin-left: auto;
+        opacity: 0.5;
+        font-size: 1.1rem;
+      }
+      .india-option:hover .india-option__arrow { opacity: 1; }
+
+      /* ── Projects section ─────────────────────────── */
+      .donate-projects {
+        padding: var(--section-padding);
+        background: var(--color-white);
+      }
+      .donate-projects__grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+        margin-top: 36px;
+      }
+      @media (max-width: 768px) {
+        .donate-projects__grid { grid-template-columns: 1fr; }
+      }
+      .project-card {
+        border-radius: 16px;
+        overflow: hidden;
+        border: 2px solid rgba(44, 62, 109, 0.07);
+        background: var(--tomatis-cream);
+        transition: var(--transition);
+      }
+      .project-card:hover {
+        border-color: var(--color-primary);
+        box-shadow: 0 12px 32px rgba(28, 43, 85, 0.1);
+      }
+      .project-card__body {
+        padding: 26px 24px 22px;
+      }
+      .project-card__tag {
+        display: inline-block;
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--tomatis-amber);
+        margin-bottom: 10px;
+      }
+      .project-card__title {
+        font-family: var(--font-heading);
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--tomatis-deep);
+        margin-bottom: 10px;
+        line-height: 1.35;
+      }
+      .project-card__desc {
+        font-size: 0.875rem;
+        color: var(--color-text-light);
+        line-height: 1.8;
+      }
+
+      /* ── Bank details ─────────────────────────────── */
+      .bank-details {
+        padding: var(--section-padding);
+        background: var(--tomatis-cream);
+      }
+      .bank-box {
+        background: var(--color-white);
+        border-radius: 16px;
+        padding: 32px 36px;
+        border: 2px solid rgba(44, 62, 109, 0.07);
+        max-width: 680px;
+        margin: 32px auto 0;
+      }
+      .bank-box__title {
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--tomatis-deep);
+        margin-bottom: 18px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid rgba(44, 62, 109, 0.1);
+      }
+      .bank-box table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+      }
+      .bank-box td {
+        padding: 9px 0;
+        vertical-align: top;
+        border-bottom: 1px solid rgba(44, 62, 109, 0.06);
+      }
+      .bank-box td:first-child {
+        color: var(--color-text-light);
+        width: 42%;
+        font-weight: 500;
+        padding-right: 16px;
+      }
+      .bank-box td:last-child {
+        color: var(--tomatis-deep);
+        font-weight: 600;
+      }
+      .bank-box__note {
+        margin-top: 16px;
+        font-size: 0.82rem;
+        color: var(--color-text-light);
+        line-height: 1.7;
+      }
+      @media (max-width: 540px) {
+        .bank-box { padding: 24px 20px; }
+        .bank-box td:first-child { width: 48%; }
+      }
+
+      /* ── Impact strip ─────────────────────────────── */
+      .impact-strip {
+        padding: 52px 0;
+        background: linear-gradient(135deg, var(--tomatis-deep) 0%, #2a4278 100%);
+      }
+      .impact-strip__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        text-align: center;
+      }
+      @media (max-width: 768px) {
+        .impact-strip__grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 420px) {
+        .impact-strip__grid { grid-template-columns: 1fr 1fr; }
+      }
+      .impact-stat__num {
+        font-family: var(--font-heading);
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        font-weight: 700;
+        color: var(--tomatis-amber-light);
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .impact-stat__label {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.5;
+      }
+
+      /* ── Book / publication highlight ─────────────── */
+      .donate-book {
+        padding: var(--section-padding);
+        background: var(--color-white);
+      }
+      .donate-book__inner {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 40px;
+        align-items: center;
+        background: var(--tomatis-cream);
+        border-radius: 18px;
+        padding: 36px 40px;
+        border: 2px solid rgba(44, 62, 109, 0.07);
+      }
+      .donate-book__inner img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 8px 28px rgba(0,0,0,0.15);
+      }
+      .donate-book__content h3 {
+        font-family: var(--font-heading);
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
+        font-weight: 600;
+        color: var(--tomatis-deep);
+        margin-bottom: 12px;
+      }
+      .donate-book__content p {
+        font-size: 0.9rem;
+        color: var(--color-text-light);
+        line-height: 1.8;
+        margin-bottom: 16px;
+      }
+      @media (max-width: 640px) {
+        .donate-book__inner {
+          grid-template-columns: 1fr;
+          text-align: center;
+          padding: 28px 22px;
+        }
+        .donate-book__inner img { max-width: 140px; margin: 0 auto; display: block; }
+      }
+    </style>
+  </head>
+  <body class="page-donation">
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="languages.html">Learn Languages</a></li>
+        <li>
+          <a href="#">Alfred Tomatis</a>
+          <ul>
+            <li><a href="tomatis.html">The Method</a></li>
+            <li><a href="https://aurovillelanguagelab.org/tomatis-presentation/">Tomatis Presentation</a></li>
+            <li><a href="https://aurovillelanguagelab.org/tomatis-kids/">Tomatis Kids</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Resources</a>
+          <ul>
+            <li><a href="https://aurovillelanguagelab.org/languages/">Learn Site</a></li>
+            <li><a href="https://aurovillelanguagelab.org/mediatheque/">Mediatheque</a></li>
+            <li><a href="https://aurovillelanguagelab.org/research/">Research</a></li>
+            <li><a href="https://aurovillelanguagelab.org/talks/">Talks</a></li>
+          </ul>
+        </li>
+        <li><a href="building.html">Building</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li>
+          <a href="donation.html" class="btn btn--accent"
+            style="text-align: center; margin-top: 8px">&#9829; Donate</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- INDIAN DONOR MODAL -->
+    <div class="india-modal-overlay" id="indiaModalOverlay" role="dialog" aria-modal="true" aria-labelledby="indiaModalTitle">
+      <div class="india-modal">
+        <button class="india-modal__close" id="indiaModalClose" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <p class="india-modal__label">Online Payment &mdash; India</p>
+        <div class="india-modal__step">
+          <span class="india-modal__step-num">Step 1</span>
+          <span class="india-modal__step-of">of 4</span>
+        </div>
+        <h2 class="india-modal__title" id="indiaModalTitle">Choose where your donation goes</h2>
+        <p class="india-modal__desc">Select a fund below &mdash; you&rsquo;ll be taken to the Auroville Foundation&rsquo;s secure payment portal with your chosen project pre-selected (Step 2).</p>
+        <div class="india-modal__options">
+          <a href="https://donate.auroville.org/?project=auroville-language-laboratory"
+             class="india-option" target="_blank" rel="noopener">
+            <div class="india-option__icon">
+              <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="india-option__text">
+              <strong>Auroville Language Lab &mdash; Overall</strong>
+              <span>Support our general operations &amp; mission</span>
+            </div>
+            <span class="india-option__arrow">&rsaquo;</span>
+          </a>
+          <a href="https://donate.auroville.org/?project=all-general-and-equipment-expenses"
+             class="india-option" target="_blank" rel="noopener">
+            <div class="india-option__icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            </div>
+            <div class="india-option__text">
+              <strong>General &amp; Equipment Expenses</strong>
+              <span>Fund day-to-day operations &amp; equipment needs</span>
+            </div>
+            <span class="india-option__arrow">&rsaquo;</span>
+          </a>
+          <a href="https://donate.auroville.org/?project=language-lab---building-fund"
+             class="india-option" target="_blank" rel="noopener">
+            <div class="india-option__icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            </div>
+            <div class="india-option__text">
+              <strong>Building Fund</strong>
+              <span>Help complete our sustainable building</span>
+            </div>
+            <span class="india-option__arrow">&rsaquo;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <a href="index.html" class="nav__logo" aria-label="Auroville Language Lab home">
+          <img src="files/auroville-language-lab-logo.svg" alt="Auroville Language Lab" />
+        </a>
+        <ul class="nav__links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="languages.html">Learn Languages</a></li>
+          <li class="nav__item--dropdown">
+            <button class="nav__link--button" type="button" aria-expanded="false">
+              Alfred Tomatis <span class="nav__caret" aria-hidden="true">&#9662;</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li><a href="tomatis.html">The Method</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-presentation/">Tomatis Presentation</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-kids/">Tomatis Kids</a></li>
+            </ul>
+          </li>
+          <li class="nav__item--dropdown">
+            <button class="nav__link--button" type="button" aria-expanded="false">
+              Resources <span class="nav__caret" aria-hidden="true">&#9662;</span>
+            </button>
+            <ul class="nav__dropdown">
+              <li><a href="https://aurovillelanguagelab.org/languages/">Learn Site</a></li>
+              <li><a href="https://aurovillelanguagelab.org/mediatheque/">Mediatheque</a></li>
+              <li><a href="https://aurovillelanguagelab.org/research/">Research</a></li>
+              <li><a href="https://aurovillelanguagelab.org/talks/">Talks</a></li>
+            </ul>
+          </li>
+          <li><a href="building.html">Building</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <a href="donation.html" class="btn btn--accent nav__link--active">&#9829; Donate</a>
+          </li>
+        </ul>
+        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-label="Donate">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__body">
+        <div class="container">
+          <ol class="hero__breadcrumb" aria-label="Breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="hero__breadcrumb-sep" aria-hidden="true">&rsaquo;</li>
+            <li class="hero__breadcrumb-current" aria-current="page">Donate</li>
+          </ol>
+          <div class="hero__inner">
+            <p class="hero__label">Support Our Work</p>
+            <h1 class="hero__title">
+              Help Us Keep the<br /><em>Lab Alive &amp; Growing</em>
+            </h1>
+            <p class="hero__subtitle">
+              27 years of language teaching. 21 years of Alfred Tomatis listening work.
+              The Auroville Language Lab has quietly touched thousands of lives &mdash;
+              children, adults, families, and teachers. Your support makes it possible.
+            </p>
+            <div class="hero__ctas">
+              <a href="#donate-now" class="btn btn--accent btn--large">&#9829; Donate Now</a>
+              <a href="#projects" class="btn btn--glass btn--large">Our Projects</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero__statbar" aria-label="Key facts">
+        <div class="container hero__statbar-inner">
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>27 Years</strong>
+              <span>of language teaching</span>
+            </div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>21 Years</strong>
+              <span>of Tomatis listening therapy</span>
+            </div>
+          </div>
+          <div class="hero__stat">
+            <div class="hero__stat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="hero__stat-text">
+              <strong>Non-Profit</strong>
+              <span>Swagatam Trust, Auroville Foundation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DONATE NOW ===== -->
+    <section class="donate-paths" id="donate-now" aria-labelledby="donate-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-header__label">How to Give</p>
+          <h2 class="section-header__title" id="donate-title">Choose Your Donation Method</h2>
+        </div>
+        <p class="benefits__lead reveal">
+          Whether you are based in India or abroad, there is a simple, secure way to support us.
+          Every contribution &mdash; however large or small &mdash; makes a real difference.
+        </p>
+        <div class="donate-paths__grid">
+
+          <!-- Indian donors - online -->
+          <div class="donate-card reveal">
+            <div class="donate-card__icon">
+              <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <p class="donate-card__label">India &mdash; Online</p>
+            <h3 class="donate-card__title">Donate via Auroville Foundation Portal</h3>
+            <p class="donate-card__desc">
+              Residents and donors in India can give directly through the Auroville Foundation&rsquo;s
+              secure online payment portal. Choose the fund that best matches your intention.
+            </p>
+            <button class="btn btn--primary" id="openIndiaModalBtn">
+              Donate Online (India) &rsaquo;
+            </button>
+          </div>
+
+          <!-- Foreign donors -->
+          <div class="donate-card reveal">
+            <div class="donate-card__icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <p class="donate-card__label">International &mdash; AVI USA</p>
+            <h3 class="donate-card__title">Donate via AVI USA (Tax-Deductible)</h3>
+            <p class="donate-card__desc">
+              International donors can give through Auroville International USA. Donations are
+              tax-deductible in the US. Every dollar donated is currently matched 100% by AVI USA,
+              doubling your impact.
+            </p>
+            <a href="https://www.aviusa.org/donate/" class="btn btn--accent" target="_blank" rel="noopener">
+              Donate via AVI USA &rsaquo;
+            </a>
+          </div>
+
+          <!-- Bank transfer -->
+          <div class="donate-card reveal">
+            <div class="donate-card__icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <p class="donate-card__label">India &mdash; Bank Transfer</p>
+            <h3 class="donate-card__title">Direct Bank Transfer / NEFT</h3>
+            <p class="donate-card__desc">
+              Transfer directly to the Auroville Foundation account via NEFT, RTGS, or cheque.
+              Please email us after transferring so we can acknowledge your contribution.
+            </p>
+            <a href="#bank-details" class="btn btn--primary">
+              View Bank Details &rsaquo;
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== IMPACT NUMBERS ===== -->
+    <section class="impact-strip" aria-label="Our impact">
+      <div class="container">
+        <div class="impact-strip__grid">
+          <div class="impact-stat reveal">
+            <div class="impact-stat__num">10+</div>
+            <div class="impact-stat__label">Languages taught by native speakers</div>
+          </div>
+          <div class="impact-stat reveal">
+            <div class="impact-stat__num">1000s</div>
+            <div class="impact-stat__label">Lives touched in Auroville &amp; beyond</div>
+          </div>
+          <div class="impact-stat reveal">
+            <div class="impact-stat__num">14+</div>
+            <div class="impact-stat__label">Sustainable features in our building</div>
+          </div>
+          <div class="impact-stat reveal">
+            <div class="impact-stat__num">21</div>
+            <div class="impact-stat__label">Years of Tomatis listening therapy</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section class="donate-projects" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-header__label">Where It Goes</p>
+          <h2 class="section-header__title" id="projects-title">What Your Donation Supports</h2>
+        </div>
+        <p class="benefits__lead reveal">
+          Your contribution goes directly to active projects that shape the Lab&rsquo;s future.
+          Here are the areas that currently need support most urgently.
+        </p>
+        <div class="donate-projects__grid">
+          <div class="project-card reveal">
+            <div class="project-card__body">
+              <span class="project-card__tag">Building</span>
+              <h3 class="project-card__title">Complete Our Sustainable Building</h3>
+              <p class="project-card__desc">
+                Our building is a stellar example of climate-conscious construction &mdash; passive
+                cooling towers, lime-based walls, probiotics, and zero air conditioning. We still need
+                to complete 15 outlet shafts, roof tiling, flooring for the caf&eacute;teria and Indian
+                classroom, the north terrace, and the remaining cooling towers.
+              </p>
+            </div>
+          </div>
+          <div class="project-card reveal">
+            <div class="project-card__body">
+              <span class="project-card__tag">Tomatis</span>
+              <h3 class="project-card__title">Sponsor a Child&rsquo;s Tomatis Program</h3>
+              <p class="project-card__desc">
+                Cover the cost of the Tomatis listening program for a child who needs it but whose
+                family cannot afford it. The method has transformed the lives of children with autism,
+                dyslexia, developmental delays, and attention disorders. Your support directly enables
+                a family in need.
+              </p>
+            </div>
+          </div>
+          <div class="project-card reveal">
+            <div class="project-card__body">
+              <span class="project-card__tag">Documentary</span>
+              <h3 class="project-card__title">Help Us Tell Our Story</h3>
+              <p class="project-card__desc">
+                We are producing a short documentary film with Inlight Media, Auroville, to capture
+                the spirit, the work, and the people of the Language Lab &mdash; the Tomatis centre, the
+                building, the classrooms, and the community. Fundraising target: &#8377;2,72,500 / USD 3,035.
+                Every donation to AVI USA is matched 100%.
+              </p>
+            </div>
+          </div>
+          <div class="project-card reveal">
+            <div class="project-card__body">
+              <span class="project-card__tag">Publications</span>
+              <h3 class="project-card__title">Translate Our Book on Tomatis</h3>
+              <p class="project-card__desc">
+                The Auroville Language Lab has published a transformational work on the Alfred Tomatis
+                Method in English. We are seeking support to translate it into multiple languages so
+                the message reaches the whole world. Your contribution funds translation, editing, and
+                printing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BOOK HIGHLIGHT ===== -->
+    <section class="donate-book" aria-label="Our book">
+      <div class="container">
+        <div class="donate-book__inner reveal">
+          <img
+            src="files/listening-therapy-book.jpg"
+            alt="From Resonance to Bonding &mdash; book by Auroville Language Lab"
+            loading="lazy"
+          />
+          <div class="donate-book__content">
+            <h3>From Resonance to Bonding</h3>
+            <p>
+              Our book explores the Alfred Tomatis Method &mdash; how sound shapes development,
+              heals trauma, and unlocks human potential from the womb onward. A product of
+              21 years of listening therapy practice at Auroville.
+            </p>
+            <p>
+              Help us translate it and bring this knowledge to readers around the world.
+            </p>
+            <a href="https://books.aurovillelanguagelab.org/" class="btn btn--primary" target="_blank" rel="noopener">
+              Learn About the Book &rsaquo;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BANK DETAILS ===== -->
+    <section class="bank-details" id="bank-details" aria-labelledby="bank-title">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-header__label">Direct Transfer</p>
+          <h2 class="section-header__title" id="bank-title">Bank Transfer Details</h2>
+        </div>
+        <p class="programs__note reveal" style="text-align:center; max-width:560px; margin: 16px auto 0;">
+          For NEFT / RTGS transfers or cheques, use the details below.
+          Please email <a href="mailto:info@aurovillelanguagelab.org">info@aurovillelanguagelab.org</a>
+          after transferring so we can acknowledge your donation.
+        </p>
+        <div class="bank-box reveal">
+          <div class="bank-box__title">AUROVILLE FOUNDATION &mdash; Account Details</div>
+          <table>
+            <tr><td>Account Name</td><td>Auroville Foundation</td></tr>
+            <tr><td>Bank</td><td>Indian Overseas Bank</td></tr>
+            <tr><td>Branch</td><td>Auroville Branch</td></tr>
+            <tr><td>Account No.</td><td>017901000016963</td></tr>
+            <tr><td>IFSC Code</td><td>IOBA0000179</td></tr>
+            <tr><td>SWIFT Code</td><td>IOBAINBB</td></tr>
+          </table>
+          <p class="bank-box__note">
+            Please mention &ldquo;Auroville Language Lab&rdquo; in your transfer reference.
+            For tax exemption under Section 80G (India), a receipt will be issued on request.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta" aria-labelledby="cta-donate-title">
+      <div class="cta__inner reveal">
+        <p class="cta__label">Every Contribution Matters</p>
+        <h2 id="cta-donate-title">Ready to Make a Difference?</h2>
+        <p>
+          The Auroville Language Lab is a non-profit service unit. Your donation &mdash;
+          however small &mdash; directly sustains language education, Tomatis therapy,
+          and our conscious, sustainable building in Auroville.
+        </p>
+        <div class="cta__buttons">
+          <button class="btn btn--accent btn--large" id="openIndiaModalBtn2">
+            &#9829; Donate (India)
+          </button>
+          <a href="https://www.aviusa.org/donate/" class="btn btn--glass btn--large" target="_blank" rel="noopener">
+            Donate International
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__col">
+            <img
+              src="files/auroville-language-lab-logo.svg"
+              alt="Auroville Language Lab"
+              style="height:32px; margin-bottom:14px; filter:brightness(0) invert(1); opacity:0.7;"
+            />
+            <p>A non-profit service unit under the Swagatam Trust of the Auroville Foundation.</p>
+            <div class="footer__social" aria-label="Social media links">
+              <a href="https://www.facebook.com/aurovillelanguagelab/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+              <a href="https://www.instagram.com/aurovillelanguagelab/" target="_blank" rel="noopener" aria-label="Instagram">in</a>
+              <a href="https://www.youtube.com/@aurovillelanguagelaborator7542" target="_blank" rel="noopener" aria-label="YouTube">&#9654;</a>
+            </div>
+          </div>
+          <div class="footer__col">
+            <h4>Alfred Tomatis</h4>
+            <ul>
+              <li><a href="tomatis.html">The Method</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-presentation/">Tomatis Presentation</a></li>
+              <li><a href="https://aurovillelanguagelab.org/tomatis-kids/">Tomatis Kids</a></li>
+              <li><a href="https://aurovillelanguagelab.org/research/">Research</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Explore</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="languages.html">Learn Languages</a></li>
+              <li><a href="building.html">Building</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="http://www.auroville.org/" target="_blank" rel="noopener">Auroville.org</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4>Contact</h4>
+            <p>
+              <a href="mailto:info@aurovillelanguagelab.org">info@aurovillelanguagelab.org</a><br />
+              <a href="mailto:tomatis@aurovillelanguagelab.org">tomatis@aurovillelanguagelab.org</a>
+            </p>
+            <p style="margin-top:10px">
+              <a href="tel:+914132623661">+91 (413) 262 3661</a><br />
+              WhatsApp: <a href="tel:+919843030355">+91 98430 30355</a><br />
+              Tomatis: <a href="tel:+914132622467">+91 (413) 262 2467</a>
+            </p>
+            <p style="margin-top:10px; font-size:0.85rem; opacity:0.7">
+              International Zone, Auroville,<br />Tamil Nadu 605101, India
+            </p>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2026 All Rights Reserved &mdash; Auroville Language Laboratory</p>
+          <p>A non-profit service unit under the Swagatam Trust of the Auroville Foundation</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Language switcher -->
+    <div class="lang-switcher lang-switcher--float" id="langSwitcher">
+      <button class="lang-switcher__toggle" id="langToggle" aria-label="Change language" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span>EN</span>
+      </button>
+      <div class="lang-switcher__options">
+        <a href="#" class="lang-switcher__option active">English</a>
+        <a href="#" class="lang-switcher__option">Fran&ccedil;ais</a>
+        <a href="#" class="lang-switcher__option">Deutsch</a>
+        <a href="#" class="lang-switcher__option">Espa&ntilde;ol</a>
+        <a href="#" class="lang-switcher__option">&#2980;&#2990;&#3007;&#2996;&#3021;</a>
+        <a href="#" class="lang-switcher__option">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</a>
+      </div>
+    </div>
+
+    <script>
+      // ===== Mobile nav =====
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileOverlay = document.getElementById("mobileOverlay");
+
+      function toggleMenu() {
+        const open = mobileMenu.classList.toggle("active");
+        mobileOverlay.classList.toggle("active", open);
+        hamburger.classList.toggle("active", open);
+        hamburger.setAttribute("aria-expanded", open);
+        document.body.style.overflow = open ? "hidden" : "";
+      }
+      hamburger.addEventListener("click", toggleMenu);
+      mobileOverlay.addEventListener("click", toggleMenu);
+
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        const parentLi = link.closest("li");
+        const hasSubmenu = parentLi && parentLi.querySelector(":scope > ul");
+        if (hasSubmenu) {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            parentLi.classList.toggle("active");
+          });
+        } else {
+          link.addEventListener("click", () => {
+            if (mobileMenu.classList.contains("active")) toggleMenu();
+          });
+        }
+      });
+
+      // ===== Desktop dropdown nav =====
+      document.querySelectorAll(".nav__item--dropdown").forEach((item) => {
+        const btn = item.querySelector(".nav__link--button");
+        btn.addEventListener("click", () => {
+          const open = item.classList.toggle("active");
+          btn.setAttribute("aria-expanded", open);
+        });
+      });
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".nav__item--dropdown")) {
+          document.querySelectorAll(".nav__item--dropdown").forEach((item) => {
+            item.classList.remove("active");
+            item.querySelector(".nav__link--button").setAttribute("aria-expanded", "false");
+          });
+        }
+      });
+
+      // ===== India modal =====
+      const indiaOverlay = document.getElementById("indiaModalOverlay");
+      const indiaClose  = document.getElementById("indiaModalClose");
+
+      function openIndiaModal() {
+        indiaOverlay.classList.add("is-active");
+        document.body.style.overflow = "hidden";
+      }
+      function closeIndiaModal() {
+        indiaOverlay.classList.remove("is-active");
+        document.body.style.overflow = "";
+      }
+
+      document.getElementById("openIndiaModalBtn").addEventListener("click", openIndiaModal);
+      document.getElementById("openIndiaModalBtn2").addEventListener("click", openIndiaModal);
+      indiaClose.addEventListener("click", closeIndiaModal);
+      indiaOverlay.addEventListener("click", (e) => {
+        if (e.target === indiaOverlay) closeIndiaModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && indiaOverlay.classList.contains("is-active")) closeIndiaModal();
+      });
+
+      // ===== Language switcher =====
+      const langSwitcher = document.getElementById("langSwitcher");
+      const langToggle   = document.getElementById("langToggle");
+      langToggle.addEventListener("click", () => {
+        const open = langSwitcher.classList.toggle("active");
+        langToggle.setAttribute("aria-expanded", open);
+      });
+      document.addEventListener("click", (e) => {
+        if (!langSwitcher.contains(e.target)) {
+          langSwitcher.classList.remove("active");
+          langToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // ===== Scroll reveal =====
+      const revealEls = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((el) => {
+            if (el.isIntersecting) {
+              el.target.classList.add("visible");
+              revealObserver.unobserve(el.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      revealEls.forEach((el) => revealObserver.observe(el));
+
+      // ===== Hero parallax =====
+      const heroEl = document.querySelector(".hero");
+      const heroBg = document.querySelector(".hero__bg");
+      if (heroBg && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        let ticking = false;
+        window.addEventListener("scroll", () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              const scrolled = window.scrollY;
+              const heroH = heroEl.offsetHeight;
+              if (scrolled < heroH) {
+                const progress = scrolled / heroH;
+                heroBg.style.transform = `scale(${1.08 + progress * 0.07}) translateY(${scrolled * 0.3}px)`;
+              }
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+    </script>
+  </body>
+</html>

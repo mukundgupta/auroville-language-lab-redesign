@@ -706,7 +706,8 @@ section {
 .page-languages .hero,
 .page-about .hero,
 .page-news .hero,
-.page-building .hero {
+.page-building .hero,
+.page-donation .hero {
   flex-direction: column;
   justify-content: flex-end;
 }
@@ -2352,6 +2353,12 @@ section {
 /* ===== PAGE-SPECIFIC: BUILDING ===== */
 
 .page-building .hero__bg {
+  background-image: url("files/auroville-language-lab-language-about-sustainable-architecture.webp");
+}
+
+/* ===== PAGE-SPECIFIC: DONATION ===== */
+
+.page-donation .hero__bg {
   background-image: url("files/auroville-language-lab-language-about-sustainable-architecture.webp");
 }
 
